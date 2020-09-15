@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WorldSpaceInteract : MonoBehaviour
+public class InteractableButton : MonoBehaviour
 {
     [SerializeField]
+    public GameObject targetObject;
+
     private Transform targetTransform;
 
     private RectTransform rectTransform;
@@ -13,20 +15,21 @@ public class WorldSpaceInteract : MonoBehaviour
 
     private Camera fpsCam;
 
-    public float distance = 3f;
-
+    public float distance;
 
     void Start()
     {
         fpsCam = Camera.main;
     }
 
+    /*
     private void Awake()
     {
+        targetTransform = targetObject.transform;
         rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
     }
-
+    */
 
     void Update()
     {
@@ -46,5 +49,28 @@ public class WorldSpaceInteract : MonoBehaviour
         var show = distanceFromCenter < 0.2f && inRange;
 
         GetComponent<Image>().enabled = show;
+    }
+
+    public void Initialize(GameObject initializedObject)
+    {
+        targetObject = initializedObject;
+        targetTransform = targetObject.transform;
+        rectTransform = GetComponent<RectTransform>();
+        image = GetComponent<Image>();
+    }
+
+    public GameObject GetGameObject()
+    {
+        return targetObject;
+    }
+
+    public void Detach()
+    {
+        // Make the button disappear
+        gameObject.SetActive(false);
+
+        // Make the attached object disappear
+        this.targetObject = null;
+        Destroy(targetObject);
     }
 }
