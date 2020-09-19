@@ -38,6 +38,7 @@ public class Raycast : MonoBehaviour
         {
             if (hit.collider.CompareTag("InteractableObject"))
             {
+                Debug.Log("Hit an Interactable Object!");
                 raycastedObject = hit.collider.gameObject;
                 CrosshairActive();
             }

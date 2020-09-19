@@ -31,6 +31,14 @@ public class InteractableButton : MonoBehaviour
     }
     */
 
+    public void Initialize (GameObject initializedObject)
+        {
+        targetObject=initializedObject;
+        targetTransform=targetObject.transform;
+        rectTransform=GetComponent<RectTransform>();
+        image=GetComponent<Image>();
+        }
+
     void Update()
     {
         // 2D Coordinate on the screen
@@ -51,13 +59,7 @@ public class InteractableButton : MonoBehaviour
         GetComponent<Image>().enabled = show;
     }
 
-    public void Initialize(GameObject initializedObject)
-    {
-        targetObject = initializedObject;
-        targetTransform = targetObject.transform;
-        rectTransform = GetComponent<RectTransform>();
-        image = GetComponent<Image>();
-    }
+    
 
     public GameObject GetGameObject()
     {
@@ -73,4 +75,12 @@ public class InteractableButton : MonoBehaviour
         this.targetObject = null;
         Destroy(targetObject);
     }
-}
+
+    public float radius = 3f;
+
+    private void OnDrawGizmosSelected ()
+        {
+        Gizmos.color=Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, radius);
+        }
+    }

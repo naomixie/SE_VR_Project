@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+//using System.Diagnostics;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
@@ -8,12 +8,12 @@ public class InventoryUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InventoryUI inventory;
+        //InventoryUI inventory;
 
         void Start ()
             {
-            inventory = Inventory.instance;
-            inventory.onItemChangedCallback+=UpdateUI;
+            //inventory = Inventory.instance;
+            //inventory.onItemChangedCallback+=UpdateUI;
             }
 
         
