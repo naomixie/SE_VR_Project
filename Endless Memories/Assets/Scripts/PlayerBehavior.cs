@@ -58,6 +58,25 @@ public class PlayerBehavior : MonoBehaviour
 
     public void CollectObject(GameObject raycastedObject)
     {
+        Debug.Log("I have picked up an object! (From: CollectObject in PlayerBehavior)");
 
-    }
+        interactableButtonGroups=fpsCam.transform.GetChild(0).transform.GetChild(0).gameObject;
+        interactableButtonCount=interactableButtonGroups.transform.childCount;
+
+        InteractableButton interactableButton;
+        GameObject attachedObject;
+        for (int i = 0 ; i<interactableButtonCount ; i++)
+            {
+            interactableButton=interactableButtonGroups.transform.GetChild(i).gameObject.GetComponent<InteractableButton>();
+            attachedObject=interactableButton.GetGameObject();
+            if (attachedObject==raycastedObject)
+                {
+                // Collect object into Inventory
+                break;
+                }
+            }
+
+
+
+        }
 }
