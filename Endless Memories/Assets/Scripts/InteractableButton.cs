@@ -37,6 +37,8 @@ public class InteractableButton : MonoBehaviour
         targetTransform=targetObject.transform;
         rectTransform=GetComponent<RectTransform>();
         image=GetComponent<Image>();
+
+        targetObject.GetComponent<InteractableInRange>().uiButton= GetComponent<Image>();
         }
 
     void Update()

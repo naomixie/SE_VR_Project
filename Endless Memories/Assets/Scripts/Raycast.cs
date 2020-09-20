@@ -11,6 +11,7 @@ public class Raycast : MonoBehaviour
 
 
     private GameObject interactableButtonGroups;
+    private InteractableT interactableRaycastedObject;
 
     // Gizmos
     public float radius = 8f;
@@ -19,6 +20,7 @@ public class Raycast : MonoBehaviour
 
     [SerializeField] private int rayLength = 10;
     [SerializeField] private LayerMask layerMaskInteract;
+    //private LayerMask layerMaskInteract = ~(1);
 
     [SerializeField] private Image uiCrosshair;
 
@@ -38,8 +40,14 @@ public class Raycast : MonoBehaviour
         {
             if (hit.collider.CompareTag("InteractableObject"))
             {
-                Debug.Log("Hit an Interactable Object!");
+                // Debug.Log("Hit an Interactable Object!");
                 raycastedObject = hit.collider.gameObject;
+                //if (raycastedObject.name=="InteractableT")
+                //    {
+                    
+                //    }
+                interactableRaycastedObject = hit.collider.gameObject.GetComponent<InteractableT>();
+                
                 CrosshairActive();
             }
             else
@@ -57,12 +65,12 @@ public class Raycast : MonoBehaviour
         foreach (var hitCollider in hitColliders)
         {
             GameObject hitObject = hitCollider.gameObject;
-            if (hitObject.GetComponent<InteractableObject>() != null)
+            if (hitObject.GetComponent<InteractableInRange>() != null)
             {
                 Debug.Log("Instantiating");
-                if(!hitObject.GetComponent<InteractableObject>().inRange)
+                if(!hitObject.GetComponent<InteractableInRange>().inRange)
                 {
-                    hitObject.GetComponent<InteractableObject>().inRange = true;
+                    hitObject.GetComponent<InteractableInRange>().inRange = true;
                     var uiButton = Instantiate(uiInteractable, interactableButtonGroups.transform.position, interactableButtonGroups.transform.rotation);
                     uiButton.transform.parent = interactableButtonGroups.transform;
                     uiButton.GetComponent<InteractableButton>().Initialize(hitObject);
@@ -93,6 +101,16 @@ public class Raycast : MonoBehaviour
     {
         return raycastedObject;
     }
+
+    public InteractableT GetInteractableRaycastedObject ()
+        {
+        //Debug.Log(interactableRaycastedObject.name);
+        if (interactableRaycastedObject!=null)
+            {
+            return interactableRaycastedObject;
+            }
+        return null;
+        }
 
     private void OnDrawGizmosSelected()
     {

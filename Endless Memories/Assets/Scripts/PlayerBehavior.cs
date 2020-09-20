@@ -8,6 +8,7 @@ public class PlayerBehavior : MonoBehaviour
     private GameObject interactableButtonGroups;
     private int interactableButtonCount = 0;
     private Camera fpsCam;
+    public InteractableT focus;
 
     // Start is called before the first frame update
     void Start()
@@ -21,50 +22,88 @@ public class PlayerBehavior : MonoBehaviour
     {
         // TODO: Change to VR controller
         // Destroys Item
-        if (Input.GetMouseButtonDown(0))
+
+
+        if (Input.GetKeyDown("r"))
         {
             DestroyObject(raycast.GetRaycastedObject());
         }
 
+        if (Input.GetKeyDown("q"))
+            {
+            Destroy(raycast.GetRaycastedObject());
+            }
+
         // Collects Item
         if (Input.GetKeyDown("e"))
         {
-            CollectObject(raycast.GetRaycastedObject());
-        }
-
-
+            //TODO: add Tag identification for different types of interactable objects
+            //CollectObject(raycast.GetRaycastedObject());
+            //CollectObject(raycast.GetInteractableRaycastedObject());
+            Debug.Log("Pressed e");
+            if (raycast.GetInteractableRaycastedObject()!=null)
+                {
+                Debug.Log("In != null");
+                SetFocus(raycast.GetInteractableRaycastedObject().GetComponent<InteractableT>());
+                }
+            }
     }
 
     public void DestroyObject(GameObject raycastedObject)
     {
         Debug.Log("I have interacted with an object!");
 
-        interactableButtonGroups = fpsCam.transform.GetChild(0).transform.GetChild(0).gameObject;
-        interactableButtonCount = interactableButtonGroups.transform.childCount;
+        /*
+        interactableButtonGroups=fpsCam.transform.GetChild(0).transform.GetChild(0).gameObject;
+        interactableButtonCount=interactableButtonGroups.transform.childCount;
 
         InteractableButton interactableButton;
         GameObject attachedObject;
-        for (int i = 0; i < interactableButtonCount; i++)
-        {
-            interactableButton = interactableButtonGroups.transform.GetChild(i).gameObject.GetComponent<InteractableButton>();
-            attachedObject = interactableButton.GetGameObject();
-            if (attachedObject == raycastedObject)
+        for (int i = 0 ; i<interactableButtonCount ; i++)
             {
+            interactableButton=interactableButtonGroups.transform.GetChild(i).gameObject.GetComponent<InteractableButton>();
+            attachedObject=interactableButton.GetGameObject();
+            if (attachedObject==raycastedObject)
+                {
                 interactableButton.Detach();
+                Destroy(raycastedObject);
                 break;
+                }
             }
-        }
+        */
+
+        raycastedObject.GetComponent<InteractableInRange>().DestroyGameObject();
     }
 
-    public virtual void CollectObject (GameObject raycastedObject)
-        {
 
-        //This method is meant to be overwritten
-        Debug.Log("Interacting with "+raycastedObject.name);
+    //public void CollectObject (GameObject interactableRaycastedObject)
+    //    {
+    //    // this should be an interactableRaycastedObject
+
+    //    }
+
+    public void CollectObject (InteractableT interactableRaycastedObject)
+        {
+        // this should be an interactableRaycastedObject
+        interactableRaycastedObject.DestroyGameObject();
+        }
+
+    void SetFocus (InteractableT newFocus)
+        {
+        focus=newFocus;
+        focus.OnFocused(transform);
+        }
+
+    void RemoveFocus ()
+        {
+        focus=null;
+        //focus.OnDefocused();
         }
 
 
 
 
 
-}
+
+
+    }
