@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3330c73b749ad5b439b50bbb9ce99edd, type: 3}
-  m_Name: TestItem
+  m_Name: Key
   m_EditorClassIdentifier: 
-  name: CrowBar
-  icon: {fileID: 21300000, guid: 121eacd592d65744fb9c42d748977853, type: 3}
+  name: Key
+  icon: {fileID: 21300000, guid: 6ce51483e9bdf1f46b5e19e976b25c58, type: 3}
   isDefaultItem: 0

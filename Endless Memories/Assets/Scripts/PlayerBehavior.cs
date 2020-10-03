@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -22,7 +23,8 @@ public class PlayerBehavior : MonoBehaviour
     {
         // TODO: Change to VR controller
         // Destroys Item
-
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
 
         if (Input.GetKeyDown("r"))
         {
@@ -44,7 +46,8 @@ public class PlayerBehavior : MonoBehaviour
             if (raycast.GetInteractableRaycastedObject()!=null)
                 {
                 Debug.Log("In != null");
-                SetFocus(raycast.GetInteractableRaycastedObject().GetComponent<InteractableT>());
+                //SetFocus(raycast.GetInteractableRaycastedObject().GetComponent<InteractableT>());
+                raycast.GetInteractableRaycastedObject().GetComponent<InteractableT>().Interact();
                 }
             }
     }

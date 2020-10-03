@@ -46,7 +46,8 @@ public class InteractableButton : MonoBehaviour
         // 2D Coordinate on the screen
         // var screenPoint = fpsCam.WorldToScreenPoint(targetTransform.position);
         // rectTransform.position = screenPoint;
-
+        //if (targetObject == null)
+        //    return;
         // Coordinate in worldspace
         rectTransform.position = targetTransform.position;
 

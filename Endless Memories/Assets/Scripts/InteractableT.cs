@@ -20,18 +20,18 @@ public class InteractableT : MonoBehaviour
             }
         */
         // Debug.Log("InteractableT update()");
-        if (isFocus)
-        {
-        // This is not required because radius is checked from the Raycast component
-        //float distance = Vector3.Distance(player.position, transform.position);
-        //if (distance<=radius)
-        //    {
-        //    Debug.Log("INTERACT");
-        //    }
+        //if (isFocus)
+        //{
+        //// This is not required because radius is checked from the Raycast component
+        ////float distance = Vector3.Distance(player.position, transform.position);
+        ////if (distance<=radius)
+        ////    {
+        ////    Debug.Log("INTERACT");
+        ////    }
             
-        Interact();
+        //Interact();
 
-        }
+        //}
     }
 
     public virtual void Interact ()
