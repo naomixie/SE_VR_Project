@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseLook : MonoBehaviour
+public class MouseLook : MonoBehaviourPun
 {
 
     public float mouseSensitivity = 100f;
@@ -19,6 +20,14 @@ public class MouseLook : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        if (photonView.IsMine)
+        {
+            ProcessInput();
+        }
+    }
+
+    void ProcessInput()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
