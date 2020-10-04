@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,8 @@ using UnityEngine.UI;
 public class Raycast : MonoBehaviour
 {
     private GameObject raycastedObject;
-    private Camera fpsCam;
+    // private Camera fpsCam;
+    private CinemachineVirtualCamera fpsCam;
     private bool interactable;
 
 
@@ -26,7 +28,8 @@ public class Raycast : MonoBehaviour
 
     private void Start()
     {
-        fpsCam = Camera.main;
+        fpsCam = GetComponentInChildren<CinemachineVirtualCamera>();
+        // fpsCam = Camera.main;
         // playerBehavior = GetComponent<PlayerBehavior>();
         interactableButtonGroups = GameObject.Find("Interactable Buttons");
     }

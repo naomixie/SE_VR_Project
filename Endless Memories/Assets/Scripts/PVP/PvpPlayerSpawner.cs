@@ -33,7 +33,7 @@ public class PvpPlayerSpawner : MonoBehaviourPun
         else
         {
             tpsPlayer = PhotonNetwork.Instantiate(tpsPrefab.name, Vector3.zero, Quaternion.identity);
-            tpsCamera = fpsPlayer.GetComponentInChildren<CinemachineFreeLook>();
+            tpsCamera = tpsPlayer.GetComponentInChildren<CinemachineFreeLook>();
         }
     }
 
@@ -43,29 +43,32 @@ public class PvpPlayerSpawner : MonoBehaviourPun
         {
             if(playerMode == 1)
             {
-                tpsPlayer = GameObject.FindGameObjectWithTag("Third Person Player");
+                var tps = GameObject.FindGameObjectWithTag("Third Person Player");
 
-                if (tpsPlayer == null) return;
+                if (tps == null) return;
                 // Setting cameras
                 // Fps
                 fpsCamera.enabled = true;
 
                 // Tps
+                tpsCamera = tps.GetComponentInChildren<CinemachineFreeLook>();
                 tpsCamera.enabled = false;
             }
             else
             {
-                fpsPlayer = GameObject.FindGameObjectWithTag("First Person Player");
+                var fps = GameObject.FindGameObjectWithTag("First Person Player");
                 
-                if (fpsPlayer == null) return;
+                if (fps == null) return;
                 // Setting cameras
                 // Fps
+                fpsCamera = fps.GetComponentInChildren<CinemachineVirtualCamera>();
                 fpsCamera.enabled = false;
 
                 // Tps
                 tpsCamera.enabled = true;
-                tpsCamera.LookAt = fpsPlayer.transform;
+                tpsCamera.LookAt = fps.transform;
             }
+            synced = !synced;
         }
     }
 }

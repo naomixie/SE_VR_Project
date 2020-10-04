@@ -105,7 +105,7 @@ public class PvpMainMenu : MonoBehaviourPunCallbacks
             Debug.Log("Match is ready to begin.");
             waitingStatusText.text = "Opponent Found!";
 
-            PhotonNetwork.LoadLevel("Scene_Main");
+            PhotonNetwork.LoadLevel("Scene_PVP");
         }
     }
 }
