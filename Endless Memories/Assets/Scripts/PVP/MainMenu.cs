@@ -75,6 +75,8 @@ public class MainMenu : MonoBehaviourPunCallbacks
     // For player joining the room
     public override void OnJoinedRoom()
     {
+        // TPS mode for player joining the room.
+        PlayerPrefs.SetInt("mode", 3);
         Debug.Log("Client successfully joined a room.");
 
         int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
@@ -94,7 +96,9 @@ public class MainMenu : MonoBehaviourPunCallbacks
     // For player in the room
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        if(PhotonNetwork.CurrentRoom.PlayerCount >= MaxPlayersPerRoom)
+        // FPS mode for player creating the room.
+        PlayerPrefs.SetInt("mode", 1);
+        if (PhotonNetwork.CurrentRoom.PlayerCount >= MaxPlayersPerRoom)
         {
             PhotonNetwork.CurrentRoom.IsOpen = false;
 
