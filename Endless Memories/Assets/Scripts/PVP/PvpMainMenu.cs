@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviourPunCallbacks
+public class PvpMainMenu : MonoBehaviourPunCallbacks
 {
     [SerializeField] private GameObject findOpponentPanel = null;
     [SerializeField] private GameObject waitingStatusPanel = null;

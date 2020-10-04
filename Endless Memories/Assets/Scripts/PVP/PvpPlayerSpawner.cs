@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSpawner : MonoBehaviour
+public class PvpPlayerSpawner : MonoBehaviourPun
 {
     [SerializeField] private GameObject fpsPrefab = null;
     [SerializeField] private GameObject tpsPrefab = null;
@@ -28,10 +28,12 @@ public class PlayerSpawner : MonoBehaviour
         if (playerMode == 1)
         {
             fpsPlayer = PhotonNetwork.Instantiate(fpsPrefab.name, Vector3.zero, Quaternion.identity);
+            fpsCamera = fpsPlayer.GetComponentInChildren<CinemachineVirtualCamera>();
         }
         else
         {
             tpsPlayer = PhotonNetwork.Instantiate(tpsPrefab.name, Vector3.zero, Quaternion.identity);
+            tpsCamera = fpsPlayer.GetComponentInChildren<CinemachineFreeLook>();
         }
     }
 
@@ -41,11 +43,28 @@ public class PlayerSpawner : MonoBehaviour
         {
             if(playerMode == 1)
             {
+                tpsPlayer = GameObject.FindGameObjectWithTag("Third Person Player");
 
+                if (tpsPlayer == null) return;
+                // Setting cameras
+                // Fps
+                fpsCamera.enabled = true;
+
+                // Tps
+                tpsCamera.enabled = false;
             }
             else
             {
+                fpsPlayer = GameObject.FindGameObjectWithTag("First Person Player");
+                
+                if (fpsPlayer == null) return;
+                // Setting cameras
+                // Fps
+                fpsCamera.enabled = false;
 
+                // Tps
+                tpsCamera.enabled = true;
+                tpsCamera.LookAt = fpsPlayer.transform;
             }
         }
     }
