@@ -9,14 +9,26 @@ public class Raycast : MonoBehaviour
     private Camera fpsCam;
     private bool interactable;
 
+
+    private GameObject interactableButtonGroups;
+    private InteractableT interactableRaycastedObject;
+
+    // Gizmos
+    public float radius = 8f;
+    public Transform uiInteractable;
+
+
     [SerializeField] private int rayLength = 10;
     [SerializeField] private LayerMask layerMaskInteract;
+    //private LayerMask layerMaskInteract = ~(1);
 
     [SerializeField] private Image uiCrosshair;
 
     private void Start()
     {
         fpsCam = Camera.main;
+        // playerBehavior = GetComponent<PlayerBehavior>();
+        interactableButtonGroups = GameObject.Find("Interactable Buttons");
     }
 
     private void Update()
@@ -24,33 +36,46 @@ public class Raycast : MonoBehaviour
         RaycastHit hit;
         Vector3 forward = fpsCam.transform.forward;
 
-        // Debug.Log(forward);
-        if(Physics.Raycast(fpsCam.transform.position, forward, out hit, rayLength, layerMaskInteract.value))
+        if (Physics.Raycast(fpsCam.transform.position, forward, out hit, rayLength, layerMaskInteract.value))
         {
-            if(hit.collider.CompareTag("InteractableObj"))
+            if (hit.collider.CompareTag("InteractableObject"))
             {
+                // Debug.Log("Hit an Interactable Object!");
                 raycastedObject = hit.collider.gameObject;
-
-                // Crosshair red
-                CrosshairActive();
+                //if (raycastedObject.name=="InteractableT")
+                //    {
+                    
+                //    }
+                interactableRaycastedObject = hit.collider.gameObject.GetComponent<InteractableT>();
                 
-                // TODO: Change to VR controller
-                if (Input.GetKeyDown("e"))
-                {
-                    Debug.Log("I have interacted with an object!");
-                    raycastedObject.SetActive(false);   // Make it disappear
-                }
-
+                CrosshairActive();
             }
             else
             {
-                // Crosshair normal
                 CrosshairNormal();
             }
         }
         else
         {
             CrosshairNormal();
+        }
+
+        // Selecting objects within range
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+        foreach (var hitCollider in hitColliders)
+        {
+            GameObject hitObject = hitCollider.gameObject;
+            if (hitObject.GetComponent<InteractableInRange>() != null)
+            {
+                Debug.Log("Instantiating");
+                if(!hitObject.GetComponent<InteractableInRange>().inRange)
+                {
+                    hitObject.GetComponent<InteractableInRange>().inRange = true;
+                    var uiButton = Instantiate(uiInteractable, interactableButtonGroups.transform.position, interactableButtonGroups.transform.rotation);
+                    uiButton.transform.parent = interactableButtonGroups.transform;
+                    uiButton.GetComponent<InteractableButton>().Initialize(hitObject);
+                }
+            }
         }
     }
 
@@ -70,5 +95,26 @@ public class Raycast : MonoBehaviour
             uiCrosshair.color = Color.white;
         }
         interactable = false;
+    }
+
+    public GameObject GetRaycastedObject()
+    {
+        return raycastedObject;
+    }
+
+    public InteractableT GetInteractableRaycastedObject ()
+        {
+        //Debug.Log(interactableRaycastedObject.name);
+        if (interactableRaycastedObject!=null)
+            {
+            return interactableRaycastedObject;
+            }
+        return null;
+        }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

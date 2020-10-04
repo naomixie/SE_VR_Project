@@ -4,7 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Endless Sky/MobileExample.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/test.unity
+    guid: 00000000000000000000000000000000
   m_configObjects:
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: cfa7106f05b5a574d9cffd98ab9dba60, type: 2}
-    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: a8238eed0cef3804498082dc82529b5b, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 294010cfd7ef3ea45bc9d7515bb73716,
+      type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 1433b03eb91ad614e9089fa73239ef99,
+      type: 2}
