@@ -11,6 +11,8 @@ TagManager:
   - elementText
   - amountText
   - InteractableObject
+  - First Person Player
+  - Third Person Player
   layers:
   - Default
   - TransparentFX
