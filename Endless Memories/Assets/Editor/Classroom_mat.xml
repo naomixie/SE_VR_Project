@@ -16,17 +16,17 @@
 		<property name="Normal Scale" value="1.0"/>
 		<property name="Albedo" value="0.6, 0.6, 0.6"/>
 		<property name="Ambient Occlusion" value="0.0">
-			<texture channel="Green" fileIndex="0" filename="D:\Unity\MyProjects\New Unity Project\Assets\img2.jpg" name="RustPlain003_COL_VAR1_6K" uvindex="0" uvname="Texture" wrapU="1.0" wrapV="1.0"/>
+			<texture channel="Green" fileIndex="0" filename=".\Images\img4.jpg" name="RustPlain003_COL_VAR1_6K" uvindex="0" uvname="Texture" wrapU="1.0" wrapV="1.0"/>
 		</property>
 		<property name="Opacity" value="1.0"/>
 		<property name="Smoothness" value="0.5">
-			<texture channel="Alpha" fileIndex="0" filename="D:\Unity\MyProjects\New Unity Project\Assets\img2.jpg" name="RustPlain003_COL_VAR1_6K" uvindex="0" uvname="Texture" wrapU="1.0" wrapV="1.0"/>
+			<texture channel="Alpha" fileIndex="0" filename=".\Images\img4.jpg" name="RustPlain003_COL_VAR1_6K" uvindex="0" uvname="Texture" wrapU="1.0" wrapV="1.0"/>
 		</property>
 		<property name="Detail Albedo x2" value="0.0"/>
 		<property name="Emissive Level" value="1.0"/>
 		<property name="Height Scale" value="0.02"/>
 		<property name="Metallic" value="0.0">
-			<texture channel="Red" fileIndex="0" filename="D:\Unity\MyProjects\New Unity Project\Assets\img2.jpg" name="RustPlain003_COL_VAR1_6K" uvindex="0" uvname="Texture" wrapU="1.0" wrapV="1.0"/>
+			<texture channel="Red" fileIndex="0" filename=".\Images\img4.jpg" name="RustPlain003_COL_VAR1_6K" uvindex="0" uvname="Texture" wrapU="1.0" wrapV="1.0"/>
 		</property>
 		<property name="Roughness" value="0.0"/>
 	</Material>
@@ -43,22 +43,22 @@
 		<property name="Normal Scale" value="1.0"/>
 		<property name="Albedo" value="0.6, 0.6, 0.6"/>
 		<property name="Ambient Occlusion" value="0.0">
-			<texture channel="Green" fileIndex="1" filename="D:\Unity\MyProjects\New Unity Project\Assets\img2.jpg" name="RustMixedOnPaint006_COL_VAR1_6K" uvindex="0" uvname="Texture" wrapU="1.0" wrapV="1.0"/>
+			<texture channel="Green" fileIndex="1" filename=".\Images\img4.jpg" name="RustMixedOnPaint006_COL_VAR1_6K" uvindex="0" uvname="Texture" wrapU="1.0" wrapV="1.0"/>
 		</property>
 		<property name="Opacity" value="1.0"/>
 		<property name="Smoothness" value="0.5">
-			<texture channel="Alpha" fileIndex="1" filename="D:\Unity\MyProjects\New Unity Project\Assets\img2.jpg" name="RustMixedOnPaint006_COL_VAR1_6K" uvindex="0" uvname="Texture" wrapU="1.0" wrapV="1.0"/>
+			<texture channel="Alpha" fileIndex="1" filename=".\Images\img4.jpg" name="RustMixedOnPaint006_COL_VAR1_6K" uvindex="0" uvname="Texture" wrapU="1.0" wrapV="1.0"/>
 		</property>
 		<property name="Detail Albedo x2" value="0.0"/>
 		<property name="Emissive Level" value="1.0"/>
 		<property name="Height Scale" value="0.02"/>
 		<property name="Metallic" value="0.0">
-			<texture channel="Red" fileIndex="1" filename="D:\Unity\MyProjects\New Unity Project\Assets\img2.jpg" name="RustMixedOnPaint006_COL_VAR1_6K" uvindex="0" uvname="Texture" wrapU="1.0" wrapV="1.0"/>
+			<texture channel="Red" fileIndex="1" filename=".\Images\img4.jpg" name="RustMixedOnPaint006_COL_VAR1_6K" uvindex="0" uvname="Texture" wrapU="1.0" wrapV="1.0"/>
 		</property>
 		<property name="Roughness" value="0.0"/>
 	</Material>
 	<ImageFiles>
-		<file color_correction="sRGB" filename="D:\Unity\MyProjects\New Unity Project\Assets\img2.jpg"/>
-		<file color_correction="sRGB" filename="D:\Unity\MyProjects\New Unity Project\Assets\img2.jpg"/>
+		<file color_correction="sRGB" filename=".\Images\img4.jpg"/>
+		<file color_correction="sRGB" filename=".\Images\img4.jpg"/>
 	</ImageFiles>
 </catalog>
