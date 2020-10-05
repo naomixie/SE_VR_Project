@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviourPun
 
     Vector3 velocity;
 
+    //footsteps sounds
+    public AudioSource footstepSE;
+
     // Update is called once per frame
     void Update()
     {
@@ -53,6 +56,16 @@ public class PlayerMovement : MonoBehaviourPun
         // Gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        //footsteps sounds
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        {
+            footstepSE.Play();
+        }
+        else if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
+        {
+            footstepSE.Stop();
+        }
     }
 
 }
