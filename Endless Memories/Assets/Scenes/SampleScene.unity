@@ -1598,7 +1598,7 @@ GameObject:
   - component: {fileID: 390738137}
   - component: {fileID: 390738142}
   m_Layer: 8
-  m_Name: PickUpItem
+  m_Name: Gem
   m_TagString: InteractableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4946,7 +4946,7 @@ GameObject:
   - component: {fileID: 1782681180}
   - component: {fileID: 1782681179}
   m_Layer: 8
-  m_Name: Key
+  m_Name: Apple
   m_TagString: InteractableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
