@@ -7,6 +7,7 @@ public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
     public GameObject inventoryUI;
+    public GameObject detailsUI;
 
     Inventory inventory;
 
@@ -21,6 +22,7 @@ public class InventoryUI : MonoBehaviour
         inventory.onItemChangedCallback += UpdateUI;
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         inventoryUI.SetActive(false);
+        detailsUI.SetActive(false);
 
     }
 
@@ -30,6 +32,7 @@ public class InventoryUI : MonoBehaviour
         if (Input.GetButtonDown("Inventory"))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
+            detailsUI.SetActive(!detailsUI.activeSelf);
         }
     }
 
