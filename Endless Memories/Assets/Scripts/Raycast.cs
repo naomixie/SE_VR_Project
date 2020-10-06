@@ -11,6 +11,7 @@ public class Raycast : MonoBehaviour
     private CinemachineVirtualCamera fpsCam;
     private bool interactable;
 
+    private int solo = 1;
 
     private GameObject interactableButtonGroups;
     private InteractableT interactableRaycastedObject;
@@ -70,7 +71,7 @@ public class Raycast : MonoBehaviour
             GameObject hitObject = hitCollider.gameObject;
             if (hitObject.GetComponent<InteractableInRange>() != null)
             {
-                Debug.Log("Instantiating");
+                // Debug.Log("Instantiating");
                 if(!hitObject.GetComponent<InteractableInRange>().inRange)
                 {
                     hitObject.GetComponent<InteractableInRange>().inRange = true;

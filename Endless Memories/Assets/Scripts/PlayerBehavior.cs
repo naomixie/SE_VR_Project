@@ -12,20 +12,24 @@ public class PlayerBehavior : MonoBehaviourPun
     private Camera fpsCam;
     public InteractableT focus;
 
+    private int solo = 1;
+
     // Start is called before the first frame update
     void Start()
     {
         fpsCam = Camera.main;
         raycast = GetComponent<Raycast>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(photonView.IsMine)
+        if (solo == 1 || photonView.IsMine)
         {
             ProcessInput();
         }
+
     }
 
     private void ProcessInput()

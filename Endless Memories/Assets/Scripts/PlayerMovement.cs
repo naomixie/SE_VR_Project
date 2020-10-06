@@ -16,19 +16,26 @@ public class PlayerMovement : MonoBehaviourPun
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     bool isGrounded;
+    private int solo = 1;
 
     Vector3 velocity;
 
     //footsteps sounds
     public AudioSource footstepSE;
 
+    private void Start()
+    {
+        footstepSE = GetComponentInChildren<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine)
+        if (solo == 1 || photonView.IsMine)
         {
             ProcessInput();
         }
+
     }
 
     private void ProcessInput()

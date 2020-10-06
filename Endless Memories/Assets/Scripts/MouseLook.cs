@@ -10,7 +10,9 @@ public class MouseLook : MonoBehaviourPun
 
     public Transform playerBody;
 
-    float xRotation = 0f; 
+    float xRotation = 0f;
+
+    private int solo = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +23,12 @@ public class MouseLook : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine)
+
+        if(solo == 1 || photonView.IsMine)
         {
             ProcessInput();
         }
+        
     }
 
     void ProcessInput()
