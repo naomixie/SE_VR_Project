@@ -11,6 +11,12 @@ public class Chase : MonoBehaviour
     public Transform target;
     //寻路组件
     private NavMeshAgent agent;
+
+    private void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("First Person Player").transform;
+    }
+
     // Use this for initialization
     void Update()
     {

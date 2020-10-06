@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerBehavior : MonoBehaviour
+public class PlayerBehavior : MonoBehaviourPun
 {
     private Raycast raycast;
     private GameObject interactableButtonGroups;
@@ -11,15 +12,27 @@ public class PlayerBehavior : MonoBehaviour
     private Camera fpsCam;
     public InteractableT focus;
 
+    private int solo = 1;
+
     // Start is called before the first frame update
     void Start()
     {
         fpsCam = Camera.main;
         raycast = GetComponent<Raycast>();
+        
     }
 
     // Update is called once per frame
     void Update()
+    {
+        if (solo == 1 || photonView.IsMine)
+        {
+            ProcessInput();
+        }
+
+    }
+
+    private void ProcessInput()
     {
         // TODO: Change to VR controller
         // Destroys Item
@@ -32,9 +45,9 @@ public class PlayerBehavior : MonoBehaviour
         }
 
         if (Input.GetKeyDown("q"))
-            {
+        {
             Destroy(raycast.GetRaycastedObject());
-            }
+        }
 
         // Collects Item
         if (Input.GetKeyDown("e"))
@@ -43,13 +56,13 @@ public class PlayerBehavior : MonoBehaviour
             //CollectObject(raycast.GetRaycastedObject());
             //CollectObject(raycast.GetInteractableRaycastedObject());
             Debug.Log("Pressed e");
-            if (raycast.GetInteractableRaycastedObject()!=null)
-                {
+            if (raycast.GetInteractableRaycastedObject() != null)
+            {
                 Debug.Log("In != null");
                 //SetFocus(raycast.GetInteractableRaycastedObject().GetComponent<InteractableT>());
                 raycast.GetInteractableRaycastedObject().GetComponent<InteractableT>().Interact();
-                }
             }
+        }
     }
 
     public void DestroyObject(GameObject raycastedObject)
@@ -104,9 +117,4 @@ public class PlayerBehavior : MonoBehaviour
         }
 
 
-
-
-
-
-
-    }
+}

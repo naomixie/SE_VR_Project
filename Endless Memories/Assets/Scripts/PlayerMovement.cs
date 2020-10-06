@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviourPun
 {
     public CharacterController controller;
 
@@ -15,18 +16,33 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     bool isGrounded;
+    private int solo = 1;
 
     Vector3 velocity;
 
     //footsteps sounds
     public AudioSource footstepSE;
 
+    private void Start()
+    {
+        footstepSE = GetComponentInChildren<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (solo == 1 || photonView.IsMine)
+        {
+            ProcessInput();
+        }
+
+    }
+
+    private void ProcessInput()
+    {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        
-        if(isGrounded && velocity.y < 0)
+
+        if (isGrounded && velocity.y < 0)
         {
             // -2f works a bit better than 0f
             velocity.y = -2f;
@@ -37,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * speed * Time.deltaTime);     
+        controller.Move(move * speed * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
