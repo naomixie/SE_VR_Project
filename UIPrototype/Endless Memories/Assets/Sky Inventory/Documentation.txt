@@ -1,0 +1,113 @@
+***Init ElementalInventory***
+
+ElementalInventory inventory;
+
+inventory = FindObjectOfType (typeof(ElementalInventory)) as ElementalInventory;
+
+*** Settings ***
+
+Cell[] Cells - Cells on Scene
+int maxStack - Max stack of element
+
+*** Methods ***
+
+bool contains (string name, int count, Color color) {
+
+//Return true if inventory contains this element count
+
+}
+
+addItem (string name, int count, Color color) {
+
+//Add element to inventory
+//Name - Element Name
+//Count - Count Of Element
+//Color - Color Of Element
+
+}
+
+setItem (string name, int count, Color color, int cellId) {
+
+//Set element in inventory
+//Name - Element Name
+//Count - Count Of Element
+//Color - Color Of Element
+//cellId - Id of cell to set
+
+}
+
+moveItem (int moveFrom, int moveTo) {
+
+//Move element from moveFrom cell to moveTo cell
+//moveFrom - id of first cell
+//moveTo - id of second cell
+
+}
+
+int getFirst () {
+
+//Get first empty cell
+//If there is no empty cell, returns -1
+
+}
+
+int getEquals (string name, Color color) {
+
+//Get first equal cell
+//If there is no equal cell, returns -1
+//Name - Element Name
+//Color - Color Of Element
+
+}
+
+clear () {
+
+//Clear inventory
+
+}
+
+string convertToString () {
+
+//Get inventory as string
+//Using for inventory save
+
+}
+
+loadFromString (string s_Inventory) {
+
+//Load inventory from string (method above)
+
+}
+
+*** Also you can use SimpleMethods ***
+
+Transform getChildByTag (Transform obj, string tag) {
+
+//Get child by obj with tag tag
+
+}
+
+char randomChar (bool isUpper) {
+
+//Get random char of english alphabet
+//if isUpper == true -> returns upper char
+
+}
+
+string randomElement () {
+
+//Get random element name (1-2 letters)
+
+}
+
+string colorToString (Color color) {
+
+//Get color as string
+
+}
+
+Color stringToColor (string color) {
+
+//Get color from string (method above)
+
+}
