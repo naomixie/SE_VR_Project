@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit
+  m_Text: "\u9000\u51FA\u6E38\u620F"
 --- !u!222 &190670172
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1966626126}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: MultiPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1159,7 +1159,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Setting
+  m_Text: "\u7CFB\u7EDF\u8BBE\u7F6E"
 --- !u!222 &673793646
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2022,7 +2022,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Back
+  m_Text: "\u5426"
 --- !u!222 &895679032
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2436,7 +2436,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Two-player Game
+  m_Text: "PVP\u5BF9\u6218\u6A21\u5F0F"
 --- !u!222 &990402137
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2979,7 +2979,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit
+  m_Text: "\u662F"
 --- !u!222 &1136762618
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3151,7 +3151,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1966626126}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: SinglePlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3269,7 +3269,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: One-Player Game
+  m_Text: "\u5355\u4EBA\u5267\u60C5\u6A21\u5F0F"
 --- !u!222 &1374467934
 CanvasRenderer:
   m_ObjectHideFlags: 0
