@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Raycast : MonoBehaviour
 {
-    private GameObject raycastedObject;
+    public GameObject raycastedObject;
+    public Transform raycastedObjectTransform;
     // private Camera fpsCam;
     private CinemachineVirtualCamera fpsCam;
     private bool interactable;
@@ -46,16 +47,16 @@ public class Raycast : MonoBehaviour
             {
                 // Debug.Log("Hit an Interactable Object!");
                 raycastedObject = hit.collider.gameObject;
-                //if (raycastedObject.name=="InteractableT")
-                //    {
-                    
-                //    }
+                raycastedObjectTransform = hit.collider.gameObject.GetComponent<Transform>();
                 interactableRaycastedObject = hit.collider.gameObject.GetComponent<InteractableT>();
                 
                 CrosshairActive();
             }
             else
             {
+                raycastedObject = null;
+                raycastedObjectTransform = null;
+                interactableRaycastedObject = null;
                 CrosshairNormal();
             }
         }
@@ -101,9 +102,24 @@ public class Raycast : MonoBehaviour
         interactable = false;
     }
 
+    public void CrosshairHide()
+    {
+        this.uiCrosshair.enabled = false;
+    }
+
+    public void CrosshairShow()
+    {
+        this.uiCrosshair.enabled = true;
+    }
+
     public GameObject GetRaycastedObject()
     {
         return raycastedObject;
+    }
+
+    public Transform GetRaycastedObjectTransform()
+    {
+        return raycastedObjectTransform;
     }
 
     public InteractableT GetInteractableRaycastedObject ()

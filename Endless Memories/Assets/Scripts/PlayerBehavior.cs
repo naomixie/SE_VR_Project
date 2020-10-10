@@ -12,6 +12,8 @@ public class PlayerBehavior : MonoBehaviourPun
     private Camera fpsCam;
     public InteractableT focus;
 
+    private PlayerController playerController;
+
     private int solo = 1;
 
     // Start is called before the first frame update
@@ -19,7 +21,7 @@ public class PlayerBehavior : MonoBehaviourPun
     {
         fpsCam = Camera.main;
         raycast = GetComponent<Raycast>();
-        
+        playerController = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class PlayerBehavior : MonoBehaviourPun
     {
         if (solo == 1 || photonView.IsMine)
         {
+            // Debug.Log("Waiting for input");
             ProcessInput();
         }
 
@@ -41,12 +44,14 @@ public class PlayerBehavior : MonoBehaviourPun
 
         if (Input.GetKeyDown("r"))
         {
-            DestroyObject(raycast.GetRaycastedObject());
+            Debug.Log("Pressed r");
+            DestroyObject(raycast.GetInteractableRaycastedObject());
         }
 
         if (Input.GetKeyDown("q"))
         {
-            Destroy(raycast.GetRaycastedObject());
+            Debug.Log("Pressed q");
+            Destroy(raycast.GetInteractableRaycastedObject());
         }
 
         // Collects Item
@@ -62,6 +67,12 @@ public class PlayerBehavior : MonoBehaviourPun
                 //SetFocus(raycast.GetInteractableRaycastedObject().GetComponent<InteractableT>());
                 raycast.GetInteractableRaycastedObject().GetComponent<InteractableT>().Interact();
             }
+        }
+
+        if (Input.GetKeyDown("v"))
+        {
+            Debug.Log("Pressed v");
+            Inspect(raycast.GetRaycastedObject());
         }
     }
 
@@ -91,6 +102,10 @@ public class PlayerBehavior : MonoBehaviourPun
         raycastedObject.GetComponent<InteractableInRange>().DestroyGameObject();
     }
 
+    public void Inspect(GameObject raycastedObject)
+    {
+        playerController.Inspect(raycastedObject);
+    }
 
     //public void CollectObject (GameObject interactableRaycastedObject)
     //    {
