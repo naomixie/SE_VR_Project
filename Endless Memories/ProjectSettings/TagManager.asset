@@ -13,6 +13,7 @@ TagManager:
   - InteractableObject
   - First Person Player
   - Third Person Player
+  - FPS Canvas
   layers:
   - Default
   - TransparentFX
