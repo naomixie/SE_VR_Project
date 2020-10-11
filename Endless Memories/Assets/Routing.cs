@@ -39,7 +39,6 @@ public class Routing : MonoBehaviour
             if (!isOpen)
             {
                 isOpen = true;
-                currPanel = curPanel.inventory;
                 openPanel();
                 openInventoryPanel();
             }
@@ -55,7 +54,6 @@ public class Routing : MonoBehaviour
                 }
                 else
                 {
-                    currPanel = curPanel.inventory;
                     closeCluePanel();
                     closeMapPanel();
                     closeSettingsPanel();
@@ -73,7 +71,6 @@ public class Routing : MonoBehaviour
             if (!isOpen)
             {
                 isOpen = true;
-                currPanel = curPanel.map;
                 openPanel();
                 openMapPanel();
             }
@@ -89,7 +86,6 @@ public class Routing : MonoBehaviour
                 }
                 else
                 {
-                    currPanel = curPanel.map;
                     closeCluePanel();
                     closeInventoryPanel();
                     closeSettingsPanel();
@@ -107,7 +103,6 @@ public class Routing : MonoBehaviour
             if (!isOpen)
             {
                 isOpen = true;
-                currPanel = curPanel.clue;
                 openPanel();
                 openCluePanel();
             }
@@ -123,7 +118,6 @@ public class Routing : MonoBehaviour
                 }
                 else
                 {
-                    currPanel = curPanel.clue;
                     closeInventoryPanel();
                     closeMapPanel();
                     closeSettingsPanel();
@@ -141,7 +135,6 @@ public class Routing : MonoBehaviour
             if (!isOpen)
             {
                 isOpen = true;
-                currPanel = curPanel.settings;
                 openPanel();
                 openSettingsPanel();
             }
@@ -157,7 +150,6 @@ public class Routing : MonoBehaviour
                 }
                 else
                 {
-                    currPanel = curPanel.settings;
                     closeCluePanel();
                     closeMapPanel();
                     closeInventoryPanel();
@@ -186,7 +178,7 @@ public class Routing : MonoBehaviour
         player.GetComponent<MouseLook>().enabled = false;
     }
 
-    void openPanel ()
+    public void openPanel ()
     {
         rightPanel.SetActive(true);
         leftPanel.SetActive(true);
@@ -196,7 +188,7 @@ public class Routing : MonoBehaviour
         
     }
 
-    void closePanel ()
+    public void closePanel ()
     {
         rightPanel.SetActive(false);
         leftPanel.SetActive(false);
@@ -205,49 +197,53 @@ public class Routing : MonoBehaviour
         player.GetComponent<MouseLook>().LockMouse();
     }
 
-    void openInventoryPanel ()
+    public void openInventoryPanel ()
     {
+        currPanel = curPanel.inventory;
         inventoryUI.SetActive(true);
         inventoryDetailsUI.SetActive(true);
     }
 
-    void openMapPanel ()
+    public void openMapPanel ()
     {
+        currPanel = curPanel.map;
         mapUI.SetActive(true);
         mapDetailsUI.SetActive(true);
     }
 
-    void openCluePanel ()
+    public void openCluePanel ()
     {
+        currPanel = curPanel.clue;
         clueUI.SetActive(true);
         clueDetailsUI.SetActive(true);
     }
 
-    void openSettingsPanel ()
+    public void openSettingsPanel ()
     {
+        currPanel = curPanel.settings;
         settingsUI.SetActive(true);
         settingsDetailsUI.SetActive(true);
     }
 
-    void closeInventoryPanel ()
+    public void closeInventoryPanel ()
     {
         inventoryUI.SetActive(false);
         inventoryDetailsUI.SetActive(false);
     }
 
-    void closeMapPanel ()
+    public void closeMapPanel ()
     {
         mapUI.SetActive(false);
         mapDetailsUI.SetActive(false);
     }
 
-    void closeCluePanel ()
+    public void closeCluePanel ()
     {
         clueUI.SetActive(false);
         clueDetailsUI.SetActive(false);
     }
 
-    void closeSettingsPanel ()
+    public void closeSettingsPanel ()
     {
         settingsUI.SetActive(false);
         settingsDetailsUI.SetActive(false);

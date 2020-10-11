@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NavbarBButton : MonoBehaviour
+public class NavbarButton : MonoBehaviour
 {
     public int slot;
     // Start is called before the first frame update
@@ -31,5 +31,6 @@ public class NavbarBButton : MonoBehaviour
         {
             GetComponent<Button>().Select();
         }
+
     }
 }
