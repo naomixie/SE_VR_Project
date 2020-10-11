@@ -43,4 +43,14 @@ public class MouseLook : MonoBehaviourPun
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
     }
+
+    public void UnlockMouse ()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    public void LockMouse ()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 }

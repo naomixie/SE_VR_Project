@@ -6,8 +6,6 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
-    public GameObject inventoryUI;
-    public GameObject detailsUI;
 
     Inventory inventory;
 
@@ -21,19 +19,15 @@ public class InventoryUI : MonoBehaviour
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-        inventoryUI.SetActive(false);
-        detailsUI.SetActive(false);
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Inventory"))
-        {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
-            detailsUI.SetActive(!detailsUI.activeSelf);
-        }
+        //UpdateUI();
+
     }
 
     void UpdateUI ()
@@ -51,4 +45,5 @@ public class InventoryUI : MonoBehaviour
         }
 
     }
+
 }
