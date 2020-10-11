@@ -17,6 +17,9 @@ public class Routing : MonoBehaviour
     public GameObject player;
     public GameObject rightPanel;
     public GameObject leftPanel;
+    bool isOpen;
+    enum curPanel {inventory,map,clue,settings};
+    curPanel currPanel;
 
 
     // Start is called before the first frame update
@@ -35,7 +38,7 @@ public class Routing : MonoBehaviour
         settingsDetailsUI.SetActive(false);
         rightPanel.SetActive(false);
         leftPanel.SetActive(false);
-
+        isOpen = false;
 
     }
 
@@ -44,50 +47,138 @@ public class Routing : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory"))
         {
-            //if (!inventoryUI.activeSelf)
-            
-                disableMCS();
-            
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
-            inventoryDetailsUI.SetActive(!inventoryDetailsUI.activeSelf);
-            openPanel();
+            // NoPanels are active
+            if (!isOpen)
+            {
+                isOpen = true;
+                currPanel = curPanel.inventory;
+                openPanel();
+                openInventoryPanel();
+            }
+            else
+            {
+                // a Panel is already open
+                if (currPanel == curPanel.inventory)
+                {
+                    // close panel if same 
+                    closePanel();
+                    isOpen = false;
+                    closeInventoryPanel();
+                }
+                else
+                {
+                    currPanel = curPanel.inventory;
+                    closeCluePanel();
+                    closeMapPanel();
+                    closeSettingsPanel();
+                    openInventoryPanel();
 
+                }
+            }
+            
+            show();
         }
 
         if (Input.GetButtonDown("Map"))
         {
-            //if (!mapUI.activeSelf)
-            //{
-                disableICS();
-            //}
+            // NoPanels are active
+            if (!isOpen)
+            {
+                isOpen = true;
+                currPanel = curPanel.map;
+                openPanel();
+                openMapPanel();
+            }
+            else
+            {
+                // a Panel is already open
+                if (currPanel == curPanel.map)
+                {
+                    // close panel if same 
+                    closePanel();
+                    isOpen = false;
+                    closeMapPanel();
+                }
+                else
+                {
+                    currPanel = curPanel.map;
+                    closeCluePanel();
+                    closeInventoryPanel();
+                    closeSettingsPanel();
+                    openMapPanel();
 
-            mapUI.SetActive(!mapUI.activeSelf);
-            mapDetailsUI.SetActive(!mapDetailsUI.activeSelf);
-            openPanel();
+                }
+            }
 
+            show();
         }
 
         if (Input.GetButtonDown("Clue"))
         {
-            //if (!clueUI.activeSelf)
-            //{
-                disableIMS();
-            //}
-            clueUI.SetActive(!clueUI.activeSelf);
-            clueDetailsUI.SetActive(!clueDetailsUI.activeSelf);
-            openPanel();
+            // NoPanels are active
+            if (!isOpen)
+            {
+                isOpen = true;
+                currPanel = curPanel.clue;
+                openPanel();
+                openCluePanel();
+            }
+            else
+            {
+                // a Panel is already open
+                if (currPanel == curPanel.clue)
+                {
+                    // close panel if same 
+                    closePanel();
+                    isOpen = false;
+                    closeCluePanel();
+                }
+                else
+                {
+                    currPanel = curPanel.clue;
+                    closeInventoryPanel();
+                    closeMapPanel();
+                    closeSettingsPanel();
+                    openCluePanel();
+
+                }
+            }
+
+            show();
         }
 
         if (Input.GetButtonDown("Settings"))
         {
-            //if (!settingsUI.activeSelf)
-            //{
-                disableIMC();
-            //}
-            
-            settingsUI.SetActive(!settingsUI.activeSelf);
-            settingsDetailsUI.SetActive(!settingsDetailsUI.activeSelf);
-            openPanel();
+            // NoPanels are active
+            if (!isOpen)
+            {
+                isOpen = true;
+                currPanel = curPanel.settings;
+                openPanel();
+                openSettingsPanel();
+            }
+            else
+            {
+                // a Panel is already open
+                if (currPanel == curPanel.settings)
+                {
+                    // close panel if same 
+                    closePanel();
+                    isOpen = false;
+                    closeSettingsPanel();
+                }
+                else
+                {
+                    currPanel = curPanel.settings;
+                    closeCluePanel();
+                    closeMapPanel();
+                    closeInventoryPanel();
+                    openSettingsPanel();
+
+                }
+            }
+
+            show();
         }
 
     }
@@ -105,26 +196,80 @@ public class Routing : MonoBehaviour
 
     void openPanel ()
     {
-        rightPanel.SetActive(!rightPanel.activeSelf);
-        leftPanel.SetActive(!leftPanel.activeSelf);
-        NavBar.SetActive(!NavBar.activeSelf);
-        player.GetComponent<MouseLook>().enabled = !player.GetComponent<MouseLook>().enabled;
-        if (player.GetComponent<MouseLook>().enabled)
-        {
-            player.GetComponent<MouseLook>().LockMouse();
-        }
-        else
-        {
+        rightPanel.SetActive(true);
+        leftPanel.SetActive(true);
+        NavBar.SetActive(true);
+        player.GetComponent<MouseLook>().enabled = false;
+        //if (player.GetComponent<MouseLook>().enabled)
+        //{
+        //    player.GetComponent<MouseLook>().LockMouse();
+        //}
+        //else
+        //{
             player.GetComponent<MouseLook>().UnlockMouse();
-        }
+        //}
     }
 
-    void disableMCS ()
+    void closePanel ()
+    {
+        rightPanel.SetActive(false);
+        leftPanel.SetActive(false);
+        NavBar.SetActive(false);
+        player.GetComponent<MouseLook>().enabled = true;
+        //if (player.GetComponent<MouseLook>().enabled)
+        //{
+        //    player.GetComponent<MouseLook>().LockMouse();
+        //}
+        //else
+        //{
+        player.GetComponent<MouseLook>().LockMouse();
+        //}
+    }
+
+    void openInventoryPanel ()
+    {
+        inventoryUI.SetActive(true);
+        inventoryDetailsUI.SetActive(true);
+    }
+
+    void openMapPanel ()
+    {
+        mapUI.SetActive(true);
+        mapDetailsUI.SetActive(true);
+    }
+
+    void openCluePanel ()
+    {
+        clueUI.SetActive(true);
+        clueDetailsUI.SetActive(true);
+    }
+
+    void openSettingsPanel ()
+    {
+        settingsUI.SetActive(true);
+        settingsDetailsUI.SetActive(true);
+    }
+
+    void closeInventoryPanel ()
+    {
+        inventoryUI.SetActive(false);
+        inventoryDetailsUI.SetActive(false);
+    }
+
+    void closeMapPanel ()
     {
         mapUI.SetActive(false);
         mapDetailsUI.SetActive(false);
+    }
+
+    void closeCluePanel ()
+    {
         clueUI.SetActive(false);
         clueDetailsUI.SetActive(false);
+    }
+
+    void closeSettingsPanel ()
+    {
         settingsUI.SetActive(false);
         settingsDetailsUI.SetActive(false);
     }
@@ -157,5 +302,19 @@ public class Routing : MonoBehaviour
         mapDetailsUI.SetActive(false);
         clueUI.SetActive(false);
         clueDetailsUI.SetActive(false);
+    }
+
+    void show ()
+    {
+        print("inventoryUI: " + inventoryUI.activeSelf +"\n");
+        print("inventoryDetailsUI: " + inventoryDetailsUI.activeSelf +"\n");
+        print("mapUI: " + mapUI.activeSelf +"\n");
+        print("mapDetailsUI: " + mapDetailsUI.activeSelf +"\n");
+        print("clueUI: " + clueUI.activeSelf +"\n");
+        print("clueDetailsUI: " + clueDetailsUI.activeSelf +"\n");
+        print("settingsUI: " + settingsUI.activeSelf +"\n");
+        print("settingsDetailsUI: " + settingsDetailsUI.activeSelf +"\n");
+        print("rightPanel: " + rightPanel.activeSelf +"\n");
+        print("leftPanel: " + leftPanel.activeSelf + "\n");
     }
 }
