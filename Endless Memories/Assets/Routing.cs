@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Routing : MonoBehaviour
 {
@@ -18,27 +19,14 @@ public class Routing : MonoBehaviour
     public GameObject rightPanel;
     public GameObject leftPanel;
     bool isOpen;
-    enum curPanel {inventory,map,clue,settings};
-    curPanel currPanel;
+    public enum curPanel {inventory,map,clue,settings};
+    public curPanel currPanel;
 
 
     // Start is called before the first frame update
     void Start ()
     {
-        //InventoryUI inventory;
-
-        inventoryUI.SetActive(false);
-        inventoryDetailsUI.SetActive(false);
-        NavBar.SetActive(false);
-        mapUI.SetActive(false);
-        mapDetailsUI.SetActive(false);
-        clueUI.SetActive(false);
-        clueDetailsUI.SetActive(false);
-        settingsUI.SetActive(false);
-        settingsDetailsUI.SetActive(false);
-        rightPanel.SetActive(false);
-        leftPanel.SetActive(false);
-        isOpen = false;
+        CloseAll();
 
     }
 
@@ -76,7 +64,7 @@ public class Routing : MonoBehaviour
                 }
             }
             
-            show();
+            //show();
         }
 
         if (Input.GetButtonDown("Map"))
@@ -110,7 +98,7 @@ public class Routing : MonoBehaviour
                 }
             }
 
-            show();
+            //show();
         }
 
         if (Input.GetButtonDown("Clue"))
@@ -144,7 +132,7 @@ public class Routing : MonoBehaviour
                 }
             }
 
-            show();
+            //show();
         }
 
         if (Input.GetButtonDown("Settings"))
@@ -178,7 +166,11 @@ public class Routing : MonoBehaviour
                 }
             }
 
-            show();
+            //show();
+        }
+        if (Input.GetButtonDown("Esc") && isOpen)
+        {
+            CloseAll();
         }
 
     }
@@ -200,14 +192,8 @@ public class Routing : MonoBehaviour
         leftPanel.SetActive(true);
         NavBar.SetActive(true);
         player.GetComponent<MouseLook>().enabled = false;
-        //if (player.GetComponent<MouseLook>().enabled)
-        //{
-        //    player.GetComponent<MouseLook>().LockMouse();
-        //}
-        //else
-        //{
-            player.GetComponent<MouseLook>().UnlockMouse();
-        //}
+        player.GetComponent<MouseLook>().UnlockMouse();
+        
     }
 
     void closePanel ()
@@ -216,14 +202,7 @@ public class Routing : MonoBehaviour
         leftPanel.SetActive(false);
         NavBar.SetActive(false);
         player.GetComponent<MouseLook>().enabled = true;
-        //if (player.GetComponent<MouseLook>().enabled)
-        //{
-        //    player.GetComponent<MouseLook>().LockMouse();
-        //}
-        //else
-        //{
         player.GetComponent<MouseLook>().LockMouse();
-        //}
     }
 
     void openInventoryPanel ()
@@ -274,35 +253,6 @@ public class Routing : MonoBehaviour
         settingsDetailsUI.SetActive(false);
     }
 
-    void disableICS ()
-    {
-        inventoryUI.SetActive(false);
-        inventoryDetailsUI.SetActive(false);
-        clueUI.SetActive(false);
-        clueDetailsUI.SetActive(false);
-        settingsUI.SetActive(false);
-        settingsDetailsUI.SetActive(false);
-    }
-
-    void disableIMS ()
-    {
-        inventoryUI.SetActive(false);
-        inventoryDetailsUI.SetActive(false);
-        mapUI.SetActive(false);
-        mapDetailsUI.SetActive(false);
-        settingsUI.SetActive(false);
-        settingsDetailsUI.SetActive(false);
-    }
-
-    void disableIMC ()
-    {
-        inventoryUI.SetActive(false);
-        inventoryDetailsUI.SetActive(false);
-        mapUI.SetActive(false);
-        mapDetailsUI.SetActive(false);
-        clueUI.SetActive(false);
-        clueDetailsUI.SetActive(false);
-    }
 
     void show ()
     {
@@ -316,5 +266,24 @@ public class Routing : MonoBehaviour
         print("settingsDetailsUI: " + settingsDetailsUI.activeSelf +"\n");
         print("rightPanel: " + rightPanel.activeSelf +"\n");
         print("leftPanel: " + leftPanel.activeSelf + "\n");
+    }
+
+    public void CloseAll ()
+    {
+        //InventoryUI inventory;
+
+        inventoryUI.SetActive(false);
+        inventoryDetailsUI.SetActive(false);
+        NavBar.SetActive(false);
+        mapUI.SetActive(false);
+        mapDetailsUI.SetActive(false);
+        clueUI.SetActive(false);
+        clueDetailsUI.SetActive(false);
+        settingsUI.SetActive(false);
+        settingsDetailsUI.SetActive(false);
+        rightPanel.SetActive(false);
+        leftPanel.SetActive(false);
+        isOpen = false;
+
     }
 }
