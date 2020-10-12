@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviourPun
 
     private void Start()
     {
-        footstepSE = GetComponentInChildren<AudioSource>();
+        // footstepSE = GetComponentInChildren<AudioSource>();
     }
 
     // Update is called once per frame
@@ -67,11 +67,11 @@ public class PlayerMovement : MonoBehaviourPun
         //footsteps sounds
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
-            footstepSE.Play();
+            // footstepSE.Play();
         }
         else if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
         {
-            footstepSE.Stop();
+            // footstepSE.Stop();
         }
     }
 

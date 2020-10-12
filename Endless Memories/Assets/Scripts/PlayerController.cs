@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     private Inspection inspection;
+    public Canvas canvas;
+    public GameObject inventorySlot;
 
     void Start()
     {
@@ -21,5 +23,10 @@ public class PlayerController : MonoBehaviour
     public void Inspect(GameObject raycastedGameObject)
     {
         inspection.Inspect(raycastedGameObject);
+    }
+
+    public void Disable()
+    {
+
     }
 }

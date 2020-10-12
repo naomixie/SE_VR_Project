@@ -167,6 +167,20 @@ public class Routing : MonoBehaviour
 
     }
 
+    public void SetPlayer(GameObject fpsPlayer)
+    {
+        int childCount = fpsPlayer.transform.childCount;
+        for(int i = 0; i < childCount; i++)
+        {
+            var child = fpsPlayer.transform.GetChild(i);
+            if(child.name == "FPS Camera")
+            {
+                player = child.gameObject;
+            }
+        }
+        
+    }
+
     void enableMouseLook ()
     {
         player.GetComponent<MouseLook>().enabled = true;
