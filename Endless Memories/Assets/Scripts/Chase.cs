@@ -14,12 +14,15 @@ public class Chase : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("First Person Player").transform;
     }
 
     // Use this for initialization
     void Update()
     {
+        if(target == null)
+        {
+        target = GameObject.FindGameObjectWithTag("First Person Player").transform;
+        }
         //获取寻路物体上的NavMeshAgent组件
         agent = GetComponent<NavMeshAgent>();
         //通过SetDestination方法(网格路径计算)实现自动寻路
