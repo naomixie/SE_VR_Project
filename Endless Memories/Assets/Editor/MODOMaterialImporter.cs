@@ -466,7 +466,7 @@ public class MODOMaterialContainer
 * ASSET POSTPROCESSOR
 */
 
-public class MODOMaterialImporter : AssetPostprocessor
+public class MODOMaterialImporter : UnityEditor.AssetPostprocessor
 {
 
 	/*
