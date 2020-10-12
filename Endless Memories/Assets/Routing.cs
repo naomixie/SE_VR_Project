@@ -170,7 +170,8 @@ public class Routing : MonoBehaviour
             CloseAll();
         }
 
-        if (Input.GetButtonDown("Pause"))
+        // if (Input.GetButtonDown("P") || Input.GetButtonDown("p"))
+        if(Input.GetKeyDown(KeyCode.P))
         {
             // NoPanels are active
             if (!isOpen)
