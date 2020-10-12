@@ -19,7 +19,7 @@ public class Routing : MonoBehaviour
     public GameObject rightPanel;
     public GameObject leftPanel;
     bool isOpen;
-    public enum curPanel {inventory,map,clue,settings};
+    public enum curPanel {inventory,map,clue,settings,pause};
     public curPanel currPanel;
 
 
@@ -57,6 +57,7 @@ public class Routing : MonoBehaviour
                     closeCluePanel();
                     closeMapPanel();
                     closeSettingsPanel();
+                    closePausePanel();
                     openInventoryPanel();
 
                 }
@@ -89,6 +90,7 @@ public class Routing : MonoBehaviour
                     closeCluePanel();
                     closeInventoryPanel();
                     closeSettingsPanel();
+                    closePausePanel();
                     openMapPanel();
 
                 }
@@ -121,6 +123,7 @@ public class Routing : MonoBehaviour
                     closeInventoryPanel();
                     closeMapPanel();
                     closeSettingsPanel();
+                    closePausePanel();
                     openCluePanel();
 
                 }
@@ -153,6 +156,7 @@ public class Routing : MonoBehaviour
                     closeCluePanel();
                     closeMapPanel();
                     closeInventoryPanel();
+                    closePausePanel();
                     openSettingsPanel();
 
                 }
@@ -160,11 +164,49 @@ public class Routing : MonoBehaviour
 
             //show();
         }
+
         if (Input.GetButtonDown("Esc") && isOpen)
         {
             CloseAll();
         }
 
+        if (Input.GetButtonDown("Pause"))
+        {
+            // NoPanels are active
+            if (!isOpen)
+            {
+                isOpen = true;
+                // openPanel();
+                // openPausePanel();
+                Debug.Log("您按下了P键");
+                Time.timeScale = 0;
+            }
+            else
+            {
+                // a Panel is already open
+                if (currPanel == curPanel.pause)
+                {
+                    // close panel if same 
+                    //closePanel();
+                    isOpen = false;
+                   // closePausePanel();
+                }
+                else
+                {
+                    /*  closeCluePanel();
+                      closeMapPanel();
+                      closeInventoryPanel();
+                      closeSettingsPanel();
+                      openPausePanel();
+                    */
+                    isOpen = false;
+                    Debug.Log("您按下了P键");
+                    Time.timeScale = 1;
+                }
+            }
+
+            //show();
+        }
     }
 
     void enableMouseLook ()
@@ -223,7 +265,15 @@ public class Routing : MonoBehaviour
         currPanel = curPanel.settings;
         settingsUI.SetActive(true);
         settingsDetailsUI.SetActive(true);
+    } 
+    
+    public void openPausePanel ()
+    {
+        currPanel = curPanel.pause;
+        settingsUI.SetActive(true);
+        settingsDetailsUI.SetActive(true);
     }
+
 
     public void closeInventoryPanel ()
     {
@@ -244,6 +294,12 @@ public class Routing : MonoBehaviour
     }
 
     public void closeSettingsPanel ()
+    {
+        settingsUI.SetActive(false);
+        settingsDetailsUI.SetActive(false);
+    }
+    
+    public void closePausePanel ()
     {
         settingsUI.SetActive(false);
         settingsDetailsUI.SetActive(false);
