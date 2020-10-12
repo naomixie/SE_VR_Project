@@ -150,7 +150,6 @@ GameObject:
   - component: {fileID: 5237652827573699777}
   - component: {fileID: 5237652827573699782}
   - component: {fileID: 5237652827573699776}
-  - component: {fileID: 5237652827573699783}
   - component: {fileID: 1437816495}
   - component: {fileID: 1437816494}
   m_Layer: 0
@@ -212,7 +211,7 @@ MonoBehaviour:
   controller: {fileID: 5237652827573699804}
   speed: 5
   gravity: -9.81
-  jumpHeight: 3
+  jumpHeight: 1.5
   groundCheck: {fileID: 5237652828240867580}
   groundDistance: 0.4
   groundMask:
@@ -231,6 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b76cfaf2f4323242a28cbf6f6bf1d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  inventorySlot: {fileID: 0}
 --- !u!114 &5237652827573699777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,20 +279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a8ab613054e05409b387d37ab5fa5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5237652827573699783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5237652827573699807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0c0a4332f23f034e8bc6805a37cbb3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  space: 20
-  items: []
 --- !u!114 &1437816495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +499,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5383180819938603004}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -527,19 +514,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7618452253419907395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5383180819938603004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac849a8d7ceec7445a7816a5d1d98046, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!1 &8058524917092300222
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,7 +686,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 130644, guid: 16e5aca9861e75b43aad74b12103c777, type: 3}
       propertyPath: m_Name
-      value: Chaser (1)
+      value: Chaser
       objectReference: {fileID: 0}
     - target: {fileID: 430644, guid: 16e5aca9861e75b43aad74b12103c777, type: 3}
       propertyPath: m_LocalPosition.x
@@ -769,6 +743,10 @@ PrefabInstance:
     - target: {fileID: 430644, guid: 16e5aca9861e75b43aad74b12103c777, type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1152003362, guid: 16e5aca9861e75b43aad74b12103c777, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16e5aca9861e75b43aad74b12103c777, type: 3}

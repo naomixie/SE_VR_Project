@@ -170,7 +170,8 @@ public class Routing : MonoBehaviour
             CloseAll();
         }
 
-        if (Input.GetButtonDown("Pause"))
+        // if (Input.GetButtonDown("P") || Input.GetButtonDown("p"))
+        if(Input.GetKeyDown(KeyCode.P))
         {
             // NoPanels are active
             if (!isOpen)
@@ -207,6 +208,20 @@ public class Routing : MonoBehaviour
 
             //show();
         }
+    }
+
+    public void SetPlayer(GameObject fpsPlayer)
+    {
+        int childCount = fpsPlayer.transform.childCount;
+        for(int i = 0; i < childCount; i++)
+        {
+            var child = fpsPlayer.transform.GetChild(i);
+            if(child.name == "FPS Camera")
+            {
+                player = child.gameObject;
+            }
+        }
+        
     }
 
     void enableMouseLook ()
