@@ -36,11 +36,17 @@ public class PvpPlayerSpawner : MonoBehaviourPun
         playerMode = PlayerPrefs.GetInt("mode");
         if (playerMode == 1)
         {
+            Debug.Log("fx " + fpsSpawnPoint.position.x);
+            Debug.Log("fy " + fpsSpawnPoint.position.y);
+            Debug.Log("fz " + fpsSpawnPoint.position.z);
             fpsPlayer = PhotonNetwork.Instantiate(fpsPrefab.name, new Vector3(fpsSpawnPoint.position.x, fpsSpawnPoint.position.y, fpsSpawnPoint.position.z), Quaternion.identity);
             fpsCamera = fpsPlayer.GetComponentInChildren<CinemachineVirtualCamera>();
         }
         else
         {
+            Debug.Log("tx " + tpsSpawnPoint.position.x);
+            Debug.Log("ty " + tpsSpawnPoint.position.y);
+            Debug.Log("tz " + tpsSpawnPoint.position.z);
             tpsPlayer = PhotonNetwork.Instantiate(tpsPrefab.name, new Vector3(tpsSpawnPoint.position.x, tpsSpawnPoint.position.y, tpsSpawnPoint.position.z), Quaternion.identity);
             tpsCamera = tpsPlayer.GetComponentInChildren<CinemachineFreeLook>();
         }
