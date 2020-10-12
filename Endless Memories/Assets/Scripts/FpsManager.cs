@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class FpsManager : MonoBehaviour
 {
+    public GameObject player;
     private Inspection inspection;
     public Canvas canvas;
     public GameObject inventorySlot;
-
     void Start()
     {
-        inspection = GetComponentInChildren<Inspection>();
+        inspection = player.GetComponentInChildren<Inspection>();
     }
 
     // Update is called once per frame
@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     public void Disable()
     {
-
+        canvas.enabled = false;
+        inventorySlot.SetActive(false);
+        inspection.enabled = false;
     }
 }

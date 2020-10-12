@@ -15,7 +15,7 @@ public class PvpMainMenu : MonoBehaviourPunCallbacks
     private bool isConnecting = false;
 
     private const string GameVersion = "0.1";
-    private const int MaxPlayersPerRoom = 2;
+    private const int MaxPlayersPerRoom = 1;
 
 
     private void Start()
@@ -89,6 +89,7 @@ public class PvpMainMenu : MonoBehaviourPunCallbacks
         else
         {
             waitingStatusText.text = "Opponent Found!";
+            PhotonNetwork.LoadLevel("Scene_PVP");
             Debug.Log("Match is ready to begin.");
         }
     }

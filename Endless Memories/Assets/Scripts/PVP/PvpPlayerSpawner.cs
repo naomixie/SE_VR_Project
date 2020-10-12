@@ -17,6 +17,9 @@ public class PvpPlayerSpawner : MonoBehaviourPun
     public GameObject fpsPlayer = null;
     public GameObject tpsPlayer = null;
 
+    public FpsManager fpsManager;
+
+    public Transform tpsSpawnPoint;
 
     private void Start()
     {
@@ -32,7 +35,7 @@ public class PvpPlayerSpawner : MonoBehaviourPun
         }
         else
         {
-            tpsPlayer = PhotonNetwork.Instantiate(tpsPrefab.name, Vector3.zero, Quaternion.identity);
+            tpsPlayer = PhotonNetwork.Instantiate(tpsPrefab.name, new Vector3(tpsSpawnPoint.position.x, tpsSpawnPoint.position.y, tpsSpawnPoint.position.z), Quaternion.identity);
             tpsCamera = tpsPlayer.GetComponentInChildren<CinemachineFreeLook>();
         }
     }
@@ -43,12 +46,15 @@ public class PvpPlayerSpawner : MonoBehaviourPun
         {
             if(playerMode == 1)
             {
+                // Fps Player settings
+
                 var tps = GameObject.FindGameObjectWithTag("Third Person Player");
 
                 if (tps == null) return;
                 // Setting cameras
                 // Fps
                 fpsCamera.enabled = true;
+                fpsManager.Disable();
 
                 // Tps
                 tpsCamera = tps.GetComponentInChildren<CinemachineFreeLook>();
@@ -56,6 +62,8 @@ public class PvpPlayerSpawner : MonoBehaviourPun
             }
             else
             {
+                // Tps Player settings
+
                 var fps = GameObject.FindGameObjectWithTag("First Person Player");
                 
                 if (fps == null) return;
