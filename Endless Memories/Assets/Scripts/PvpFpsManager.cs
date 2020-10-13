@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TpsManager : MonoBehaviour
+public class PvpFpsManager : MonoBehaviour
 {
     public GameObject player;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 
-public class FpsManager : MonoBehaviourPun
+public class PvpTpsManager : MonoBehaviourPun
 {
     public GameObject chaser;
     public GameObject player;
