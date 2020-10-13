@@ -27,6 +27,5 @@ public class Chase : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         //通过SetDestination方法(网格路径计算)实现自动寻路
         agent.SetDestination(target.position);
-        Debug.Log(target.name);
     }
 }
