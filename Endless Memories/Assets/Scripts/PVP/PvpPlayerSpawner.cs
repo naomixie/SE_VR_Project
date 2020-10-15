@@ -17,8 +17,8 @@ public class PvpPlayerSpawner : MonoBehaviourPun
     public GameObject fpsPlayer = null;
     public GameObject tpsPlayer = null;
 
-    public FpsManager fpsManager;
-    public TpsManager tpsManager;
+    public PvpFpsManager fpsManager;
+    public PvpTpsManager tpsManager;
 
     public Transform tpsSpawnPoint;
 
