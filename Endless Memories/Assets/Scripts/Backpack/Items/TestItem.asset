@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestItem
   m_EditorClassIdentifier: 
   name: Gem
-  icon: {fileID: 21300000, guid: e7d29a79bc7fae248887c8a08a160303, type: 3}
+  icon: {fileID: 21300004, guid: 02aa4804dd2e04f43b0d0362ecfb2c44, type: 3}
   isDefaultItem: 0
   description: 
   detailImage: {fileID: 0}

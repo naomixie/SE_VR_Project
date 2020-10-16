@@ -17,19 +17,19 @@ public class NavbarButton : MonoBehaviour
     {
         if (gameObject.GetComponentInParent<Routing>().currPanel == Routing.curPanel.inventory && slot == 1)
         {
-            GetComponent<Button>().Select();
+            GetComponent<Toggle>().Select();
         }
         if (gameObject.GetComponentInParent<Routing>().currPanel == Routing.curPanel.map && slot == 2)
         {
-            GetComponent<Button>().Select();
+            GetComponent<Toggle>().Select();
         }
         if (gameObject.GetComponentInParent<Routing>().currPanel == Routing.curPanel.clue && slot == 3)
         {
-            GetComponent<Button>().Select();
+            GetComponent<Toggle>().Select();
         }
         if (gameObject.GetComponentInParent<Routing>().currPanel == Routing.curPanel.settings && slot == 4)
         {
-            GetComponent<Button>().Select();
+            GetComponent<Toggle>().Select();
         }
 
     }
