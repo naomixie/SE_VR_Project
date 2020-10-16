@@ -43,7 +43,7 @@ public class Chase : MonoBehaviour
         lestStunFrame = STUN_FRAMES;
     }
     /**
-     *  teleport to the object which tag is GhostTeleportSpot and name ends with specific strings
+     *  teleport to the object which tag is "GhostTeleportSpot" and name ends with specific strings
      *  teleport("1FC"); //usage
      */
     public void teleport(string ghostTeleportSpotNameSuffix)

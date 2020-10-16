@@ -17149,6 +17149,11 @@ PrefabInstance:
       propertyPath: viewIdField
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8170749397926631582, guid: e2fd4fa296806b049a713a7a1fb6a6f3,
+        type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2500669157678564086, guid: e2fd4fa296806b049a713a7a1fb6a6f3, type: 3}
     - {fileID: 7618452253419907395, guid: e2fd4fa296806b049a713a7a1fb6a6f3, type: 3}
@@ -18363,7 +18368,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
