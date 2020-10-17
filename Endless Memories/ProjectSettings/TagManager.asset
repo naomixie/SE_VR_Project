@@ -15,7 +15,7 @@ TagManager:
   - Third Person Player
   - FPS Canvas
   - Chaser
-  - GhostTeleportSpot
+  - GhostPatrolSpot
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,11 @@ public class Chase : MonoBehaviour
     //stun when used teleport
     private const int STUN_FRAMES = 300;
     private int lestStunFrame;
+	
+	//for partrol
+	private int restedFrame;
+	
+	private string[] SPOTS_SUFFIX = {"+X", "-X", "+Z", "-Z"};
 
     private void Start()
     {
@@ -33,10 +38,42 @@ public class Chase : MonoBehaviour
         else
         {
             agent.isStopped = false;
-            //Need always updates latest position
-            agent.SetDestination(target.position);
+			//patrol specified spots in stage
+			if (agent.destination == null || Vector3.Distance(agent.destination, transform.position) < 0.1)
+			{
+				if(++restedFrame > 1500)
+				{
+					restedFrame = 0;
+					patrolRandomSpot();
+				}
+			}
         }
     }
+	public void noticeSound(int soundLevel, Vector3 position)
+	{
+		if(Vector3.Distance(position, transform.position) < 10*soundLevel) {
+			restedFrame = 0;
+			move(position);
+		}
+	}
+	private void patrolRandomSpot()
+    {
+		int targetFloor = Random.Range(1, 3);
+		string targetDest = SPOTS_SUFFIX[Random.Range(0, 4)];
+		string suffix = targetFloor + "F" + targetDest;
+		foreach(GameObject gameObject in GameObject.FindGameObjectsWithTag("GhostPatrolSpot"))
+        {
+            if (gameObject.name.EndsWith(suffix))
+            {
+                move(gameObject.transform.position);
+                break;
+            }
+        }
+    }
+	public void move(Vector3 position)
+	{
+        agent.SetDestination(position);
+	}
     public void teleport(Vector3 position)
     {
         agent.Warp(position);
@@ -44,11 +81,11 @@ public class Chase : MonoBehaviour
     }
     /**
      *  teleport to the object which tag is "GhostTeleportSpot" and name ends with specific strings
-     *  teleport("1FC"); //usage
+     *  teleport("1F-X"); //usage
      */
     public void teleport(string ghostTeleportSpotNameSuffix)
     {
-        foreach(GameObject gameObject in GameObject.FindGameObjectsWithTag("GhostTeleportSpot"))
+        foreach(GameObject gameObject in GameObject.FindGameObjectsWithTag("GhostPatrolSpot"))
         {
             if (gameObject.name.EndsWith(ghostTeleportSpotNameSuffix))
             {
