@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class Chase : MonoBehaviour
 {
     //通过寻路要去找到的  目标物体
-    public Transform target;
+    public GameObject target;
     //寻路组件
     private NavMeshAgent agent;
     //stun when used teleport
@@ -22,7 +22,7 @@ public class Chase : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("First Person Player").transform;
+        target = GameObject.FindGameObjectWithTag("First Person Player");
         //获取寻路物体上的NavMeshAgent组件, 通过SetDestination方法(网格路径计算)实现自动寻路
         agent = GetComponent<NavMeshAgent>();
     }
@@ -30,7 +30,7 @@ public class Chase : MonoBehaviour
     // Use this for initialization
     void Update()
     {
-        if (lestStunFrame > 0)
+        if (lestStunFrame > 0) //stun happens when actioned teleport
         {
             --lestStunFrame;
             agent.isStopped = true;
@@ -38,10 +38,28 @@ public class Chase : MonoBehaviour
         else
         {
             agent.isStopped = false;
-			//patrol specified spots in stage
-			if (agent.destination == null || Vector3.Distance(agent.destination, transform.position) < 0.1)
+			//detect sound (sound source invoke noticeSound method)
+			//detect target in vision
+			Vector3 direction = target.transform.position - (transform.position + transform.up/2);
+			float angleDiff = Vector3.Angle(direction, transform.forward);
+			//Debug.Log("angleDiff: " + angleDiff);
+			if (angleDiff < 0.5 * 30)
 			{
-				if(++restedFrame > 1500)
+				RaycastHit hit;
+				if (Physics.Raycast(transform.position + transform.up/2, direction.normalized, out hit))
+				{
+					if (hit.collider.gameObject == target)
+					{
+						restedFrame = 0;
+						agent.SetDestination(target.transform.position);
+					}
+				}
+			}
+			//patrol specified spots in stage
+			//Debug.Log("destToTarget: " + Vector3.Distance(agent.destination, transform.position) + ", restFrame" + restedFrame);
+			if (agent.destination == null || Vector3.Distance(agent.destination, transform.position) < 1)
+			{
+				if(++restedFrame > 1000)
 				{
 					restedFrame = 0;
 					patrolRandomSpot();
