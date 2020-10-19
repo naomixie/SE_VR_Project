@@ -12,6 +12,8 @@ public class Routing : MonoBehaviour
     public GameObject mapDetailsUI;
     public GameObject clueUI;
     public GameObject clueDetailsUI;
+    public GameObject escUI;
+    public GameObject escDetailsUI;
     public GameObject settingsUI;
     public GameObject settingsDetailsUI;
     public GameObject NavBar;
@@ -19,7 +21,7 @@ public class Routing : MonoBehaviour
     public GameObject rightPanel;
     public GameObject leftPanel;
     bool isOpen;
-    public enum curPanel {inventory,map,clue,settings,pause};
+    public enum curPanel {inventory,map,clue,settings,pause,esc};
     public curPanel currPanel;
 
 
@@ -56,6 +58,7 @@ public class Routing : MonoBehaviour
                 {
                     closeCluePanel();
                     closeMapPanel();
+                    closeEscPanel();
                     closeSettingsPanel();
                     closePausePanel();
                     openInventoryPanel();
@@ -90,6 +93,7 @@ public class Routing : MonoBehaviour
                     closeCluePanel();
                     closeInventoryPanel();
                     closeSettingsPanel();
+                    closeEscPanel();
                     closePausePanel();
                     openMapPanel();
 
@@ -123,6 +127,7 @@ public class Routing : MonoBehaviour
                     closeInventoryPanel();
                     closeMapPanel();
                     closeSettingsPanel();
+                    closeEscPanel();
                     closePausePanel();
                     openCluePanel();
 
@@ -157,6 +162,7 @@ public class Routing : MonoBehaviour
                     closeMapPanel();
                     closeInventoryPanel();
                     closePausePanel();
+                    closeEscPanel();
                     openSettingsPanel();
 
                 }
@@ -167,11 +173,42 @@ public class Routing : MonoBehaviour
 
         if (Input.GetButtonDown("Esc") && isOpen)
         {
-            CloseAll();
+
+            /*/ NoPanels are active
+            if (!isOpen)
+            {
+                isOpen = true;
+                openPanel();
+                openEscPanel();
+            }
+            else
+            {
+                // a Panel is already open
+                if (currPanel == curPanel.esc)
+                {
+                    // close panel if same 
+                    closePanel();
+                    isOpen = false;
+                    closeEscPanel();
+                }
+                else
+                {
+                    closeInventoryPanel();
+                    closeMapPanel();
+                    closeSettingsPanel();
+                    closePausePanel();
+                    closeCluePanel();
+                    openEscPanel();
+
+                }
+            }
+
+            //show();
+            //CloseAll();*/
         }
 
         // if (Input.GetButtonDown("P") || Input.GetButtonDown("p"))
-        if(Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             // NoPanels are active
             if (!isOpen)
@@ -289,6 +326,12 @@ public class Routing : MonoBehaviour
         settingsDetailsUI.SetActive(true);
     }
 
+    public void openEscPanel()
+    {
+        currPanel = curPanel.esc;
+        escUI.SetActive(true);
+        escDetailsUI.SetActive(true);
+    }
 
     public void closeInventoryPanel ()
     {
@@ -320,6 +363,11 @@ public class Routing : MonoBehaviour
         settingsDetailsUI.SetActive(false);
     }
 
+    public void closeEscPanel()
+    {
+        escUI.SetActive(false);
+        escDetailsUI.SetActive(false);
+    }
 
     void show ()
     {
@@ -329,6 +377,8 @@ public class Routing : MonoBehaviour
         print("mapDetailsUI: " + mapDetailsUI.activeSelf +"\n");
         print("clueUI: " + clueUI.activeSelf +"\n");
         print("clueDetailsUI: " + clueDetailsUI.activeSelf +"\n");
+        print("escUI: " + escUI.activeSelf + "\n");
+        print("escDetailsUI: " + escDetailsUI.activeSelf + "\n");
         print("settingsUI: " + settingsUI.activeSelf +"\n");
         print("settingsDetailsUI: " + settingsDetailsUI.activeSelf +"\n");
         print("rightPanel: " + rightPanel.activeSelf +"\n");
@@ -346,6 +396,8 @@ public class Routing : MonoBehaviour
         mapDetailsUI.SetActive(false);
         clueUI.SetActive(false);
         clueDetailsUI.SetActive(false);
+        escUI.SetActive(false);
+        escDetailsUI.SetActive(false);
         settingsUI.SetActive(false);
         settingsDetailsUI.SetActive(false);
         rightPanel.SetActive(false);
