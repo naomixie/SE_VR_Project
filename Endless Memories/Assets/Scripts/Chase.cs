@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //寻路要引入的命名空间
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Chase : MonoBehaviour
 {
@@ -54,6 +55,14 @@ public class Chase : MonoBehaviour
 						agent.SetDestination(target.transform.position);
 					}
 				}
+			}
+			//if touch player we should jump to gameover scene
+			if (Vector3.Distance(target.transform.position, transform.position) < 0.3)
+			{
+				MouseLook mouseLook = GameObject.Find("First Person Player/FPS Camera").GetComponent<MouseLook>();
+				mouseLook.enabled = false;
+				mouseLook.UnlockMouse();
+				SceneManager.LoadScene("Scene_Gameover");
 			}
 			//patrol specified spots in stage
 			//Debug.Log("destToTarget: " + Vector3.Distance(agent.destination, transform.position) + ", restFrame" + restedFrame);

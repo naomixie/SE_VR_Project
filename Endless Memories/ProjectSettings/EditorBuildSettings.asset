@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene_Single.unity
     guid: ad75779bb1e2b6242bece7c47d7e9800
   - enabled: 1
-    path: Assets/Scenes/Scene_MainMenu.unity
+    path: Assets/Scenes/Scene_PVPMenu.unity
     guid: b98cf1a3173ccd64597a106d287e6f4a
   - enabled: 1
     path: Assets/Scenes/Scene_PVP.unity
@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene_Pause.unity
     guid: 0545d58cf0814e44ab7edab3c227de1b
+  - enabled: 1
+    path: Assets/Scenes/Scene_Gameover.unity
+    guid: c65be9bb07b3e314d8c691581b87fe0b
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 294010cfd7ef3ea45bc9d7515bb73716,
       type: 2}
