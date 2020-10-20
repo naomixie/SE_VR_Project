@@ -21,6 +21,8 @@ public class Chase : MonoBehaviour
 	
 	private string[] SPOTS_SUFFIX = {"+X", "-X", "+Z", "-Z"};
 
+    public bool chaseOn;
+
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("First Person Player");
@@ -57,7 +59,7 @@ public class Chase : MonoBehaviour
 				}
 			}
 			//if touch player we should jump to gameover scene
-			if (Vector3.Distance(target.transform.position, transform.position) < 0.3)
+			if (Vector3.Distance(target.transform.position, transform.position) < 0.3 && chaseOn)
 			{
 				MouseLook mouseLook = GameObject.Find("First Person Player/FPS Camera").GetComponent<MouseLook>();
 				mouseLook.enabled = false;

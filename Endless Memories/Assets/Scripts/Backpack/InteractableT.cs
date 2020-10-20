@@ -6,15 +6,9 @@ public class InteractableT : MonoBehaviour
     {
     public float radius = 3f;
 
-
-    //void Update ()
-    //{
-        
-    //}
-
     public virtual void Interact ()
         {
-            Debug.Log("In InteractableT interact");
+            //Debug.Log("In InteractableT interact");
         }
 
 
