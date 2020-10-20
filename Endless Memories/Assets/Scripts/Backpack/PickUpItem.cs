@@ -22,11 +22,8 @@ public class PickUpItem : InteractableT
         if (Inventory.instance.Add(item))
         {
             Destroy(gameObject);
-
-
         }
 
-        //DestroyGameObject();
 
     }
 

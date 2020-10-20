@@ -58,7 +58,7 @@ public class Routing : MonoBehaviour
                 {
                     closeCluePanel();
                     closeMapPanel();
-                    closeEscPanel();
+                    //closeEscPanel();
                     closeSettingsPanel();
                     closePausePanel();
                     openInventoryPanel();
@@ -93,7 +93,7 @@ public class Routing : MonoBehaviour
                     closeCluePanel();
                     closeInventoryPanel();
                     closeSettingsPanel();
-                    closeEscPanel();
+                    //closeEscPanel();
                     closePausePanel();
                     openMapPanel();
 
@@ -127,7 +127,7 @@ public class Routing : MonoBehaviour
                     closeInventoryPanel();
                     closeMapPanel();
                     closeSettingsPanel();
-                    closeEscPanel();
+                    //closeEscPanel();
                     closePausePanel();
                     openCluePanel();
 
@@ -162,7 +162,7 @@ public class Routing : MonoBehaviour
                     closeMapPanel();
                     closeInventoryPanel();
                     closePausePanel();
-                    closeEscPanel();
+                    //closeEscPanel();
                     openSettingsPanel();
 
                 }
@@ -284,6 +284,7 @@ public class Routing : MonoBehaviour
 
     public void closePanel ()
     {
+        isOpen = false;
         rightPanel.SetActive(false);
         leftPanel.SetActive(false);
         NavBar.SetActive(false);
@@ -326,12 +327,12 @@ public class Routing : MonoBehaviour
         settingsDetailsUI.SetActive(true);
     }
 
-    public void openEscPanel()
-    {
-        currPanel = curPanel.esc;
-        escUI.SetActive(true);
-        escDetailsUI.SetActive(true);
-    }
+    //public void openEscPanel()
+    //{
+    //    currPanel = curPanel.esc;
+    //    escUI.SetActive(true);
+    //    escDetailsUI.SetActive(true);
+    //}
 
     public void closeInventoryPanel ()
     {
@@ -363,11 +364,11 @@ public class Routing : MonoBehaviour
         settingsDetailsUI.SetActive(false);
     }
 
-    public void closeEscPanel()
-    {
-        escUI.SetActive(false);
-        escDetailsUI.SetActive(false);
-    }
+    //public void closeEscPanel()
+    //{
+    //    escUI.SetActive(false);
+    //    escDetailsUI.SetActive(false);
+    //}
 
     void show ()
     {
@@ -377,8 +378,8 @@ public class Routing : MonoBehaviour
         print("mapDetailsUI: " + mapDetailsUI.activeSelf +"\n");
         print("clueUI: " + clueUI.activeSelf +"\n");
         print("clueDetailsUI: " + clueDetailsUI.activeSelf +"\n");
-        print("escUI: " + escUI.activeSelf + "\n");
-        print("escDetailsUI: " + escDetailsUI.activeSelf + "\n");
+        //print("escUI: " + escUI.activeSelf + "\n");
+        //print("escDetailsUI: " + escDetailsUI.activeSelf + "\n");
         print("settingsUI: " + settingsUI.activeSelf +"\n");
         print("settingsDetailsUI: " + settingsDetailsUI.activeSelf +"\n");
         print("rightPanel: " + rightPanel.activeSelf +"\n");
@@ -387,22 +388,10 @@ public class Routing : MonoBehaviour
 
     public void CloseAll ()
     {
-        //InventoryUI inventory;
-
-        inventoryUI.SetActive(false);
-        inventoryDetailsUI.SetActive(false);
-        NavBar.SetActive(false);
-        mapUI.SetActive(false);
-        mapDetailsUI.SetActive(false);
-        clueUI.SetActive(false);
-        clueDetailsUI.SetActive(false);
-        escUI.SetActive(false);
-        escDetailsUI.SetActive(false);
-        settingsUI.SetActive(false);
-        settingsDetailsUI.SetActive(false);
-        rightPanel.SetActive(false);
-        leftPanel.SetActive(false);
-        isOpen = false;
-
+        closeInventoryPanel();
+        closeMapPanel();
+        closeCluePanel();
+        closeSettingsPanel();
+        closePanel();
     }
 }
