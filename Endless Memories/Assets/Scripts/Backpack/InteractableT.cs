@@ -10,6 +10,15 @@ public class InteractableT : MonoBehaviour
     bool des = false;
     Transform player;
 
+    // For riddle interaction purposes
+    public RiddleBrain riddleBrain;
+    public Riddle riddle;
+    public int interactCode;
+
+    private void Start() {
+        riddleBrain = GameObject.FindGameObjectWithTag("RiddleBrain").GetComponent<RiddleBrain>();    
+    }
+
     void Update ()
     {
         /*

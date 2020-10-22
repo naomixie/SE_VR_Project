@@ -6,7 +6,7 @@ public class CampaignManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public RiddleManager riddleManager;
+    public RiddleBrain riddleBrain;
     
     void Start()
     {

@@ -16,6 +16,7 @@ TagManager:
   - FPS Canvas
   - Chaser
   - GhostTeleportSpot
+  - RiddleBrain
   layers:
   - Default
   - TransparentFX

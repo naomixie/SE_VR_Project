@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickUpItem : InteractableT
 {
-    public Item item;   
+    public Item item;
 
     public override void Interact ()
     {
@@ -17,13 +17,14 @@ public class PickUpItem : InteractableT
 
     public void PickUp ()
     {
-        Debug.Log("In PickupItem Pickup");
-        Debug.Log("Picking up "+item.name);
+        // Debug.Log("In PickupItem Pickup");
+        // Debug.Log("Picking up "+item.name);
+        
+        riddleBrain.ActiveRiddle(riddleBrain.currentRiddleManager, riddle, interactCode);
+
         if (Inventory.instance.Add(item))
         {
             Destroy(gameObject);
-
-
         }
 
         //DestroyGameObject();
