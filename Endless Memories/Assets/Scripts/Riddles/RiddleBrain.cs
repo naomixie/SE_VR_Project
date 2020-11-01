@@ -17,6 +17,9 @@ public class RiddleBrain : MonoBehaviour
         // riddleManagerParent = gameObject.transform.GetChild(0);
         riddleManagers = transform.GetComponentsInChildren<RiddleManager>();
         SetManager(riddleManagers[currentRiddleManagerIndex]);
+
+        // RiddleBrain: 管 manager
+        // manager: 管 riddle
     }
 
     // Update is called once per frame

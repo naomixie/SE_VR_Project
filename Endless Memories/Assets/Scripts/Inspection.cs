@@ -28,6 +28,11 @@ public class Inspection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SpinObject();
+    }
+
+    public void SpinObject()
+    {
         if(inspect)
         {
 
@@ -50,48 +55,56 @@ public class Inspection : MonoBehaviour
         }
     }
 
+    public void EnableInspection(GameObject raycastedObject)
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+
+        inspect = true;
+        fpsCanvas.GetComponent<RawImage>().enabled = true;
+        mouseLook.enabled = false;
+        playerMovement.enabled = false;
+        raycast.CrosshairHide();
+
+        // Instantiating object
+        inspectionObjectTransform = Instantiate(raycastedObject.transform, new Vector3(transform.position.x, inspectionObjectTransform.position.y, inspectionObjectTransform.position.z), Quaternion.identity);
+        inspectionObjectTransform.gameObject.layer = 5;
+
+        // Disabling rigidbody
+        var rb = inspectionObjectTransform.GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+        rb.detectCollisions = false;
+
+        // Setting parent
+        inspectionObjectTransform.transform.parent = transform;
+    }
+
+    public void DisableInspection(GameObject raycastedObject)
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+
+        inspect = false;
+        fpsCanvas.GetComponent<RawImage>().enabled = false;
+        mouseLook.enabled = true;
+        playerMovement.enabled = true;
+        raycast.CrosshairShow();
+
+        if(raycastedObject == null)
+        {
+            Destroy(inspectionObjectTransform.gameObject);
+        }
+    }
+
     public void Inspect(GameObject raycastedObject)
     {
         Debug.Log("Inspect");
 
-        var inspectionTransform = transform;
-
         if (!inspect && raycastedObject != null)
         {
-            Cursor.lockState = CursorLockMode.Confined;
-
-            inspect = true;
-            fpsCanvas.GetComponent<RawImage>().enabled = true;
-            mouseLook.enabled = false;
-            playerMovement.enabled = false;
-            raycast.CrosshairHide();
-
-            // Instantiating object
-            inspectionObjectTransform = Instantiate(raycastedObject.transform, new Vector3(inspectionTransform.position.x, inspectionTransform.position.y, inspectionTransform.position.z), Quaternion.identity);
-            inspectionObjectTransform.gameObject.layer = 5;
-
-            // Disabling rigidbody
-            var rb = inspectionObjectTransform.GetComponent<Rigidbody>();
-            rb.isKinematic = true;
-            rb.detectCollisions = false;
-
-            // Setting parent
-            inspectionObjectTransform.transform.parent = inspectionTransform;
+            EnableInspection(raycastedObject);
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Locked;
-
-            inspect = false;
-            fpsCanvas.GetComponent<RawImage>().enabled = false;
-            mouseLook.enabled = true;
-            playerMovement.enabled = true;
-            raycast.CrosshairShow();
-
-            if(raycastedObject == null)
-            {
-                Destroy(inspectionObjectTransform.gameObject);
-            }
+            DisableInspection(raycastedObject);
         }
         
     }
