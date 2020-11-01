@@ -17,6 +17,7 @@ TagManager:
   - Chaser
   - GhostTeleportSpot
   - RiddleBrain
+  - GhostPatrolSpot
   layers:
   - Default
   - TransparentFX

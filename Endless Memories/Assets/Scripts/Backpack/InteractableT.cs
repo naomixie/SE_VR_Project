@@ -45,25 +45,9 @@ public class InteractableT : MonoBehaviour
 
     public virtual void Interact ()
         {
-            Debug.Log("In InteractableT interact");
-            // Destroy(gameObject);
-            // This method is meant to be override, code inside this function could be repeated before every time this function is overidden
+            //Debug.Log("In InteractableT interact");
         }
 
-    public void OnFocused (Transform playerTransform)
-        {
-        Debug.Log("In Onfucused");
-        isFocus=true;
-        player=playerTransform;
-        // Interact();
-        }
-
-
-
-    public void DestroyGameObject ()
-        {
-        des=true;
-        }
 
     private void OnDrawGizmosSelected ()
         {

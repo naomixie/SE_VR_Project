@@ -42,33 +42,31 @@ public class PlayerBehavior : MonoBehaviourPun
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if (Input.GetKeyDown("r"))
-        {
-            Debug.Log("Pressed r");
-            DestroyObject(raycast.GetInteractableRaycastedObject());
-        }
+        //if (Input.GetKeyDown("r"))
+        //{
+        //    Debug.Log("Pressed r");
+        //    DestroyObject(raycast.GetInteractableRaycastedObject());
+        //}
 
-        if (Input.GetKeyDown("q"))
-        {
-            Debug.Log("Pressed q");
-            Destroy(raycast.GetInteractableRaycastedObject());
-        }
+        //if (Input.GetKeyDown("q"))
+        //{
+        //    Debug.Log("Pressed q");
+        //    Destroy(raycast.GetInteractableRaycastedObject());
+        //}
 
-        // Collects Item
-        if (Input.GetKeyDown("e"))
+        // Collects Item or Inspects Item(Pop out dialogue)
+        if (Input.GetKeyDown("e") || Input.GetKeyDown("f"))
         {
             //TODO: add Tag identification for different types of interactable objects
-            //CollectObject(raycast.GetRaycastedObject());
-            //CollectObject(raycast.GetInteractableRaycastedObject());
-            Debug.Log("Pressed e");
+            Debug.Log("Pressed e or f");
             if (raycast.GetInteractableRaycastedObject() != null)
             {
                 Debug.Log("In != null");
-                //SetFocus(raycast.GetInteractableRaycastedObject().GetComponent<InteractableT>());
                 raycast.GetInteractableRaycastedObject().GetComponent<InteractableT>().Interact();
             }
         }
 
+        
         if (Input.GetKeyDown("v"))
         {
             Debug.Log("Pressed v");
@@ -76,60 +74,36 @@ public class PlayerBehavior : MonoBehaviourPun
         }
     }
 
-    public void DestroyObject(GameObject raycastedObject)
-    {
-        Debug.Log("I have interacted with an object!");
+    //public void DestroyObject(GameObject raycastedObject)
+    //{
+    //    Debug.Log("I have interacted with an object!");
 
-        /*
-        interactableButtonGroups=fpsCam.transform.GetChild(0).transform.GetChild(0).gameObject;
-        interactableButtonCount=interactableButtonGroups.transform.childCount;
+    //    /*
+    //    interactableButtonGroups=fpsCam.transform.GetChild(0).transform.GetChild(0).gameObject;
+    //    interactableButtonCount=interactableButtonGroups.transform.childCount;
 
-        InteractableButton interactableButton;
-        GameObject attachedObject;
-        for (int i = 0 ; i<interactableButtonCount ; i++)
-            {
-            interactableButton=interactableButtonGroups.transform.GetChild(i).gameObject.GetComponent<InteractableButton>();
-            attachedObject=interactableButton.GetGameObject();
-            if (attachedObject==raycastedObject)
-                {
-                interactableButton.Detach();
-                Destroy(raycastedObject);
-                break;
-                }
-            }
-        */
+    //    InteractableButton interactableButton;
+    //    GameObject attachedObject;
+    //    for (int i = 0 ; i<interactableButtonCount ; i++)
+    //        {
+    //        interactableButton=interactableButtonGroups.transform.GetChild(i).gameObject.GetComponent<InteractableButton>();
+    //        attachedObject=interactableButton.GetGameObject();
+    //        if (attachedObject==raycastedObject)
+    //            {
+    //            interactableButton.Detach();
+    //            Destroy(raycastedObject);
+    //            break;
+    //            }
+    //        }
+    //    */
 
-        raycastedObject.GetComponent<InteractableInRange>().DestroyGameObject();
-    }
+    //    raycastedObject.GetComponent<InteractableInRange>().DestroyGameObject();
+    //}
 
     public void Inspect(GameObject raycastedObject)
     {
         playerController.Inspect(raycastedObject);
     }
-
-    //public void CollectObject (GameObject interactableRaycastedObject)
-    //    {
-    //    // this should be an interactableRaycastedObject
-
-    //    }
-
-    public void CollectObject (InteractableT interactableRaycastedObject)
-        {
-        // this should be an interactableRaycastedObject
-        interactableRaycastedObject.DestroyGameObject();
-        }
-
-    void SetFocus (InteractableT newFocus)
-        {
-        focus=newFocus;
-        focus.OnFocused(transform);
-        }
-
-    void RemoveFocus ()
-        {
-        focus=null;
-        //focus.OnDefocused();
-        }
 
 
 }

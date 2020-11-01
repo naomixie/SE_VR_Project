@@ -11,24 +11,19 @@ public class PickUpItem : InteractableT
         //Executes all the code from the base interaction function located inside InteractableT
         base.Interact();
         //After this would be code exclusive to PickUpItem
-        Debug.Log("In PickupItem Interact");
+        //Debug.Log("In PickupItem Interact");
         PickUp();
     }
 
     public void PickUp ()
     {
-        // Debug.Log("In PickupItem Pickup");
-        // Debug.Log("Picking up "+item.name);
-        
         riddleBrain.ActiveRiddle(riddleBrain.currentRiddleManager, riddle, interactCode);
 
+        Debug.Log("Picking up "+item.name);
         if (Inventory.instance.Add(item))
         {
             Destroy(gameObject);
         }
-
-        //DestroyGameObject();
-
     }
 
 }
