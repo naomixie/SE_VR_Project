@@ -17,7 +17,7 @@ public class PickUpItem : InteractableT
 
     public void PickUp ()
     {
-        riddleBrain.ActiveRiddle(riddleBrain.currentRiddleManager, riddle, interactCode);
+        // riddleBrain.ActiveRiddle(riddleBrain.currentRiddleManager, riddle, interactCode);
 
         Debug.Log("Picking up "+item.name);
         if (Inventory.instance.Add(item))
