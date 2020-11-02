@@ -15,9 +15,10 @@ public class Riddle : MonoBehaviour
     // 部分谜题将包含其他谜题
     public int riddleStatus = 1;
 
+    // public RiddleManager riddleManager;
+
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -26,9 +27,12 @@ public class Riddle : MonoBehaviour
         
     }
 
-    public virtual int RiddleDetail()
+    public virtual int Interact(int interactCode)
     {
         // 把所有的谜题详情写在该类的子类中
-        return 0;
+        // 返回成功与否
+        //      具体的触发事件写在子类的Interact函数中
+        Debug.Log("Interacted with riddle.");
+        return 1;
     }
 }
