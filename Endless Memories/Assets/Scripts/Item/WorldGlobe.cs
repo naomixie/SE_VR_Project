@@ -27,7 +27,6 @@ public class WorldGlobe : InteractableT
             else
             {
                 clock.GetComponent<Animation>().Play();
-                clock.GetComponent<AudioSource>().PlayDelayed(10.0F);
                 done = true;
             }
         }
