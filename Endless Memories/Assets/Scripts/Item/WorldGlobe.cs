@@ -11,9 +11,6 @@ public class WorldGlobe : InteractableT
     [SerializeField] private Animation spinAnim;
     [SerializeField] private bool done = false;
 
-    private void Update() {
-    }
-
     public override void Interact()
     {
         base.Interact();
@@ -29,7 +26,8 @@ public class WorldGlobe : InteractableT
                 spinnedTimes++;
             else
             {
-                clock.GetComponent<Animator>().Play("Clock Fall");
+                clock.GetComponent<Animation>().Play();
+                clock.GetComponent<AudioSource>().PlayDelayed(10.0F);
                 done = true;
             }
         }
