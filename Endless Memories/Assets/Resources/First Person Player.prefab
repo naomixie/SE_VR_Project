@@ -146,9 +146,7 @@ GameObject:
   - component: {fileID: 5237652827573699805}
   - component: {fileID: 5237652827573699804}
   - component: {fileID: 5237652827573699778}
-  - component: {fileID: 5237652827573699779}
   - component: {fileID: 5237652827573699777}
-  - component: {fileID: 5237652827573699782}
   - component: {fileID: 5237652827573699776}
   - component: {fileID: 1437816495}
   - component: {fileID: 1437816494}
@@ -217,21 +215,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  footstepSE: {fileID: 0}
---- !u!114 &5237652827573699779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5237652827573699807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b76cfaf2f4323242a28cbf6f6bf1d32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  inventorySlot: {fileID: 0}
 --- !u!114 &5237652827573699777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,19 +237,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   uiCrosshair: {fileID: 0}
---- !u!114 &5237652827573699782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5237652827573699807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 367957e7b31c7634bbe2179fbda29beb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  focus: {fileID: 0}
 --- !u!114 &5237652827573699776
 MonoBehaviour:
   m_ObjectHideFlags: 0

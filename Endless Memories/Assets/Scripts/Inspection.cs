@@ -8,7 +8,7 @@ public class Inspection : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Raycast raycast;
     [SerializeField] private MouseLook mouseLook;
-    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Surviver playerMovement;
     [SerializeField] private Transform inspectionObjectTransform;
     [SerializeField] private bool inspect = false;
 
@@ -22,7 +22,7 @@ public class Inspection : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("First Person Player");
         raycast = player.GetComponentInChildren<Raycast>();
         mouseLook = player.GetComponentInChildren<MouseLook>();
-        playerMovement = player.GetComponentInChildren<PlayerMovement>();
+        playerMovement = player.GetComponentInChildren<Surviver>();
     }
 
     // Update is called once per frame

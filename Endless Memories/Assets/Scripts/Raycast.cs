@@ -12,8 +12,6 @@ public class Raycast : MonoBehaviour
     private CinemachineVirtualCamera fpsCam;
     private bool interactable;
 
-    private int solo = 1;
-
     private GameObject interactableButtonGroups;
     private InteractableT interactableRaycastedObject;
 
