@@ -83,6 +83,7 @@ public class Clock : MonoBehaviour {
     public void ClockCrush()
     {
         clockCrushSE.Play();
+        Chase.instance.noticeSound(100, base.transform.position);
     }
     // Animation Event
     public void ClockFall()

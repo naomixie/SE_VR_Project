@@ -8,8 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class Chase : MonoBehaviour
 {
+    public static Chase instance;
     //通过寻路要去找到的  目标物体
-    public GameObject target;
+    private GameObject target;
     //寻路组件
     private NavMeshAgent agent;
     //stun when used teleport
@@ -21,9 +22,13 @@ public class Chase : MonoBehaviour
 	
 	private string[] SPOTS_SUFFIX = {"+X", "-X", "+Z", "-Z"};
 
-    public bool chaseOn;
+    public bool doKill = false;
 
-    private void Start()
+    void Awake()
+    {
+        instance = this;
+    }
+    void Start()
     {
         target = GameObject.FindGameObjectWithTag("First Person Player");
         //获取寻路物体上的NavMeshAgent组件, 通过SetDestination方法(网格路径计算)实现自动寻路
@@ -59,7 +64,7 @@ public class Chase : MonoBehaviour
 				}
 			}
 			//if touch player we should jump to gameover scene
-			if (Vector3.Distance(target.transform.position, transform.position) < 0.3 && chaseOn)
+			if (Vector3.Distance(target.transform.position, transform.position) < 0.3 && doKill)
 			{
 				MouseLook mouseLook = GameObject.Find("First Person Player/FPS Camera").GetComponent<MouseLook>();
 				mouseLook.enabled = false;

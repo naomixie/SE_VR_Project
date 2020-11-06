@@ -14,21 +14,13 @@ public class WorldGlobe : InteractableT
     public override void Interact()
     {
         base.Interact();
-        WorldGlobeSpin();
-    }
-
-    public void WorldGlobeSpin()
-    {
         // spinAnim.Play("WorldGlobe");
-        if(!done)
+        if (spinnedTimes < 3)
+            spinnedTimes++;
+        else if (spinnedTimes == 3)
         {
-            if(spinnedTimes < 3)
-                spinnedTimes++;
-            else
-            {
-                clock.GetComponent<Animation>().Play();
-                done = true;
-            }
+            clock.GetComponent<Animation>().Play();
+            done = true;
         }
     }
 }

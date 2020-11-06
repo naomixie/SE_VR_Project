@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Transform itemsParent;
-
-    Inventory inventory;
+    public static InventoryUI instance;
 
     public InventorySlot[] slots;
 
@@ -18,25 +16,23 @@ public class InventoryUI : MonoBehaviour
     //public AnimationClip slotHover;
     //public AnimationClip slotActive;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        //InventoryUI inventory;
-
-        inventory = Inventory.instance;
-        inventory.onItemChangedCallback += UpdateUI;
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-
-
     }
 
-    void UpdateUI ()
+    public void UpdateUI ()
     {
-        for (int i = 0 ; i < slots.Length ; i++)
+        for (int i = 0 ; i < slots.Length; i++)
         {
-            if (i < inventory.items.Count)
+            if (i < Inventory.instance.items.Count)
             {
-                slots[i].AddItem(inventory.items[i]);
+                slots[i].AddItem(Inventory.instance.items[i]);
+                Debug.Log("added item " + Inventory.instance.items[i].name + " at " + i);
             }
             else
             {

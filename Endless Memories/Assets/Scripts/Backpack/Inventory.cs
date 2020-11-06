@@ -6,9 +6,6 @@ public class Inventory : MonoBehaviour
 {
     #region Singleton
 
-    public delegate void OnItemChanged ();
-    public OnItemChanged onItemChangedCallback;
-
     public int space = 20;
 
     public static Inventory instance;
@@ -34,8 +31,7 @@ public class Inventory : MonoBehaviour
         if (!item.isDefaultItem && items.Count < space)
         {
             items.Add(item);
-            if(onItemChangedCallback!= null)
-            onItemChangedCallback.Invoke();
+            InventoryUI.instance.UpdateUI();
             return true;
         }
         return false;
@@ -44,8 +40,7 @@ public class Inventory : MonoBehaviour
     public void Remove (Item item)
     {
         items.Remove(item);
-        if (onItemChangedCallback != null)
-            onItemChangedCallback.Invoke();
+        InventoryUI.instance.UpdateUI();
     }
 
 
