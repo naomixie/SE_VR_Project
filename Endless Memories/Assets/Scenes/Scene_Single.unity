@@ -2597,7 +2597,11 @@ MonoBehaviour:
   riddleBrain: {fileID: 0}
   riddle: {fileID: 0}
   interactCode: 0
-  item: {fileID: 11400000, guid: 751eaf5dfa2ecf347b5f821cacb6dab0, type: 2}
+  name: "\u7535\u6C60"
+  icon: {fileID: 21300000, guid: 69ebbcf22d5420a4da193a85b36973d8, type: 3}
+  isDefaultItem: 0
+  description: "\u4E24\u6839\u5E38\u89C1\u4E0D\u8FC7\u7684\u7535\u6C60\uFF0C\u65E0\u6CD5\u786E\u5B9A\u91CC\u5934\u8FD8\u6709\u591A\u5C11\u7535\u3002"
+  detailImage: {fileID: 0}
 --- !u!65 &219528998
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5711,7 +5715,11 @@ MonoBehaviour:
   riddleBrain: {fileID: 0}
   riddle: {fileID: 0}
   interactCode: 0
-  item: {fileID: 11400000, guid: a36805e22784ac74683f78cc63887cef, type: 2}
+  name: New Item
+  icon: {fileID: 0}
+  isDefaultItem: 0
+  description: 
+  detailImage: {fileID: 0}
 --- !u!65 &390738138
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27563,7 +27571,11 @@ MonoBehaviour:
   riddleBrain: {fileID: 0}
   riddle: {fileID: 0}
   interactCode: 0
-  item: {fileID: 11400000, guid: 096c0dee959f9f440b6ed7fbdea05f52, type: 2}
+  name: New Item
+  icon: {fileID: 0}
+  isDefaultItem: 0
+  description: 
+  detailImage: {fileID: 0}
 --- !u!65 &1782681181
 BoxCollider:
   m_ObjectHideFlags: 0

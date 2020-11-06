@@ -121,14 +121,14 @@ public class Raycast : MonoBehaviour
     }
 
     public InteractableT GetInteractableRaycastedObject ()
-        {
+    {
         //Debug.Log(interactableRaycastedObject.name);
-        if (interactableRaycastedObject!= null)
-            {
+        if (interactableRaycastedObject != null)
+        {
             return interactableRaycastedObject;
-            }
-        return null;
         }
+        return null;
+    }
 
     private void OnDrawGizmosSelected()
     {

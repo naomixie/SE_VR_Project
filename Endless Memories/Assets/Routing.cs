@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Routing : MonoBehaviour
 {
-    public Transform itemsParent;
     public GameObject inventoryUI;
     public GameObject inventoryDetailsUI;
     public GameObject mapUI;
