@@ -19,7 +19,12 @@ public class MainMenu : MonoBehaviour
 
     public void GameOver()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);//back to mainmenu
+    }
+
+    public void BackToGame()
+    {
+        SceneManager.LoadScene(1);//back to singlescene
     }
 
     public void QuitGame()

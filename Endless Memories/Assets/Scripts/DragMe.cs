@@ -28,7 +28,7 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		// The icon will be under the cursor.
 		// We want it to be ignored by the event system.
 		var group = m_DraggingIcons[eventData.pointerId].AddComponent<CanvasGroup>();
-		group.blocksRaycasts = false;
+		//group.blocksRaycasts = false;
 
 		image.sprite = GetComponent<Image>().sprite;
 		image.SetNativeSize();
