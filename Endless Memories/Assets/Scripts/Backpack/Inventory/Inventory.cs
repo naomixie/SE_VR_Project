@@ -4,27 +4,21 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    #region Singleton
-
     public int space = 20;
 
     public static Inventory instance;
 
+    public List<Item> items = new List<Item>();
+
     void Awake ()
     {
-        if (instance!=null)
+        if (instance != null)
         {
             Debug.LogWarning("More than one instance of Inventory!");
             return;
         }
         instance=this;
-        
     }
-
-    #endregion
-
-
-    public List<Item> items = new List<Item>();
 
     public bool Add (Item item)
     {
@@ -42,12 +36,4 @@ public class Inventory : MonoBehaviour
         items.Remove(item);
         InventoryUI.instance.UpdateUI();
     }
-
-
-
-    // Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
 }
