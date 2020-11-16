@@ -16,7 +16,7 @@ public class InteractableT : MonoBehaviour
     public int interactCode;
 
     private void Start() {
-        riddleBrain = GameObject.FindGameObjectWithTag("RiddleBrain").GetComponent<RiddleBrain>();    
+        //riddleBrain = GameObject.FindGameObjectWithTag("RiddleBrain").GetComponent<RiddleBrain>();    
     }
 
     void Update ()
