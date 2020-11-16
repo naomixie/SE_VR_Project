@@ -5,6 +5,7 @@ using UnityEngine;
 public class TabGroup : MonoBehaviour
 {
     public List<TabButton> tabButtons;
+    public InventoryUI inventoryUI;
     public Sprite tabIdle;
     public Sprite tabHover;
     public Sprite tabActive;
@@ -19,8 +20,6 @@ public class TabGroup : MonoBehaviour
             tabButtons = new List<TabButton>();
         }
         tabButtons.Add(button);
-        Debug.Log("Adding tabButton");
-        
     }
 
     public void OnTabEnter (TabButton button)
@@ -55,6 +54,9 @@ public class TabGroup : MonoBehaviour
                 leftPanel[i].SetActive(false);
             }
         }
+        inventoryUI.selectedSlot = null;
+        inventoryUI.ResetSlots();
+
     }
 
     public void ResetTabs ()

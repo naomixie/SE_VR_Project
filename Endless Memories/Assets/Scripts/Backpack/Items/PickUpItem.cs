@@ -11,7 +11,10 @@ public class PickUpItem : Item
         //After this would be code exclusive to PickUpItem
         if (Inventory.instance.Add(this))
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            Destroy(GetComponent<Rigidbody>());
+            Destroy(GetComponent<BoxCollider>());
+            Destroy(GetComponent<MeshRenderer>());
         }
     }
 }
