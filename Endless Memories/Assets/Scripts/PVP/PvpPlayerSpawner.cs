@@ -17,6 +17,9 @@ public class PvpPlayerSpawner : MonoBehaviourPun
     public GameObject fpsPlayer = null;
     public GameObject tpsPlayer = null;
 
+    // public PvpFpsManager fpsManagerPrefab;
+    // public PvpTpsManager tpsManagerPrefab;
+
     public PvpFpsManager fpsManager;
     public PvpTpsManager tpsManager;
 
@@ -24,7 +27,7 @@ public class PvpPlayerSpawner : MonoBehaviourPun
 
     public Transform fpsSpawnPoint;
 
-    public GameObject FPSCanvas;
+    public Canvas FPSCanvas;
 
 
     private void Start()
@@ -54,49 +57,59 @@ public class PvpPlayerSpawner : MonoBehaviourPun
 
     private void Update()
     {
-        if(!synced)
+        if(fpsManager != null && tpsManager != null && FPSCanvas != null)
         {
-            if(playerMode == 1)
+            if(!synced)
             {
-                // Fps Player settings
+                if(playerMode == 1)
+                {
+                    // Fps Player settings
 
-                var tps = GameObject.FindGameObjectWithTag("Third Person Player");
+                    var tps = GameObject.FindGameObjectWithTag("Third Person Player");
 
-                if (tps == null) return;
+                    if (tps == null) return;
 
-                // Setting cameras
-                // Fps
-                fpsCamera.enabled = true;
+                    // Setting cameras
+                    // Fps
+                    fpsCamera.enabled = true;
 
-                // Tps
-                tpsCamera = tps.GetComponentInChildren<CinemachineFreeLook>();
-                tpsCamera.enabled = false;
-                tpsManager.Init(tps);
-                tpsManager.Disable();
-                FPSCanvas.GetComponent<Routing>().SetPlayer(fpsPlayer);
-                
+                    // Tps
+                    tpsCamera = tps.GetComponentInChildren<CinemachineFreeLook>();
+                    tpsCamera.enabled = false;
+
+                    fpsManager.Init(tps, fpsPlayer);
+                    fpsManager.Disable();
+                    FPSCanvas.GetComponent<Routing>().SetPlayer(fpsPlayer);
+                    
+                }
+                else
+                {
+                    // Tps Player settings
+
+                    var fps = GameObject.FindGameObjectWithTag("First Person Player");
+                    
+                    if (fps == null) return;
+
+
+                    // Setting cameras
+                    // Fps
+                    fpsCamera = fps.GetComponentInChildren<CinemachineVirtualCamera>();
+                    fpsCamera.enabled = false;
+
+                    tpsManager.Init(fps, tpsPlayer);
+                    tpsManager.Disable();
+                    
+
+                    // Tps
+                    tpsCamera.enabled = true;
+                    tpsCamera.LookAt = fps.transform;
+                }
+                synced = !synced;
             }
-            else
-            {
-                // Tps Player settings
-
-                var fps = GameObject.FindGameObjectWithTag("First Person Player");
-                
-                if (fps == null) return;
-
-                // Setting cameras
-                // Fps
-                fpsCamera = fps.GetComponentInChildren<CinemachineVirtualCamera>();
-                fpsCamera.enabled = false;
-                fpsManager.Init(fps);
-                fpsManager.Disable();
-                
-
-                // Tps
-                tpsCamera.enabled = true;
-                tpsCamera.LookAt = fps.transform;
-            }
-            synced = !synced;
+        }else{
+            tpsManager = GameObject.FindGameObjectWithTag("TPS Manager").GetComponent<PvpTpsManager>();
+            fpsManager = GameObject.FindGameObjectWithTag("FPS Manager").GetComponent<PvpFpsManager>();
+            FPSCanvas = tpsManager.fpsCanvas;
         }
     }
 }

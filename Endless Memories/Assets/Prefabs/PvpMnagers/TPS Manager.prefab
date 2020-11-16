@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2307957659868181492}
   - component: {fileID: 1128378303709116483}
+  - component: {fileID: 8308143691459066719}
   m_Layer: 0
   m_Name: TPS Manager
   m_TagString: Untagged
@@ -45,5 +46,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaser: {fileID: 0}
   player: {fileID: 0}
-  canvas: {fileID: 0}
+  fpsCanvas: {fileID: 0}
   inventorySlot: {fileID: 0}
+--- !u!114 &8308143691459066719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8011052015947501680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 1
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

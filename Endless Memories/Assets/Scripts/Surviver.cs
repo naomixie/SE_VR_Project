@@ -17,6 +17,8 @@ public class Surviver : MonoBehaviourPun
     // PVP
     private int solo = 1;
 
+    private PvpManager pvpManager;
+
     // Movement, Ground check, Gravity
     Vector3 velocity;
     public Transform groundCheck;
@@ -32,6 +34,10 @@ public class Surviver : MonoBehaviourPun
     {
         raycast = GetComponent<Raycast>();
         inspection = GetComponentInChildren<Inspection>();
+        if(PlayerPrefs.GetInt("pvp") == 1)
+        {
+            pvpManager = GameObject.FindGameObjectWithTag("PvpManager").GetComponent<PvpManager>();
+        }
     }
 
     // Update is called once per frame
@@ -59,8 +65,12 @@ public class Surviver : MonoBehaviourPun
         controller.Move(move * speed * Time.deltaTime);
 
         // Jump
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Space)) && isGrounded)
         {
+            // TODO: Wrapper
+            // pvpManager.test -= 1;
+
+            // Wrapper end
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
