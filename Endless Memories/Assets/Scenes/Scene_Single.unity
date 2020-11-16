@@ -5712,6 +5712,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 3
+  isFocus: 0
+  des: 0
+  player: {fileID: 0}
   riddleBrain: {fileID: 0}
   riddle: {fileID: 0}
   interactCode: 0
@@ -20915,8 +20918,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1383461202}
-  - component: {fileID: 1383461201}
-  - component: {fileID: 1383461203}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -20924,20 +20925,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1383461201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383461200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0c0a4332f23f034e8bc6805a37cbb3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  space: 20
-  items: []
 --- !u!4 &1383461202
 Transform:
   m_ObjectHideFlags: 0
@@ -20952,18 +20939,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1383461203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383461200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1388219452
 GameObject:
   m_ObjectHideFlags: 0
@@ -27568,6 +27543,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 3
+  isFocus: 0
+  des: 0
+  player: {fileID: 0}
   riddleBrain: {fileID: 0}
   riddle: {fileID: 0}
   interactCode: 0
@@ -35234,6 +35212,7 @@ GameObject:
   - component: {fileID: 7487182823757682343}
   - component: {fileID: 7487182823757682341}
   - component: {fileID: 7487182823757682342}
+  - component: {fileID: 7487182823757682338}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -35262,6 +35241,20 @@ RectTransform:
   m_AnchoredPosition: {x: 121, y: 0}
   m_SizeDelta: {x: 600, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7487182823757682338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487182823757682336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c0a4332f23f034e8bc6805a37cbb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  space: 20
+  items: []
 --- !u!114 &7487182823757682341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40550,7 +40543,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf68dd000e7d29489889f80e1a05c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsParent: {fileID: 0}
   inventoryUI: {fileID: 7487182823757682336}
   inventoryDetailsUI: {fileID: 7487182823820352088}
   mapUI: {fileID: 7487182824801105130}
