@@ -51,7 +51,7 @@ public class Chase : MonoBehaviour
 			Vector3 direction = target.transform.position - (transform.position + transform.up/2);
 			float angleDiff = Vector3.Angle(direction, transform.forward);
 			//Debug.Log("angleDiff: " + angleDiff);
-			if (angleDiff < 0.5 * 30)
+			if (angleDiff < 0.5 * 80)
 			{
 				RaycastHit hit;
 				if (Physics.Raycast(transform.position + transform.up/2, direction.normalized, out hit))
@@ -60,6 +60,11 @@ public class Chase : MonoBehaviour
 					{
 						restedFrame = 0;
 						agent.SetDestination(target.transform.position);
+                        if(!Surviver.instance.chasingBGM.isPlaying)
+                        {
+                            Surviver.instance.chasingBGM.Play();
+                            Surviver.instance.noticedBGM.Stop();
+                        }
 					}
 				}
 			}
@@ -75,7 +80,9 @@ public class Chase : MonoBehaviour
 			//Debug.Log("destToTarget: " + Vector3.Distance(agent.destination, transform.position) + ", restFrame" + restedFrame);
 			if (agent.destination == null || Vector3.Distance(agent.destination, transform.position) < 1)
 			{
-				if(++restedFrame > 1000)
+                Surviver.instance.noticedBGM.Stop();
+                Surviver.instance.chasingBGM.Stop();
+                if (++restedFrame > 1000)
 				{
 					restedFrame = 0;
 					patrolRandomSpot();
@@ -88,6 +95,8 @@ public class Chase : MonoBehaviour
 		if(Vector3.Distance(position, transform.position) < 10*soundLevel) {
 			restedFrame = 0;
 			move(position);
+            if(!Surviver.instance.noticedBGM.isPlaying)
+                Surviver.instance.noticedBGM.Play();
 		}
 	}
 	private void patrolRandomSpot()

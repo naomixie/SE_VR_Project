@@ -7,6 +7,11 @@ using UnityEngine;
 public class Surviver : MonoBehaviourPun
 {
     public static Surviver instance;
+
+    // BGM
+    public AudioSource noticedBGM;
+    public AudioSource chasingBGM;
+
     // Input
     public CharacterController controller;
 
@@ -28,7 +33,6 @@ public class Surviver : MonoBehaviourPun
     // Inspections
     private Raycast raycast;
     private Inspection inspection;
-
     private void Awake()
     {
         instance = this;
