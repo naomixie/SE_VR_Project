@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Surviver : MonoBehaviourPun
 {
+    public static Surviver instance;
     // Input
     public CharacterController controller;
 
@@ -28,6 +29,10 @@ public class Surviver : MonoBehaviourPun
     private Raycast raycast;
     private Inspection inspection;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         raycast = GetComponent<Raycast>();
@@ -110,8 +115,32 @@ public class Surviver : MonoBehaviourPun
         if (Input.GetKeyDown("v"))
         {
             Debug.Log("Pressed v");
-            inspection.Inspect(raycast.GetRaycastedObject());
+            inspection.Inspect(RaycastedObject());
+        }
+
+        // Use item
+        if (Input.GetKeyDown("u"))
+        {
+            Item item = ItemInHand();
+            if(item == null)
+            {
+                Debug.Log("Pressed u, no item in hand");
+            }
+            else
+            {
+                Debug.Log("Pressed u, item in hand is " + item.gameObject.name);
+                item.Use();
+            }   
         }
     }
 
+    public Item ItemInHand()
+    {
+        return InventoryUI.instance.getSelectedItem();
+    }
+
+    public GameObject RaycastedObject()
+    {
+        return raycast.GetRaycastedObject();
+    }
 }

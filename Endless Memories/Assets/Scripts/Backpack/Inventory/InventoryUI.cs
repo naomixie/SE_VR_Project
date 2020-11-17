@@ -66,10 +66,12 @@ public class InventoryUI : MonoBehaviour
     public void OnSlotSelected (InventorySlot slot)
     {
         selectedSlot = slot;
+        Debug.Log("1selected slot is " + slot.name);
         ResetSlots();
         slot.Background.sprite = slotActive;
         int index = slot.transform.GetSiblingIndex();
-        
+        Debug.Log("2selected slot is " + slot.name);
+
     }
 
     public void ResetSlots ()
@@ -86,11 +88,11 @@ public class InventoryUI : MonoBehaviour
 
     public void Update ()
     {
-        if (gameObject.activeSelf && selectedSlot!= null && Input.GetKeyDown(KeyCode.W))
-        {
+        //if (gameObject.activeSelf && selectedSlot!= null && Input.GetKeyDown(KeyCode.W))
+        //{
             // Use item only when object is chosen
-            selectedSlot.item.Use();
-        }
+            //selectedSlot.item.Use();
+        //}
 
         if (selectedSlot != null)
         {
@@ -99,5 +101,17 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    public InventorySlot getSelectedSlot()
+    {
+        return selectedSlot;
+    }
+    public Item getSelectedItem()
+    {
+        InventorySlot slot = getSelectedSlot();
+        Debug.Log("selected slot is " + slot.name);
+        if (slot != null)
+            return slot.item;
+        return null;
+    }
 
 }
