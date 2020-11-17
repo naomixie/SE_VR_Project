@@ -25,6 +25,7 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = item.icon;
         icon.enabled = true;
         removeButton.interactable = true;
+        newItem.gameObject.SetActive(false);
         Debug.Log("adding item " + item.name + " at slot ");
         Debug.Log(item == null);
     }
