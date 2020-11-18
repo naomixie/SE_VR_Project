@@ -63,7 +63,10 @@ public class Raycast : MonoBehaviour
             CrosshairNormal();
         }
 
-        // Selecting objects within range
+        // [TMP]
+        // Pop up interact options, when focus on a interactable object.
+        // -> We simplified interaction to just one operation, so these code are not used.
+        /*
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
         foreach (var hitCollider in hitColliders)
         {
@@ -80,6 +83,7 @@ public class Raycast : MonoBehaviour
                 }
             }
         }
+        */
     }
 
     void CrosshairActive()
