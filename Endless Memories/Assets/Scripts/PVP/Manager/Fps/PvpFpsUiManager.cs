@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PvpFpsUiManager : MonoBehaviour
 {
+    public Canvas fpsCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,10 @@ public class PvpFpsUiManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Init()
+    {
+        fpsCanvas.gameObject.SetActive(true);
     }
 }

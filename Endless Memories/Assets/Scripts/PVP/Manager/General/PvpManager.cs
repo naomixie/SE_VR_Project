@@ -151,8 +151,8 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void UpdateText()
     {
-        fpsScoreText.text = fScore.ToString();
-        tpsScoreText.text = tScore.ToString();
+        fpsScoreText.text = "SURVIVOR\n" + fScore.ToString();
+        tpsScoreText.text = "REAPER\n" + tScore.ToString();
         waveText.text = "WAVE\n" + waveCount.ToString();
     }
 

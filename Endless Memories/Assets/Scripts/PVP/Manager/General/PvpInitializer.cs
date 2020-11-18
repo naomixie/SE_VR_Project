@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PvpPlayerSpawner : MonoBehaviourPun
+public class PvpInitializer : MonoBehaviourPun
 {
     [SerializeField] private GameObject fpsPrefab = null;
     [SerializeField] private GameObject tpsPrefab = null;

@@ -18,9 +18,12 @@ public class PvpFpsManager : MonoBehaviourPunCallbacks, IPunObservable
     public PvpManager pvpManager;
     public int fScore;
 
+    public PvpFpsUiManager pvpFpsUiManager;
+
     void Start()
     {
         pvpManager = GameObject.FindGameObjectWithTag("PVP Manager").GetComponent<PvpManager>();
+        pvpFpsUiManager = gameObject.GetComponent<PvpFpsUiManager>();
     }
 
     void Update()
@@ -37,14 +40,19 @@ public class PvpFpsManager : MonoBehaviourPunCallbacks, IPunObservable
         }
 
         fpsPlayer = fps;
+        Enable();
         Disable();
     }
 
+    public void Enable()
+    {
+        pvpFpsUiManager.Init();
+    }
 
     // Disabling components for FPS player
     public void Disable()
     {
-        tpsCanvas.enabled = false;
+        tpsCanvas.gameObject.SetActive(false);
     }
 
     // Data synchronization for Photon
