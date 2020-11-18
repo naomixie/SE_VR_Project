@@ -13,12 +13,19 @@ public class Routing : MonoBehaviour
     public GameObject clueDetailsUI;
     public GameObject escUI;
     public GameObject escDetailsUI;
-    //public GameObject settingsUI;
-    //public GameObject settingsDetailsUI;
+    public GameObject settingsUI;
+    public GameObject settingsDetailsUI;
     public GameObject NavBar;
     public GameObject player;
     public GameObject rightPanel;
     public GameObject leftPanel;
+    public TabGroup tabGroup;
+    public TabButton inventoryButton;
+    public TabButton mapButton;
+    public TabButton clueButton;
+    public InventoryUI scriptInventoryUI;
+
+
     bool isOpen;
     public enum curPanel {inventory,map,clue,settings,pause,esc};
     public curPanel currPanel;
@@ -38,12 +45,13 @@ public class Routing : MonoBehaviour
             {
                 isOpen = true;
                 openPanel();
-                openInventoryPanel();
+                tabGroup.OnTabSelected(inventoryButton);
+
             }
             else
             {
                 // a Panel is already open
-                if (currPanel == curPanel.inventory)
+                if (tabGroup.selectedTab == inventoryButton)
                 {
                     // close panel if same 
                     closePanel();
@@ -52,16 +60,9 @@ public class Routing : MonoBehaviour
                 }
                 else
                 {
-                    closeCluePanel();
-                    closeMapPanel();
-                    closeEscPanel();
-                    //closeSettingsPanel();
-                    closePausePanel();
-                    openInventoryPanel();
-
+                    tabGroup.OnTabSelected(inventoryButton);
                 }
             }
-            
             //show();
         }
 
@@ -72,12 +73,12 @@ public class Routing : MonoBehaviour
             {
                 isOpen = true;
                 openPanel();
-                openMapPanel();
+                tabGroup.OnTabSelected(mapButton);
             }
             else
             {
                 // a Panel is already open
-                if (currPanel == curPanel.map)
+                if (tabGroup.selectedTab == mapButton)
                 {
                     // close panel if same 
                     closePanel();
@@ -86,13 +87,7 @@ public class Routing : MonoBehaviour
                 }
                 else
                 {
-                    closeCluePanel();
-                    closeInventoryPanel();
-                    //closeSettingsPanel();
-                    closeEscPanel();
-                    closePausePanel();
-                    openMapPanel();
-
+                    tabGroup.OnTabSelected(mapButton);
                 }
             }
 
@@ -106,12 +101,12 @@ public class Routing : MonoBehaviour
             {
                 isOpen = true;
                 openPanel();
-                openCluePanel();
+                tabGroup.OnTabSelected(clueButton);
             }
             else
             {
                 // a Panel is already open
-                if (currPanel == curPanel.clue)
+                if (tabGroup.selectedTab == clueButton)
                 {
                     // close panel if same 
                     closePanel();
@@ -120,56 +115,15 @@ public class Routing : MonoBehaviour
                 }
                 else
                 {
-                    closeInventoryPanel();
-                    closeMapPanel();
-                    //closeSettingsPanel();
-                    closeEscPanel();
-                    closePausePanel();
-                    openCluePanel();
-
+                    tabGroup.OnTabSelected(clueButton);
                 }
             }
 
             //show();
         }
 
-        //if (Input.GetButtonDown("Settings"))
-        //{
-        //    // NoPanels are active
-        //    if (!isOpen)
-        //    {
-        //        isOpen = true;
-        //        openPanel();
-        //        openSettingsPanel();
-        //    }
-        //    else
-        //    {
-        //        // a Panel is already open
-        //        if (currPanel == curPanel.settings)
-        //        {
-        //            // close panel if same 
-        //            closePanel();
-        //            isOpen = false;
-        //            closeSettingsPanel();
-        //        }
-        //        else
-        //        {
-        //            closeCluePanel();
-        //            closeMapPanel();
-        //            closeInventoryPanel();
-        //            closePausePanel();
-        //            closeEscPanel();
-        //            openSettingsPanel();
-
-        //        }
-        //    }
-
-        //    //show();
-        //}
-
-        if (Input.GetButtonDown("Esc") && isOpen)
+        if (Input.GetButtonDown("Esc"))
         {
-
             // NoPanels are active
             if (!isOpen)
             {
@@ -180,30 +134,12 @@ public class Routing : MonoBehaviour
             else
             {
                 // a Panel is already open
-                if (currPanel == curPanel.esc)
-                {
-                    // close panel if same 
-                    closePanel();
-                    isOpen = false;
-                    closeEscPanel();
-                }
-                else
-                {
-                    closeInventoryPanel();
-                    closeMapPanel();
-                    //closeSettingsPanel();
-                    closePausePanel();
-                    closeCluePanel();
-                    openEscPanel();
-
-                }
+                CloseAll();
             }
 
             //show();
-            //CloseAll();
         }
 
-        // if (Input.GetButtonDown("P") || Input.GetButtonDown("p"))
         if (Input.GetKeyDown(KeyCode.P))
         {
             // NoPanels are active
@@ -388,5 +324,8 @@ public class Routing : MonoBehaviour
         closeCluePanel();
         //closeSettingsPanel();
         closePanel();
+        scriptInventoryUI.selectedSlot = null;
+        scriptInventoryUI.ResetSlots();
+
     }
 }

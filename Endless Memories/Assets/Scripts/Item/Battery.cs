@@ -15,7 +15,22 @@ public class Battery : PickUpItem
     {
         
     }
-
+    public override void Use()
+    {
+        base.Use();
+        GameObject raycastedObject = Surviver.instance.RaycastedObject();
+        if (raycastedObject != null)
+        {
+            if (raycastedObject.name.Equals("alpinist"))
+            {
+                Debug.Log("battery: I found alpinist!");
+            }
+            else
+            {
+                Debug.Log("battery: I found " + raycastedObject.name);
+            }
+        }
+    }
     public override void Interact()
     {
         base.Interact();
