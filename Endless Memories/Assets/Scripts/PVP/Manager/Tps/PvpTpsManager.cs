@@ -31,6 +31,7 @@ public class PvpTpsManager : MonoBehaviourPun
     {
         chaser = GameObject.FindGameObjectWithTag("Chaser");
         pvpManager = GameObject.FindGameObjectWithTag("PVP Manager").GetComponent<PvpManager>();
+        pvpTpsDataManager = gameObject.GetComponent<PvpTpsDataManager>();
     }
 
     // Update is called once per frame
