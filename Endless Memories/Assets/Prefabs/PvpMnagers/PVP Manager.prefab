@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1561788591271658398}
   - component: {fileID: 1561788591271658399}
   - component: {fileID: 1561788591271658397}
+  - component: {fileID: 1561788589654501583}
   m_Layer: 0
   m_Name: PVP Manager
-  m_TagString: Untagged
+  m_TagString: PVP Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,6 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9dd280590d6b814c905b7f3a07f7ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pvpFpsManager: {fileID: 0}
+  pvpTpsManager: {fileID: 0}
+  tpsScoreText: {fileID: 0}
+  fpsScoreText: {fileID: 0}
+  waveText: {fileID: 0}
+  timeText: {fileID: 0}
+  noiceFlag: 0
+  noticePosition: {x: 0, y: 0, z: 0}
+  dropFlag: 0
+  dropPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1561788591271658397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,4 +77,30 @@ MonoBehaviour:
   fpsPlayer: {fileID: 0}
   tpsPlayer: {fileID: 0}
   fpsManager: {fileID: 0}
+  tpsManager: {fileID: 0}
   tpsSpawnPoint: {fileID: 0}
+  fpsSpawnPoint: {fileID: 0}
+  fpsCanvas: {fileID: 0}
+--- !u!114 &1561788589654501583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561788591271658396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 1561788591271658399}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 2307957659868181492}
   - component: {fileID: 1128378303709116483}
   - component: {fileID: 8308143691459066719}
+  - component: {fileID: 1223371337}
+  - component: {fileID: 1223371338}
   m_Layer: 0
   m_Name: TPS Manager
-  m_TagString: Untagged
+  m_TagString: TPS Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,9 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaser: {fileID: 0}
-  player: {fileID: 0}
-  fpsCanvas: {fileID: 0}
-  inventorySlot: {fileID: 0}
+  pvpManager: {fileID: 0}
+  fpsPlayer: {fileID: 0}
+  pvpTpsUiManager: {fileID: 1223371337}
+  pvpTpsDataManager: {fileID: 0}
 --- !u!114 &8308143691459066719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +69,42 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 1
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1223371338}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1223371337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8011052015947501680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4804056e62927644f9506679e47effc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prepareThrowBtn: {fileID: 0}
+  cancelThrowBtn: {fileID: 0}
+  prepareDropBtn: {fileID: 0}
+  cancelDropBtn: {fileID: 0}
+  tpsPlayer: {fileID: 0}
+--- !u!114 &1223371338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8011052015947501680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d104157fd4496144a9024d3984f50eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tScore: 0
+  noiceFlag: 0
+  noticePosition: {x: 0, y: 0, z: 0}
+  dropFlag: 0
+  dropPosition: {x: 0, y: 0, z: 0}

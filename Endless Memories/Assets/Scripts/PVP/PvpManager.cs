@@ -9,14 +9,14 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
     bool pvpTimeIsRunning = false;
     bool prepareTimeIsRunning = false;
 
-    float pvpTimeCountData = 90;
+    float pvpTimeCountData = 30;
     float prepareTimeCountData = 10;
 
     float pvpTimeCount;
     float prepareTimeCount;
 
 
-    int waveCount = 1;
+    int waveCount = 0;
     int tScore = 0;
     int fScore = 0;
 
@@ -28,6 +28,13 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
     public Text fpsScoreText;
     public Text waveText;
     public Text timeText;
+
+
+    public bool noiceFlag = false;
+    public Vector3 noticePosition;
+    public bool dropFlag = false;
+    public Vector3 dropPosition;
+
 
     #region IPunObservable implementation
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -72,12 +79,13 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        Score();
+        Sync();
 
         Count();
 
         UpdateText();
     }
+
 
     void DisplayTime(float timeToDisplay)
     {
@@ -105,6 +113,7 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             Debug.Log("Time has run out!");
             pvpTimeCount = 0;
+            pvpTimeCountData += 30;
             PrepareWave();
         }
         DisplayTime(pvpTimeCount);
@@ -127,39 +136,62 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void PrepareWave()
     {
+        prepareTimeCount = prepareTimeCountData;
         pvpTimeIsRunning = false;
         prepareTimeIsRunning = true;
     }
 
     void StartWave()
     {
+        pvpTimeCount = pvpTimeCountData;
         prepareTimeIsRunning = false;
         pvpTimeIsRunning = true;
+        waveCount++;
     }
 
     void UpdateText()
     {
         fpsScoreText.text = fScore.ToString();
         tpsScoreText.text = tScore.ToString();
-        // waveText = waveCount.ToString();
-        // timeText = pvpTimeCount.ToString();
-
+        waveText.text = "WAVE\n" + waveCount.ToString();
     }
 
-    void Score()
+    void Sync()
     {
-        if(pvpTpsManager.tScore != tScore)
+        if(pvpTpsManager.pvpTpsDataManager.tScore != tScore)
         {
-            tScore = pvpTpsManager.tScore;
+            tScore = pvpTpsManager.pvpTpsDataManager.tScore;
         }
 
         if(pvpFpsManager.fScore != fScore)
         {
             fScore = pvpFpsManager.fScore;
         }
+
+        if(pvpTpsManager.pvpTpsDataManager.noiceFlag != noiceFlag)
+        {
+            noiceFlag = pvpTpsManager.pvpTpsDataManager.noiceFlag;
+            noticePosition = pvpTpsManager.pvpTpsDataManager.noticePosition;
+            NoticeSound(noticePosition);
+        }
+
+        if(pvpTpsManager.pvpTpsDataManager.dropFlag != dropFlag)
+        {
+            dropFlag = pvpTpsManager.pvpTpsDataManager.dropFlag;
+            dropPosition = pvpTpsManager.pvpTpsDataManager.dropPosition;
+            DropGhost(dropPosition);
+        }
     }
 
+    public void DropGhost(Vector3 dropPosition)
+    {
+        GameObject.FindGameObjectWithTag("Chaser").GetComponent<Chase>().teleport(dropPosition);
+    }
 
+    public void NoticeSound(Vector3 noticePosition)
+    {
+        GameObject.FindGameObjectWithTag("Chaser").GetComponent<Chase>().noticeSound(100, noticePosition);
+    }
 
     public void FScore(int score)
     {

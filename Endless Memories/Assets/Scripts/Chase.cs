@@ -5,8 +5,9 @@ using UnityEngine;
 //寻路要引入的命名空间
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
-public class Chase : MonoBehaviour
+public class Chase : MonoBehaviourPun
 {
     public static Chase instance;
     //通过寻路要去找到的  目标物体
@@ -59,6 +60,7 @@ public class Chase : MonoBehaviour
 					if (hit.collider.gameObject == target)
 					{
 						restedFrame = 0;
+                        
 						agent.SetDestination(target.transform.position);
 					}
 				}

@@ -4,85 +4,62 @@ using UnityEngine;
 using UnityEngine.AI;
 using Photon.Pun;
 
+// Description:
+// This class manages FPS initialization including:
+// (1) PhotonViewOwnerships
+// (2) Disabling components for TPS player
+// (3) Data transfer and synchronization
+// (4) Sending signals for actions made by FPS player 
 public class PvpFpsManager : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public GameObject player;
+    public GameObject fpsPlayer;
     public Canvas tpsCanvas;
 
     public PvpManager pvpManager;
-
     public int fScore;
 
-    // Start is called before the first frame update
     void Start()
     {
         pvpManager = GameObject.FindGameObjectWithTag("PVP Manager").GetComponent<PvpManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
     }
 
-    public void Init(GameObject fpsPlayer, GameObject tpsPlayer)
+    // Initialize PhotonView Ownership and UiManager
+    public void Init(GameObject tpsPlayer, GameObject fps)
     {
-        Debug.Log(photonView.Owner);
-        Debug.Log(tpsPlayer.GetPhotonView().Owner);
-
         // Transfer ownership if current view is VR's view, transfer to Reaper
         if(photonView.Owner == null || !photonView.Owner.Equals(tpsPlayer.GetPhotonView().Owner))
         {
-            photonView.TransferOwnership(fpsPlayer.GetPhotonView().Owner);
+            photonView.TransferOwnership(fps.GetPhotonView().Owner);
         }
 
-        player = fpsPlayer;
+        fpsPlayer = fps;
         Disable();
-        
     }
 
+
+    // Disabling components for FPS player
     public void Disable()
     {
         tpsCanvas.enabled = false;
     }
 
-    public void Score(int score)
-    {
-        this.fScore = score; 
-        // if(pvpManager.photonView.Owner.Equals(photonView.Owner))
-        // {
-        //     pvpManager.FScore(add);
-        // }
-        // else
-        // {
-        //     Photon.Realtime.Player player = pvpManager.photonView.Owner;
-        //     pvpManager.photonView.TransferOwnership(photonView.Owner);
-        //     pvpManager.FScore(add);
-        //     pvpManager.photonView.TransferOwnership(player);
-        // }
-
-    }    
-
+    // Data synchronization for Photon
     #region IPunObservable implementation
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(fScore);
             // We own this player: send the others our data
-            // stream.SendNext(pvpTimeCount);
-            // stream.SendNext(pvpTimeIsRunning);
-            // stream.SendNext(prepareTimeCount);
-            // stream.SendNext(prepareTimeIsRunning);
+            stream.SendNext(fScore);
         }
         else
         {
             this.fScore = (int)stream.ReceiveNext();
             // Network player, receive data
-            // this.pvpTimeCount = (int)stream.ReceiveNext();
-            // this.pvpTimeIsRunning = (bool)stream.ReceiveNext();
-            // this.prepareTimeCount = (int)stream.ReceiveNext();
-            // this.prepareTimeIsRunning = (bool)stream.ReceiveNext();
         }
     }
     #endregion

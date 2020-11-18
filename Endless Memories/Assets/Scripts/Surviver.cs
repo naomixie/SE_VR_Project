@@ -124,4 +124,29 @@ public class Surviver : MonoBehaviourPun
         }
     }
 
+    public void DisableFromOther()
+    {
+        if(!photonView.IsMine)
+        {
+            // fpsCanvas.enabled = false;
+            GameObject.FindGameObjectWithTag("FPS Canvas").GetComponent<Routing>().enabled = false;
+            // inventorySlot.SetActive(false);
+            raycast.enabled = false;
+            inspection.enabled = false;
+
+            MonoBehaviour[] comps = gameObject.GetComponents<MonoBehaviour>();
+            foreach(MonoBehaviour c in comps)
+            {
+                c.enabled = false;
+            }
+
+            MonoBehaviour[] childComps = gameObject.GetComponentsInChildren<MonoBehaviour>();
+            foreach(MonoBehaviour c in childComps)
+            {
+                c.enabled = false;
+            }
+
+            gameObject.GetComponent<PhotonTransformView>().enabled = true;
+        }
+    }
 }
