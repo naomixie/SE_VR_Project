@@ -205,6 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a56fc2d0ec14546ae6a364bc3d9846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noticedBGM: {fileID: 0}
+  chasingBGM: {fileID: 0}
   controller: {fileID: 5237652827573699804}
   speed: 5
   gravity: -9.81
@@ -214,6 +216,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  fpsCanvas: {fileID: 0}
 --- !u!114 &5237652827573699777
 MonoBehaviour:
   m_ObjectHideFlags: 0

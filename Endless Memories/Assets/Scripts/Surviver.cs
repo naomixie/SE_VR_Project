@@ -35,6 +35,8 @@ public class Surviver : MonoBehaviourPun
     // Inspections
     private Raycast raycast;
     private Inspection inspection;
+
+    public Canvas fpsCanvas;
     private void Awake()
     {
         instance = this;
@@ -152,9 +154,6 @@ public class Surviver : MonoBehaviourPun
     {
         if(!photonView.IsMine)
         {
-            // fpsCanvas.enabled = false;
-            GameObject.FindGameObjectWithTag("FPS Canvas").GetComponent<Routing>().enabled = false;
-            // inventorySlot.SetActive(false);
             raycast.enabled = false;
             inspection.enabled = false;
 
@@ -172,6 +171,8 @@ public class Surviver : MonoBehaviourPun
 
             gameObject.GetComponent<PhotonTransformView>().enabled = true;
         }
+    }
+
     public Item ItemInHand()
     {
         return InventoryUI.instance.getSelectedItem();
