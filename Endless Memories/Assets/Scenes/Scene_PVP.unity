@@ -27173,6 +27173,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1561788589654501582, guid: 7cb6dbc44bdc9774ba810060a4adacab,
+        type: 3}
+      propertyPath: tpsScoreText
+      value: 
+      objectReference: {fileID: 153308486}
+    - target: {fileID: 1561788589654501582, guid: 7cb6dbc44bdc9774ba810060a4adacab,
+        type: 3}
+      propertyPath: fpsScoreText
+      value: 
+      objectReference: {fileID: 2028133370}
+    - target: {fileID: 1561788589654501582, guid: 7cb6dbc44bdc9774ba810060a4adacab,
+        type: 3}
+      propertyPath: waveText
+      value: 
+      objectReference: {fileID: 1997943001}
+    - target: {fileID: 1561788589654501582, guid: 7cb6dbc44bdc9774ba810060a4adacab,
+        type: 3}
+      propertyPath: timeText
+      value: 
+      objectReference: {fileID: 64385286}
     - target: {fileID: 1561788589654501583, guid: 7cb6dbc44bdc9774ba810060a4adacab,
         type: 3}
       propertyPath: viewIdField
@@ -27273,26 +27293,6 @@ PrefabInstance:
       propertyPath: pvpTpsManager
       value: 
       objectReference: {fileID: 4618336871610563420}
-    - target: {fileID: 1561788591271658399, guid: 7cb6dbc44bdc9774ba810060a4adacab,
-        type: 3}
-      propertyPath: tpsScoreText
-      value: 
-      objectReference: {fileID: 153308486}
-    - target: {fileID: 1561788591271658399, guid: 7cb6dbc44bdc9774ba810060a4adacab,
-        type: 3}
-      propertyPath: fpsScoreText
-      value: 
-      objectReference: {fileID: 2028133370}
-    - target: {fileID: 1561788591271658399, guid: 7cb6dbc44bdc9774ba810060a4adacab,
-        type: 3}
-      propertyPath: waveText
-      value: 
-      objectReference: {fileID: 1997943001}
-    - target: {fileID: 1561788591271658399, guid: 7cb6dbc44bdc9774ba810060a4adacab,
-        type: 3}
-      propertyPath: timeText
-      value: 
-      objectReference: {fileID: 64385286}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cb6dbc44bdc9774ba810060a4adacab, type: 3}
 --- !u!1001 &4618336871610563417
@@ -27417,11 +27417,6 @@ PrefabInstance:
       propertyPath: tpsCanvas
       value: 
       objectReference: {fileID: 7259100260231342828}
-    - target: {fileID: 1704637557175911966, guid: 461f8117536574f4bb920d53db57997d,
-        type: 3}
-      propertyPath: pvpFpsUiManager
-      value: 
-      objectReference: {fileID: 5576202956020364237}
     - target: {fileID: 3851632966481410183, guid: 461f8117536574f4bb920d53db57997d,
         type: 3}
       propertyPath: viewIdField
@@ -27487,53 +27482,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: FPS Manager
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5576202956033882271, guid: 461f8117536574f4bb920d53db57997d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 461f8117536574f4bb920d53db57997d, type: 3}
---- !u!114 &5576202956020364237 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 442105334, guid: 461f8117536574f4bb920d53db57997d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5576202956020364236}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5576202956020364238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7989c586c2e3fe4b8170091106db2c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &5576202956020364238 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5576202956033882269, guid: 461f8117536574f4bb920d53db57997d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5576202956020364236}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5576202956020364239 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1704637557175911966, guid: 461f8117536574f4bb920d53db57997d,
     type: 3}
   m_PrefabInstance: {fileID: 5576202956020364236}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5576202956020364238}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a7c059c3a6031245b265a89498475fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5576202956020364240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5576202956020364238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0c0a4332f23f034e8bc6805a37cbb3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  space: 20
-  items: []
 --- !u!1001 &7259100260231342827
 PrefabInstance:
   m_ObjectHideFlags: 0

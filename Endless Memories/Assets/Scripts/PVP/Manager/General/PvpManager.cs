@@ -4,8 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Description:
+// This class manages elements generally used in multiplayer mode including:
+// (1) Time count down
+// (2) Pass signals from guest(TPS) to host(FPS) when specific skills have been called
+// (3) Manage game rounds
 public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
 {
+    // References to managers
+    public PvpFpsManager pvpFpsManager;
+    public PvpTpsManager pvpTpsManager;
+
+    public PvpUiManager pvpUiManager;
+
+
+    // Variables for count downs
     bool pvpTimeIsRunning = false;
     bool prepareTimeIsRunning = false;
 
@@ -15,25 +28,37 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
     float pvpTimeCount;
     float prepareTimeCount;
 
-
+    // Variables for managing scores and waves
     int waveCount = 0;
     int tScore = 0;
     int fScore = 0;
 
-    public PvpFpsManager pvpFpsManager;
-    public PvpTpsManager pvpTpsManager;
 
-    // Photon Synchronization Test
-    public Text tpsScoreText;
-    public Text fpsScoreText;
-    public Text waveText;
-    public Text timeText;
-
-
+    // Variables for sending signals
     public bool noiceFlag = false;
     public Vector3 noticePosition;
     public bool dropFlag = false;
     public Vector3 dropPosition;
+
+    void Start()
+    {
+        pvpUiManager = gameObject.GetComponent<PvpUiManager>();
+
+        pvpTimeCount = pvpTimeCountData;
+        prepareTimeCount = prepareTimeCountData;
+
+        PrepareWave();
+    }
+
+    void Update()
+    {
+        Sync();
+
+        Count();
+
+        UpdateText();
+    }
+
 
 
     #region IPunObservable implementation
@@ -66,33 +91,14 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
     }
     #endregion
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        pvpTimeCount = pvpTimeCountData;
-        prepareTimeCount = prepareTimeCountData;
-
-        PrepareWave();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Sync();
-
-        Count();
-
-        UpdateText();
-    }
-
-
+    
+    // Displays computed time
     void DisplayTime(float timeToDisplay)
     {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);  
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-        timeText.text = "TIME\n" + string.Format("{0:00}:{1:00}", minutes, seconds);
+        pvpUiManager.timeText.text = "TIME\n" + string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     void Count()
@@ -111,7 +117,6 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
-            Debug.Log("Time has run out!");
             pvpTimeCount = 0;
             pvpTimeCountData += 30;
             PrepareWave();
@@ -127,7 +132,6 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
-            Debug.Log("Time has run out!");
             prepareTimeCount = 0;
             StartWave();
         }
@@ -149,13 +153,15 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
         waveCount++;
     }
 
+    // Updating texts
     void UpdateText()
     {
-        fpsScoreText.text = "SURVIVOR\n" + fScore.ToString();
-        tpsScoreText.text = "REAPER\n" + tScore.ToString();
-        waveText.text = "WAVE\n" + waveCount.ToString();
+        pvpUiManager.fpsScoreText.text = "SURVIVOR\n" + fScore.ToString();
+        pvpUiManager.tpsScoreText.text = "REAPER\n" + tScore.ToString();
+        pvpUiManager.waveText.text = "WAVE\n" + waveCount.ToString();
     }
 
+    // Sync variables if they're not the same
     void Sync()
     {
         if(pvpTpsManager.pvpTpsDataManager.tScore != tScore)
@@ -183,23 +189,15 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
+    // Teleporting ghost
     public void DropGhost(Vector3 dropPosition)
     {
         GameObject.FindGameObjectWithTag("Chaser").GetComponent<Chase>().teleport(dropPosition);
     }
 
+    // Making sounds
     public void NoticeSound(Vector3 noticePosition)
     {
         GameObject.FindGameObjectWithTag("Chaser").GetComponent<Chase>().noticeSound(100, noticePosition);
-    }
-
-    public void FScore(int score)
-    {
-        this.fScore = score;
-    }
-
-    public void TScore(int score)
-    {
-        this.tScore = score;
     }
 }
