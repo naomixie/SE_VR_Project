@@ -49,6 +49,8 @@ public class Chase : MonoBehaviourPun
             agent.isStopped = false;
 			//detect sound (sound source invoke noticeSound method)
 			//detect target in vision
+            if(target == null)
+                return;
 			Vector3 direction = target.transform.position - (transform.position + transform.up/2);
 			float angleDiff = Vector3.Angle(direction, transform.forward);
 			//Debug.Log("angleDiff: " + angleDiff);

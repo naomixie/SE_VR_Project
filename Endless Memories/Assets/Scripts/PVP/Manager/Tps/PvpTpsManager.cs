@@ -31,6 +31,7 @@ public class PvpTpsManager : MonoBehaviourPun
     {
         chaser = GameObject.FindGameObjectWithTag("Chaser");
         pvpManager = GameObject.FindGameObjectWithTag("PVP Manager").GetComponent<PvpManager>();
+        pvpTpsUiManager = gameObject.GetComponent<PvpTpsUiManager>();
         pvpTpsDataManager = gameObject.GetComponent<PvpTpsDataManager>();
     }
 
@@ -51,7 +52,14 @@ public class PvpTpsManager : MonoBehaviourPun
         fpsPlayer = fps;
 
         pvpTpsUiManager.tpsPlayer = tpsPlayer;
-        pvpTpsUiManager.InitButtonListenr();
+        Enable();
+        Disable();
+    }
+
+    // Enabling components for TPS player
+    public void Enable()
+    {
+        pvpTpsUiManager.Init();
     }
 
     // Disabling components for FPS player

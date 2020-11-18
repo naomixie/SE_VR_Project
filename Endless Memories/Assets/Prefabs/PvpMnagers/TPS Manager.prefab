@@ -91,6 +91,7 @@ MonoBehaviour:
   prepareDropBtn: {fileID: 0}
   cancelDropBtn: {fileID: 0}
   tpsPlayer: {fileID: 0}
+  tpsCanvas: {fileID: 0}
 --- !u!114 &1223371338
 MonoBehaviour:
   m_ObjectHideFlags: 0

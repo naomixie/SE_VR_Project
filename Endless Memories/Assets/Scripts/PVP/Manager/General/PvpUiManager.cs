@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PvpFpsUiManager : MonoBehaviour
+public class PvpUiManager : MonoBehaviour
 {
-    public Canvas fpsCanvas;
+    // Photon Synchronization Test
+    public Text tpsScoreText;
+    public Text fpsScoreText;
+    public Text waveText;
+    public Text timeText;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +21,5 @@ public class PvpFpsUiManager : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void Init()
-    {
-        fpsCanvas.gameObject.SetActive(true);
     }
 }

@@ -14,6 +14,7 @@ public class PvpTpsUiManager : MonoBehaviour
     public Button cancelDropBtn;
 
     public GameObject tpsPlayer;
+    public Canvas tpsCanvas;
 
     void Start()
     {
@@ -23,6 +24,12 @@ public class PvpTpsUiManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void Init()
+    {
+        tpsCanvas.gameObject.SetActive(true);
+        InitButtonListenr();
     }
 
     public void InitButtonListenr()

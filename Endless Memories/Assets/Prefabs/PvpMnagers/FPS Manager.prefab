@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5576202956033882264}
   - component: {fileID: 1704637557175911966}
-  - component: {fileID: 5576202956033882271}
   - component: {fileID: 3851632966481410183}
   - component: {fileID: 442105334}
+  - component: {fileID: 5576202956020364240}
   m_Layer: 0
   m_Name: FPS Manager
   m_TagString: FPS Manager
@@ -50,20 +50,7 @@ MonoBehaviour:
   tpsCanvas: {fileID: 0}
   pvpManager: {fileID: 0}
   fScore: 0
---- !u!114 &5576202956033882271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5576202956033882269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0c0a4332f23f034e8bc6805a37cbb3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  space: 20
-  items: []
+  pvpFpsUiManager: {fileID: 442105334}
 --- !u!114 &3851632966481410183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,3 +86,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7989c586c2e3fe4b8170091106db2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fpsCanvas: {fileID: 0}
+--- !u!114 &5576202956020364240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576202956033882269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c0a4332f23f034e8bc6805a37cbb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  space: 20
+  items: []
