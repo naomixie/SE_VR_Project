@@ -23,6 +23,8 @@ public class Surviver : MonoBehaviourPun
     // PVP
     private int solo = 1;
 
+    private PvpManager pvpManager;
+
     // Movement, Ground check, Gravity
     Vector3 velocity;
     public Transform groundCheck;
@@ -41,6 +43,10 @@ public class Surviver : MonoBehaviourPun
     {
         raycast = GetComponent<Raycast>();
         inspection = GetComponentInChildren<Inspection>();
+        if(PlayerPrefs.GetInt("pvp") == 1)
+        {
+            pvpManager = GameObject.FindGameObjectWithTag("PvpManager").GetComponent<PvpManager>();
+        }
     }
 
     // Update is called once per frame
@@ -68,8 +74,12 @@ public class Surviver : MonoBehaviourPun
         controller.Move(move * speed * Time.deltaTime);
 
         // Jump
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Space)) && isGrounded)
         {
+            // TODO: Wrapper
+            // pvpManager.test -= 1;
+
+            // Wrapper end
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
@@ -138,6 +148,30 @@ public class Surviver : MonoBehaviourPun
         }
     }
 
+    public void DisableFromOther()
+    {
+        if(!photonView.IsMine)
+        {
+            // fpsCanvas.enabled = false;
+            GameObject.FindGameObjectWithTag("FPS Canvas").GetComponent<Routing>().enabled = false;
+            // inventorySlot.SetActive(false);
+            raycast.enabled = false;
+            inspection.enabled = false;
+
+            MonoBehaviour[] comps = gameObject.GetComponents<MonoBehaviour>();
+            foreach(MonoBehaviour c in comps)
+            {
+                c.enabled = false;
+            }
+
+            MonoBehaviour[] childComps = gameObject.GetComponentsInChildren<MonoBehaviour>();
+            foreach(MonoBehaviour c in childComps)
+            {
+                c.enabled = false;
+            }
+
+            gameObject.GetComponent<PhotonTransformView>().enabled = true;
+        }
     public Item ItemInHand()
     {
         return InventoryUI.instance.getSelectedItem();

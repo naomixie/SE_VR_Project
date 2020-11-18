@@ -2,29 +2,65 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
-public class PvpFpsManager : MonoBehaviour
+// Description:
+// This class manages FPS initialization including:
+// (1) PhotonViewOwnerships
+// (2) Disabling components for TPS player
+// (3) Data transfer and synchronization
+// (4) Sending signals for actions made by FPS player 
+public class PvpFpsManager : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public GameObject player;
+    public GameObject fpsPlayer;
+    public Canvas tpsCanvas;
 
-    // Start is called before the first frame update
+    public PvpManager pvpManager;
+    public int fScore;
+
     void Start()
     {
+        pvpManager = GameObject.FindGameObjectWithTag("PVP Manager").GetComponent<PvpManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
     }
 
-    public void Init(GameObject tpsPlayer)
+    // Initialize PhotonView Ownership and UiManager
+    public void Init(GameObject tpsPlayer, GameObject fps)
     {
-        player = tpsPlayer;
-        
+        // Transfer ownership if current view is VR's view, transfer to Reaper
+        if(photonView.Owner == null || !photonView.Owner.Equals(tpsPlayer.GetPhotonView().Owner))
+        {
+            photonView.TransferOwnership(fps.GetPhotonView().Owner);
+        }
+
+        fpsPlayer = fps;
+        Disable();
     }
 
+
+    // Disabling components for FPS player
     public void Disable()
     {
+        tpsCanvas.enabled = false;
     }
+
+    // Data synchronization for Photon
+    #region IPunObservable implementation
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // We own this player: send the others our data
+            stream.SendNext(fScore);
+        }
+        else
+        {
+            this.fScore = (int)stream.ReceiveNext();
+            // Network player, receive data
+        }
+    }
+    #endregion
 }

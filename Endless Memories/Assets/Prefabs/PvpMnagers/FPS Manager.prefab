@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 5576202956033882264}
   - component: {fileID: 1704637557175911966}
   - component: {fileID: 5576202956033882271}
+  - component: {fileID: 3851632966481410183}
+  - component: {fileID: 442105334}
   m_Layer: 0
   m_Name: FPS Manager
-  m_TagString: Untagged
+  m_TagString: FPS Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7c059c3a6031245b265a89498475fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  fpsPlayer: {fileID: 0}
+  tpsCanvas: {fileID: 0}
+  pvpManager: {fileID: 0}
+  fScore: 0
 --- !u!114 &5576202956033882271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,3 +64,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   space: 20
   items: []
+--- !u!114 &3851632966481410183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576202956033882269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 1
+  ObservedComponents:
+  - {fileID: 1704637557175911966}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &442105334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576202956033882269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7989c586c2e3fe4b8170091106db2c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

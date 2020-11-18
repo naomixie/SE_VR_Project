@@ -18,6 +18,11 @@ TagManager:
   - GhostTeleportSpot
   - RiddleBrain
   - GhostPatrolSpot
+  - TPS Canvas
+  - FPS Manager
+  - TPS Manager
+  - PVP Manager
+  - PVP Canvas
   layers:
   - Default
   - TransparentFX

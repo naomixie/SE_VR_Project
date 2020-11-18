@@ -4,57 +4,58 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 
+
+// Description:
+// This class manages TPS initialization including:
+// (1) PhotonViewOwnerships
+// (2) Disabling components for FPS player
+// (3) Data transfer and synchronization
+// (4) Sending signals for actions made by TPS player 
 public class PvpTpsManager : MonoBehaviourPun
 {
-    public GameObject chaser;
-    public GameObject player;
-    private Inspection inspection;
-    public Canvas canvas;
-    public GameObject inventorySlot;
+    [SerializeField] private GameObject chaser;
+    [SerializeField] private PvpManager pvpManager;
+
+
+    // Disable components for FPS player
+    [SerializeField] private GameObject fpsPlayer;
+
+
+    // Control Canvas for TPS player
+    public PvpTpsUiManager pvpTpsUiManager;
+
+    // Send signals including: Making Loud Noise, Repositioning Ghost, Score Update
+    public PvpTpsDataManager pvpTpsDataManager;
+
     void Start()
     {
+        chaser = GameObject.FindGameObjectWithTag("Chaser");
+        pvpManager = GameObject.FindGameObjectWithTag("PVP Manager").GetComponent<PvpManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
-    public void Inspect(GameObject raycastedGameObject)
+    // Initialize PhotonView Ownership and UiManager
+    public void Init(GameObject fps, GameObject tpsPlayer)
     {
-        inspection.Inspect(raycastedGameObject);
+        // Transfer ownership if current view is FPS's view, transfer to TPS
+        if(photonView.Owner == null || !photonView.Owner.Equals(tpsPlayer.GetPhotonView().Owner))
+        {
+            photonView.TransferOwnership(tpsPlayer.GetPhotonView().Owner);
+        }
+
+        fpsPlayer = fps;
+
+        pvpTpsUiManager.tpsPlayer = tpsPlayer;
+        pvpTpsUiManager.InitButtonListenr();
     }
 
-    public void Init(GameObject fpsPlayer)
-    {
-        player = fpsPlayer;
-        inspection = player.GetComponentInChildren<Inspection>();
-        chaser = GameObject.FindGameObjectWithTag("Chaser");   
-    }
-
+    // Disabling components for FPS player
     public void Disable()
     {
-        // TODO: Canvas and InventorySlot need to be tidied up
-        canvas.enabled = false;
-        inventorySlot.SetActive(false);
-        inspection.enabled = false;
-        chaser.GetComponent<Chase>().enabled = false;
-
-        MonoBehaviour[] comps = player.GetComponents<MonoBehaviour>();
-        foreach(MonoBehaviour c in comps)
-        {
-            Debug.Log(c.name);
-            c.enabled = false;
-        }
-
-        MonoBehaviour[] childComps = player.GetComponentsInChildren<MonoBehaviour>();
-        foreach(MonoBehaviour c in childComps)
-        {
-            Debug.Log(c.name);
-            c.enabled = false;
-        }
-
-        player.GetComponent<PhotonTransformView>().enabled = true;
+        fpsPlayer.GetComponent<Surviver>().DisableFromOther();
     }
 }
