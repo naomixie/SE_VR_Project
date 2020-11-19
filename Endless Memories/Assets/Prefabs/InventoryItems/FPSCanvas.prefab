@@ -1571,7 +1571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.9549866, y: 0.0030472893}
+  m_AnchoredPosition: {x: 4.9549866, y: 0.00019594867}
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5710499081362179814
@@ -1741,8 +1741,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5710499081375880454}
   m_HandleRect: {fileID: 5710499081571466146}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 1
+  m_Value: 0
+  m_Size: 0.9999882
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2596,7 +2596,7 @@ GameObject:
   - component: {fileID: 5710499081603351394}
   - component: {fileID: 5710499081603351396}
   - component: {fileID: 5710499081603351399}
-  - component: {fileID: 5710499081603351398}
+  - component: {fileID: 80071362}
   m_Layer: 5
   m_Name: FPSCanvas
   m_TagString: FPS Canvas
@@ -2721,7 +2721,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &5710499081603351398
+--- !u!114 &80071362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2730,7 +2730,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5710499081603351405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf68dd000e7d29489889f80e1a05c0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 500c7ff644291f347a648c6d65fc9ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 5710499080740731664}
@@ -2739,10 +2739,6 @@ MonoBehaviour:
   mapDetailsUI: {fileID: 7508377554040334388}
   clueUI: {fileID: 5710499080765695056}
   clueDetailsUI: {fileID: 5710499081109633224}
-  escUI: {fileID: 5710499081842432346}
-  escDetailsUI: {fileID: 7508377554040334388}
-  settingsUI: {fileID: 0}
-  settingsDetailsUI: {fileID: 0}
   NavBar: {fileID: 5710499082418134354}
   player: {fileID: 0}
   rightPanel: {fileID: 5710499081009256131}
@@ -2987,9 +2983,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5710499081603351398}
+      - m_Target: {fileID: 5710499081603351405}
         m_TargetAssemblyTypeName: Routing, Assembly-CSharp
-        m_MethodName: CloseAll
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

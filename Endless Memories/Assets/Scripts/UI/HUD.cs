@@ -11,10 +11,10 @@ public class HUD : MonoBehaviour
     public GameObject mapDetailsUI;
     public GameObject clueUI;
     public GameObject clueDetailsUI;
-    public GameObject escUI;
-    public GameObject escDetailsUI;
-    public GameObject settingsUI;
-    public GameObject settingsDetailsUI;
+    //public GameObject escUI;
+    //public GameObject escDetailsUI;
+    //public GameObject settingsUI;
+    //public GameObject settingsDetailsUI;
     public GameObject NavBar;
     public GameObject player;
     public GameObject rightPanel;
@@ -127,9 +127,9 @@ public class HUD : MonoBehaviour
             // NoPanels are active
             if (!isOpen)
             {
-                isOpen = true;
-                openPanel();
-                openEscPanel();
+                //isOpen = true;
+                //openPanel();
+                //openEscPanel();
             }
             else
             {
@@ -250,7 +250,7 @@ public class HUD : MonoBehaviour
     //    settingsUI.SetActive(true);
     //    settingsDetailsUI.SetActive(true);
     //} 
-    
+
     public void openPausePanel ()
     {
         currPanel = curPanel.pause;
@@ -258,12 +258,12 @@ public class HUD : MonoBehaviour
         //settingsDetailsUI.SetActive(true);
     }
 
-    public void openEscPanel ()
-    {
-        currPanel = curPanel.esc;
-        escUI.SetActive(true);
-        escDetailsUI.SetActive(true);
-    }
+    //public void openEscPanel ()
+    //{
+    //    currPanel = curPanel.esc;
+    //    escUI.SetActive(true);
+    //    escDetailsUI.SetActive(true);
+    //}
 
     public void closeInventoryPanel ()
     {
@@ -288,18 +288,18 @@ public class HUD : MonoBehaviour
     //    settingsUI.SetActive(false);
     //    settingsDetailsUI.SetActive(false);
     //}
-    
+
     public void closePausePanel ()
     {
         //settingsUI.SetActive(false);
         //settingsDetailsUI.SetActive(false);
     }
 
-    public void closeEscPanel ()
-    {
-        escUI.SetActive(false);
-        escDetailsUI.SetActive(false);
-    }
+    //public void closeEscPanel ()
+    //{
+    //    escUI.SetActive(false);
+    //    escDetailsUI.SetActive(false);
+    //}
 
     void show ()
     {
@@ -307,10 +307,10 @@ public class HUD : MonoBehaviour
         print("inventoryDetailsUI: " + inventoryDetailsUI.activeSelf +"\n");
         print("mapUI: " + mapUI.activeSelf +"\n");
         print("mapDetailsUI: " + mapDetailsUI.activeSelf +"\n");
-        print("clueUI: " + clueUI.activeSelf +"\n");
-        print("clueDetailsUI: " + clueDetailsUI.activeSelf +"\n");
-        print("escUI: " + escUI.activeSelf + "\n");
-        print("escDetailsUI: " + escDetailsUI.activeSelf + "\n");
+        //print("clueUI: " + clueUI.activeSelf +"\n");
+        //print("clueDetailsUI: " + clueDetailsUI.activeSelf +"\n");
+        //print("escUI: " + escUI.activeSelf + "\n");
+        //print("escDetailsUI: " + escDetailsUI.activeSelf + "\n");
         //print("settingsUI: " + settingsUI.activeSelf +"\n");
         //print("settingsDetailsUI: " + settingsDetailsUI.activeSelf +"\n");
         print("rightPanel: " + rightPanel.activeSelf +"\n");
