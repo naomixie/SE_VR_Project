@@ -68,7 +68,7 @@ public class PvpInitializer : MonoBehaviourPun
                     tpsCamera.gameObject.SetActive(false);
 
                     fpsManager.Init(tps, fpsPlayer);
-                    fpsManager.Disable();
+
                     fpsCanvas.GetComponent<Routing>().SetPlayer(fpsPlayer);
                     
                 }
@@ -86,7 +86,6 @@ public class PvpInitializer : MonoBehaviourPun
                     fpsCamera.gameObject.SetActive(false);
 
                     tpsManager.Init(fps, tpsPlayer);
-                    tpsManager.Disable();
 
                     // Tps
                     tpsCamera.enabled = true;

@@ -52,19 +52,11 @@ public class PvpTpsManager : MonoBehaviourPun
         fpsPlayer = fps;
 
         pvpTpsUiManager.tpsPlayer = tpsPlayer;
-        Enable();
-        Disable();
-    }
-
-    // Enabling components for TPS player
-    public void Enable()
-    {
+		
+		// Enabling UI for TPS player
         pvpTpsUiManager.Init();
-    }
-
-    // Disabling components for FPS player
-    public void Disable()
-    {
+		
+		// Disabling contents for FPS player
         fpsPlayer.GetComponent<Surviver>().DisableFromOther();
     }
 }

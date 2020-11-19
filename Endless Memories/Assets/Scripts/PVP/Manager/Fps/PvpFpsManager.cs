@@ -40,21 +40,14 @@ public class PvpFpsManager : MonoBehaviourPunCallbacks, IPunObservable
         }
 
         fpsPlayer = fps;
-        Enable();
-        Disable();
-    }
-
-    public void Enable()
-    {
+		
+		// Enabling UI for FPS player
         pvpFpsUiManager.Init();
-    }
-
-    // Disabling components for FPS player
-    public void Disable()
-    {
+		
+		// Disabling contents for TPS player
         tpsCanvas.gameObject.SetActive(false);
     }
-
+	
     // Data synchronization for Photon
     #region IPunObservable implementation
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
