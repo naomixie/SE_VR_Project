@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Alpinist : Item
+public class Alpinist : InteractableT
 {
     // Start is called before the first frame update
     void Start()

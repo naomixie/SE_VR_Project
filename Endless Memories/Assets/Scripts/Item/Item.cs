@@ -12,4 +12,17 @@ public class Item : InteractableT
     {
         Debug.Log("Using " + name);
     }
+    public override void Interact()
+    {
+        //Executes all the code from the base interaction function located inside InteractableT
+        base.Interact();
+        //After this would be code exclusive to Item
+        if (Inventory.instance.Add(this))
+        {
+            //Destroy(gameObject);
+            Destroy(GetComponent<Rigidbody>());
+            Destroy(GetComponent<BoxCollider>());
+            Destroy(GetComponent<MeshRenderer>());
+        }
+    }
 }
