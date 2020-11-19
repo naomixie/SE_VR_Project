@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Routing : MonoBehaviour
+public class HUD : MonoBehaviour
 {
     public GameObject inventoryUI;
     public GameObject inventoryDetailsUI;

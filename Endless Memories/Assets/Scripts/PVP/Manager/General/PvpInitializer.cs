@@ -69,7 +69,7 @@ public class PvpInitializer : MonoBehaviourPun
 
                     fpsManager.Init(tps, fpsPlayer);
 
-                    fpsCanvas.GetComponent<Routing>().SetPlayer(fpsPlayer);
+                    fpsCanvas.GetComponent<HUD>().SetPlayer(fpsPlayer);
                     
                 }
                 else

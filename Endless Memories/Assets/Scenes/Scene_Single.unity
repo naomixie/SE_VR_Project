@@ -13381,11 +13381,6 @@ MonoBehaviour:
   riddleBrain: {fileID: 0}
   riddle: {fileID: 0}
   interactCode: 0
-  name: New Item
-  icon: {fileID: 0}
-  isDefaultItem: 0
-  description: 
-  detailImage: {fileID: 0}
 --- !u!65 &1024455007
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24533,15 +24528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0481865b3ac6c604fa35ea33c621cd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
-  riddleBrain: {fileID: 0}
-  riddle: {fileID: 0}
-  interactCode: 0
-  name: New Item
-  icon: {fileID: 21300004, guid: 02aa4804dd2e04f43b0d0362ecfb2c44, type: 3}
-  isDefaultItem: 0
-  description: An apple, I wonder if it's edible...
-  detailImage: {fileID: 21300004, guid: 02aa4804dd2e04f43b0d0362ecfb2c44, type: 3}
 --- !u!65 &1782681181
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25256,15 +25242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0481865b3ac6c604fa35ea33c621cd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
-  riddleBrain: {fileID: 0}
-  riddle: {fileID: 0}
-  interactCode: 0
-  name: Gem
-  icon: {fileID: 21300000, guid: c8df1803949c189488a486ddfe47621b, type: 3}
-  isDefaultItem: 0
-  description: It's a gem, seems quite valuable, don't know how it got here....
-  detailImage: {fileID: 21300000, guid: 69ebbcf22d5420a4da193a85b36973d8, type: 3}
 --- !u!1 &1830549837
 GameObject:
   m_ObjectHideFlags: 0
@@ -30199,7 +30176,7 @@ PrefabInstance:
     - target: {fileID: 5710499081362179810, guid: 5944285b0f27d614ea6f3d1e88b44d95,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00054681866
+      value: -0.00077446207
       objectReference: {fileID: 0}
     - target: {fileID: 5710499081571466146, guid: 5944285b0f27d614ea6f3d1e88b44d95,
         type: 3}
