@@ -91,7 +91,7 @@ public class IconGenerator : MonoBehaviour {
                 iconName = target.name;
 
 
-			GameObject.Find("Canvas").GetComponent<IconGeneratorUIExample>().AddImage (icon,iconName); // Used for example, can be removed!
+
 
             if (customFolder == "") // Check if custom folder is specified!
 			{
