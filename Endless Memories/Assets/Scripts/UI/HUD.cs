@@ -9,8 +9,6 @@ public class HUD : MonoBehaviour
     public GameObject inventoryDetailsUI;
     public GameObject mapUI;
     public GameObject mapDetailsUI;
-    public GameObject clueUI;
-    public GameObject clueDetailsUI;
     //public GameObject escUI;
     //public GameObject escDetailsUI;
     //public GameObject settingsUI;
@@ -22,12 +20,11 @@ public class HUD : MonoBehaviour
     public TabGroup tabGroup;
     public TabButton inventoryButton;
     public TabButton mapButton;
-    public TabButton clueButton;
     public InventoryUI scriptInventoryUI;
 
 
     bool isOpen;
-    public enum curPanel {inventory,map,clue,settings,pause,esc};
+    public enum curPanel {inventory,map,settings,pause,esc};
     public curPanel currPanel;
 
 
@@ -93,35 +90,6 @@ public class HUD : MonoBehaviour
 
             //show();
         }
-
-        if (Input.GetButtonDown("Clue"))
-        {
-            // NoPanels are active
-            if (!isOpen)
-            {
-                isOpen = true;
-                openPanel();
-                tabGroup.OnTabSelected(clueButton);
-            }
-            else
-            {
-                // a Panel is already open
-                if (tabGroup.selectedTab == clueButton)
-                {
-                    // close panel if same 
-                    closePanel();
-                    isOpen = false;
-                    closeCluePanel();
-                }
-                else
-                {
-                    tabGroup.OnTabSelected(clueButton);
-                }
-            }
-
-            //show();
-        }
-
         if (Input.GetButtonDown("Esc"))
         {
             // NoPanels are active
@@ -237,13 +205,6 @@ public class HUD : MonoBehaviour
         mapDetailsUI.SetActive(true);
     }
 
-    public void openCluePanel ()
-    {
-        currPanel = curPanel.clue;
-        clueUI.SetActive(true);
-        clueDetailsUI.SetActive(true);
-    }
-
     //public void openSettingsPanel ()
     //{
     //    currPanel = curPanel.settings;
@@ -275,12 +236,6 @@ public class HUD : MonoBehaviour
     {
         mapUI.SetActive(false);
         mapDetailsUI.SetActive(false);
-    }
-
-    public void closeCluePanel ()
-    {
-        clueUI.SetActive(false);
-        clueDetailsUI.SetActive(false);
     }
 
     //public void closeSettingsPanel ()
@@ -321,7 +276,6 @@ public class HUD : MonoBehaviour
     {
         closeInventoryPanel();
         closeMapPanel();
-        closeCluePanel();
         //closeSettingsPanel();
         closePanel();
         scriptInventoryUI.selectedSlot = null;
