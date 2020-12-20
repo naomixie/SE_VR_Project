@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.endlessmemoriesdawn.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "D:\\Edward\\GameDev\\Unity\\Projects\\VR\\SE_VR_Project\\Endless Memories\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "Endless Memories - Dawn [Testing]"
+        }
+      }
+    }
+  ]
+}
