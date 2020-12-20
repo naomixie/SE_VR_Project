@@ -24,6 +24,10 @@ EditorBuildSettings:
     path: Assets/Scenes/UI_Gameover.unity
     guid: c65be9bb07b3e314d8c691581b87fe0b
   m_configObjects:
+    Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: eda92689b3fb91c418d4fe24fcc1ade1,
+      type: 2}
+    Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 57886c92ee5610e43b15e3911d4c0312,
+      type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 294010cfd7ef3ea45bc9d7515bb73716,
       type: 2}
     xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 72a7c4dfbcc86f24ea00f675b19a0cc4,
