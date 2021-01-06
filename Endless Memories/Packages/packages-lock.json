@@ -74,13 +74,6 @@
       "dependencies": {},
       "url": "https://packages.unity.cn"
     },
-    "com.unity.inputsystem": {
-      "version": "1.0.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.cn"
-    },
     "com.unity.multiplayer-hlapi": {
       "version": "1.0.6",
       "depth": 0,
@@ -104,13 +97,6 @@
       "dependencies": {
         "com.unity.ugui": "1.0.0"
       },
-      "url": "https://packages.unity.cn"
-    },
-    "com.unity.subsystemregistration": {
-      "version": "1.0.6",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.cn"
     },
     "com.unity.test-framework": {
