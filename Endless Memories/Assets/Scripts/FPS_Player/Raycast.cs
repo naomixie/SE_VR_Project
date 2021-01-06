@@ -8,8 +8,6 @@ public class Raycast : MonoBehaviour
 {
     public GameObject raycastedObject;
     public Transform raycastedObjectTransform;
-    // private Camera fpsCam;
-    private CinemachineVirtualCamera fpsCam;
     private bool interactable;
 
     private GameObject interactableButtonGroups;
@@ -28,7 +26,6 @@ public class Raycast : MonoBehaviour
 
     private void Start()
     {
-        fpsCam = GetComponentInChildren<CinemachineVirtualCamera>();
         // fpsCam = Camera.main;
         // playerBehavior = GetComponent<PlayerBehavior>();
         interactableButtonGroups = GameObject.Find("Interactable Buttons");
@@ -37,9 +34,9 @@ public class Raycast : MonoBehaviour
     private void Update()
     {
         RaycastHit hit;
-        Vector3 forward = fpsCam.transform.forward;
+        Vector3 forward = base.transform.forward;
 
-        if (Physics.Raycast(fpsCam.transform.position, forward, out hit, rayLength, layerMaskInteract.value))
+        if (Physics.Raycast(base.transform.position, forward, out hit, rayLength, layerMaskInteract.value))
         {
             if (hit.collider.CompareTag("InteractableObject"))
             {

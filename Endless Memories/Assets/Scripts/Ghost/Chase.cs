@@ -31,7 +31,7 @@ public class Chase : MonoBehaviourPun
     }
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("First Person Player");
+        target = GameObject.FindGameObjectWithTag("MainCamera");
         //获取寻路物体上的NavMeshAgent组件, 通过SetDestination方法(网格路径计算)实现自动寻路
         agent = GetComponent<NavMeshAgent>();
     }
