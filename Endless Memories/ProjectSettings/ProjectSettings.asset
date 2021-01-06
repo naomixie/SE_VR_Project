@@ -683,7 +683,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: 2013_10 - Sample Assets
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Endless Memories - Dawn
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
@@ -812,6 +812,6 @@ PlayerSettings:
   projectName: New Unity Project (1)
   organizationId: 
   cloudEnabled: 0
-  enableNativePlatformBackendsForNewInputSystem: 1
-  disableOldInputManagerSupport: 1
+  enableNativePlatformBackendsForNewInputSystem: 0
+  disableOldInputManagerSupport: 0
   legacyClampBlendShapeWeights: 1
