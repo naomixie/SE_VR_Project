@@ -44,6 +44,40 @@ public class Reaper : MonoBehaviourPun
         }
     }
 
+    public void Drop()
+    {
+        if (throwStage == 1)
+            return;
+
+        pvpTpsManager.Drop(dropStage);
+        if (dropStage == 0)
+        {
+            dropStage = 1;
+        }
+        else
+        {
+            DoDrop();
+            dropStage = 0;
+        }
+    }
+
+    public void Throw()
+    {
+        if (dropStage == 1)
+            return;
+
+        pvpTpsManager.Throw(throwStage);
+        if (throwStage == 0)
+        {
+            throwStage = 1;
+        }
+        else
+        {
+            DoThrow();
+            throwStage = 0;
+        }
+    }
+
     public void PrepareDrop()
     {
         Debug.Log("Prepare drop.");

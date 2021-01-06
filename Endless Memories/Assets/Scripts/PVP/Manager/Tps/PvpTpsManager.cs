@@ -59,4 +59,28 @@ public class PvpTpsManager : MonoBehaviourPun
 		// Disabling contents for FPS player
         fpsPlayer.GetComponent<Surviver>().DisableFromOther();
     }
+
+    public void Drop(int dropStage)
+    {
+        var dropText = "";
+
+        if (dropStage == 0)
+            dropText = "CANCEL THROW";
+        else
+            dropText = "THROW";
+
+        pvpTpsUiManager.dropBtn.GetComponent<Text>().text = dropText;
+    }
+
+    public void Throw(int throwStage)
+    {
+        var throwText = "";
+
+        if (throwStage == 0)
+            throwText = "CANCEL THROW";
+        else
+            throwText = "THROW";
+
+        pvpTpsUiManager.throwBtn.GetComponent<Text>().text = throwText;
+    }
 }

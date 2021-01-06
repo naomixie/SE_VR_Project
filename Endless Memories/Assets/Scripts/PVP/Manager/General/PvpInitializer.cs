@@ -65,7 +65,9 @@ public class PvpInitializer : MonoBehaviourPun
 
                     // Tps
                     tpsCamera = tps.GetComponentInChildren<CinemachineFreeLook>();
-                    tpsCamera.gameObject.SetActive(false);
+                    
+                    if(tpsCamera != null)
+                        tpsCamera.gameObject.SetActive(false);
 
                     fpsManager.Init(tps, fpsPlayer);
 
@@ -83,7 +85,9 @@ public class PvpInitializer : MonoBehaviourPun
                     // Setting cameras
                     // Fps
                     fpsCamera = fps.GetComponentInChildren<CinemachineVirtualCamera>();
-                    fpsCamera.gameObject.SetActive(false);
+
+                    if (fpsCamera != null)
+                        fpsCamera.gameObject.SetActive(false);
 
                     tpsManager.Init(fps, tpsPlayer);
 
