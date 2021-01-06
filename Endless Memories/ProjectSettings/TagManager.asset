@@ -23,6 +23,7 @@ TagManager:
   - TPS Manager
   - PVP Manager
   - PVP Canvas
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -55,7 +56,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Spatial Awareness
   m_SortingLayers:
   - name: Default
     uniqueID: 0
