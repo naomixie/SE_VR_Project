@@ -9,6 +9,9 @@ using Photon.Pun;
 
 public class Chase : MonoBehaviourPun
 {
+    public int colorID; //0~4
+    private bool _isDead = false;
+
     public static Chase instance;
     //通过寻路要去找到的  目标物体
     private GameObject target;
@@ -39,6 +42,8 @@ public class Chase : MonoBehaviourPun
     // Use this for initialization
     void Update()
     {
+        if (_isDead)
+            return;
         if (lestStunFrame > 0) //stun happens when actioned teleport
         {
             --lestStunFrame;
@@ -96,7 +101,7 @@ public class Chase : MonoBehaviourPun
     }
 	public void noticeSound(int soundLevel, Vector3 position)
 	{
-		if(Vector3.Distance(position, transform.position) < 10*soundLevel) {
+		if(!_isDead && Vector3.Distance(position, transform.position) < 10*soundLevel) {
 			restedFrame = 0;
 			move(position);
             if(!Surviver.instance.noticedBGM.isPlaying)
@@ -148,5 +153,20 @@ public class Chase : MonoBehaviourPun
             return;
         int targetId = Random.Range(0, gameObjects.Length - 1);
         teleport(gameObjects[targetId].transform.position);
+    }
+
+    public bool knifeStubWithColor(int colorID)
+    {
+        if(this.colorID == colorID)
+        {
+            _isDead = true;
+            return true;
+        }
+        return false;
+    }
+
+    public bool isDead()
+    {
+        return _isDead;
     }
 }
