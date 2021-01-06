@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
-
+// , IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 
 {
     public InventoryUI inventoryUI;
@@ -53,15 +53,20 @@ public class InventorySlot : MonoBehaviour
     //    }
     //}
 
+
+
+// public void OnPointerClick (PointerEventData eventData)
     public void PointerClick ()
     {
         if (item == null)
         {
             return;
         }
+        // Debug.Log("InventorySlot OnPointerClick" + eventData.ToString());
         inventoryUI.OnSlotSelected(this);
     }
 
+// public void OnPointerEnter (PointerEventData eventData)
     public void PointerEnter ()
     {
         //Debug.Log("Item: " + item.name);
@@ -74,6 +79,7 @@ public class InventorySlot : MonoBehaviour
         inventoryUI.OnSlotEnter(this);
     }
 
+// public void OnPointerExit (PointerEventData eventData)
     public void PointerExit ()
     {
         if (item == null)
