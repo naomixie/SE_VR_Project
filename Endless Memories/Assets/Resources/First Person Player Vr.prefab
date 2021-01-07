@@ -167,8 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a56fc2d0ec14546ae6a364bc3d9846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noticedBGM: {fileID: 0}
-  chasingBGM: {fileID: 0}
   controller: {fileID: 5229861106261697245}
   speed: 5
   gravity: -9.81
@@ -554,6 +552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
   playerBody: {fileID: 5229861106261697244}
+  tmp: 1
 --- !u!1 &5229861106928326398
 GameObject:
   m_ObjectHideFlags: 0
