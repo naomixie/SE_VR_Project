@@ -59,28 +59,6 @@ public class Raycast : MonoBehaviour
         {
             CrosshairNormal();
         }
-
-        // [TMP]
-        // Pop up interact options, when focus on a interactable object.
-        // -> We simplified interaction to just one operation, so these code are not used.
-        /*
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
-        foreach (var hitCollider in hitColliders)
-        {
-            GameObject hitObject = hitCollider.gameObject;
-            if (hitObject.GetComponent<InteractableInRange>() != null)
-            {
-                // Debug.Log("Instantiating");
-                if(!hitObject.GetComponent<InteractableInRange>().inRange)
-                {
-                    hitObject.GetComponent<InteractableInRange>().inRange = true;
-                    var uiButton = Instantiate(uiInteractable, interactableButtonGroups.transform.position, interactableButtonGroups.transform.rotation);
-                    uiButton.transform.parent = interactableButtonGroups.transform;
-                    uiButton.GetComponent<InteractableButton>().Initialize(hitObject);
-                }
-            }
-        }
-        */
     }
 
     void CrosshairActive()

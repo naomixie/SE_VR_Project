@@ -37,6 +37,13 @@ public class Surviver : MonoBehaviourPun
     private Inspection inspection;
 
     public Canvas fpsCanvas;
+
+    // Knife
+    public bool holdingKnife = false;
+    public GameObject knifeModel;
+    public GameObject knifeObject;
+    public int knifeColorId;
+
     private void Awake()
     {
         instance = this;
@@ -44,7 +51,9 @@ public class Surviver : MonoBehaviourPun
     private void Start()
     {
         raycast = GetComponent<Raycast>();
-        inspection = GetComponentInChildren<Inspection>();
+
+        knifeModel.SetActive(false);
+        // inspection = GetComponentInChildren<Inspection>();
         if(PlayerPrefs.GetInt("pvp") == 1)
         {
             pvpManager = GameObject.FindGameObjectWithTag("PvpManager").GetComponent<PvpManager>();
@@ -102,18 +111,6 @@ public class Surviver : MonoBehaviourPun
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        //if (Input.GetKeyDown("r"))
-        //{
-        //    Debug.Log("Pressed r");
-        //    DestroyObject(raycast.GetInteractableRaycastedObject());
-        //}
-
-        //if (Input.GetKeyDown("q"))
-        //{
-        //    Debug.Log("Pressed q");
-        //    Destroy(raycast.GetInteractableRaycastedObject());
-        //}
-
         // Interact item (collects or Inspects (Pop out dialogue))
         if (Input.GetKeyDown("e") || Input.GetKeyDown("f"))
         {
@@ -130,8 +127,32 @@ public class Surviver : MonoBehaviourPun
         // Inspect item
         if (Input.GetKeyDown("v"))
         {
-            Debug.Log("Pressed v");
-            inspection.Inspect(RaycastedObject());
+            GameObject raycastedObject = raycast.GetRaycastedObject();
+            if(holdingKnife == true)
+            {
+                knifeColorId = 0;
+                holdingKnife = false;
+
+
+                knifeObject.SetActive(true);
+
+                knifeObject.GetComponent<PickableKnife>().Throw();
+
+                knifeModel.SetActive(false);
+
+
+            }else if (raycastedObject.GetComponent<knife>() != null && holdingKnife == false)
+            {
+                holdingKnife = true;
+                
+                knifeModel.SetActive(true);
+
+                knifeObject = raycastedObject;
+                knifeObject.GetComponent<PickableKnife>().Pick();
+                knifeColorId = knifeObject.GetComponent<knife>().colorID;
+
+                knifeObject.SetActive(false);
+            }
         }
 
         // Use item
@@ -155,7 +176,7 @@ public class Surviver : MonoBehaviourPun
         if(!photonView.IsMine)
         {
             raycast.enabled = false;
-            inspection.enabled = false;
+            // inspection.enabled = false;
 
             MonoBehaviour[] comps = gameObject.GetComponents<MonoBehaviour>();
             foreach(MonoBehaviour c in comps)

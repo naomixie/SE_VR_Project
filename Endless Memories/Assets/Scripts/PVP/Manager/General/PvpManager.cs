@@ -40,6 +40,10 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
     public bool dropFlag = false;
     public Vector3 dropPosition;
 
+
+    // Ghost
+    public Chase chase;
+
     void Start()
     {
         pvpUiManager = gameObject.GetComponent<PvpUiManager>();
@@ -192,12 +196,14 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
     // Teleporting ghost
     public void DropGhost(Vector3 dropPosition)
     {
-        GameObject.FindGameObjectWithTag("Chaser").GetComponent<Chase>().teleport(dropPosition);
+        chase.teleport(dropPosition);
     }
 
     // Making sounds
     public void NoticeSound(Vector3 noticePosition)
     {
-        GameObject.FindGameObjectWithTag("Chaser").GetComponent<Chase>().noticeSound(100, noticePosition);
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Chaser");
+        for(int i = 0; i < objs.Length; i++)
+            objs[i].GetComponent<Chase>().noticeSound(100, noticePosition);
     }
 }

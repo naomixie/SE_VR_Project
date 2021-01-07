@@ -14,6 +14,8 @@ public class MouseLook : MonoBehaviourPun
 
     private int solo = 1;
 
+    public float tmp = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +43,7 @@ public class MouseLook : MonoBehaviourPun
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        playerBody.Rotate(Vector3.up * mouseX);
+        playerBody.Rotate(Vector3.up * tmp);
     }
 
     public void UnlockMouse ()

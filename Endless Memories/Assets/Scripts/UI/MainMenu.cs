@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
-    public void GameOver()
+    public void GameOver(int abs)
     {
         SceneManager.LoadScene(0);
     }

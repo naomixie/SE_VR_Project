@@ -679,11 +679,12 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: 201310-SampleAssets
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: D:\Edward\GameDev\Unity\Projects\VR\SE_VR_Project\Endless
+    Memories\Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 80c5d287b903d801
   metroApplicationDescription: 2013_10 - Sample Assets
   wsaImages: {}
   metroTileShortName: Endless Memories - Dawn

@@ -21,7 +21,7 @@ public class HUD : MonoBehaviour
 
     void Update ()
     {
-        if (Input.GetButtonDown("Inventory"))
+        if (Input.GetButtonDown("Inventory") || Input.GetKeyDown("i"))
         {
             // NoPanels are active
             if (!isOpen)
