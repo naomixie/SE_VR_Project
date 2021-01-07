@@ -10,7 +10,6 @@ public class InventorySlot : MonoBehaviour
 {
     public InventoryUI inventoryUI;
     public Image icon;
-    public Button removeButton;
     public Image Background;
 
     public Item item;
@@ -24,7 +23,6 @@ public class InventorySlot : MonoBehaviour
         item = newItem;
         icon.sprite = item.icon;
         icon.enabled = true;
-        removeButton.interactable = true;
         newItem.gameObject.SetActive(false);
         Debug.Log("adding item " + item.name + " at slot ");
         Debug.Log(item == null);
@@ -35,14 +33,6 @@ public class InventorySlot : MonoBehaviour
         item = null;
         icon.sprite = null;
         icon.enabled = false;
-        removeButton.interactable = false;
-    }
-
-    
-
-    public void OnRemoveButton ()
-    {
-        Inventory.instance.Remove(item);
     }
 
     //public void UseItem ()
