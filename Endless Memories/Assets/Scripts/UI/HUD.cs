@@ -21,8 +21,11 @@ public class HUD : MonoBehaviour
 
     void Update ()
     {
-        if (Input.GetButtonDown("Inventory"))
-        {
+            Debug.Log("PSSSSSSSSSSSSS");
+        //if (Input.GetButtonDown("Inventory"))
+        if (Input.GetButtonDown("LeftGripButtonPress"))
+            {
+            Debug.Log("Pressed Left Grip Button");
             // NoPanels are active
             if (!isOpen)
             {

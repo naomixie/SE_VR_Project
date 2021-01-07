@@ -406,22 +406,6 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Inventory
-    descriptiveName: 
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 0
-    dead: 0.19
-    sensitivity: 1
-    snap: 0
-    invert: 0
-    type: 2
-    axis: 3
-    joyNum: 0
-  - serializedVersion: 3
     m_Name: Map
     descriptiveName: 
     descriptiveNegativeName: 
@@ -486,7 +470,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Pause
+    m_Name: Inventory
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -550,7 +534,7 @@ InputManager:
     axis: 2
     joyNum: 0
   - serializedVersion: 3
-    m_Name: LeftGripButtonPress
+    m_Name: AXIS_4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -566,7 +550,7 @@ InputManager:
     axis: 3
     joyNum: 0
   - serializedVersion: 3
-    m_Name: RightGripButtonPress
+    m_Name: AXIS_5
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -758,7 +742,7 @@ InputManager:
     axis: 15
     joyNum: 0
   - serializedVersion: 3
-    m_Name: AXIS_17
+    m_Name: TouchPadHorizontialLeft
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -774,7 +758,7 @@ InputManager:
     axis: 16
     joyNum: 0
   - serializedVersion: 3
-    m_Name: AXIS_18
+    m_Name: TouchPadVerticalLeft
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -790,7 +774,7 @@ InputManager:
     axis: 17
     joyNum: 0
   - serializedVersion: 3
-    m_Name: AXIS_19
+    m_Name: TouchPadHorizontialRight
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -806,7 +790,7 @@ InputManager:
     axis: 18
     joyNum: 0
   - serializedVersion: 3
-    m_Name: AXIS_20
+    m_Name: TouchPadVerticalRight
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -1030,20 +1014,20 @@ InputManager:
     axis: 2
     joyNum: 0
   - serializedVersion: 3
-    m_Name: AXIS_4
+    m_Name: LeftGripButtonPress
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: joystick button 4
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 0
-    dead: 0.19
-    sensitivity: 1
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
     snap: 0
     invert: 0
-    type: 2
-    axis: 3
+    type: 0
+    axis: 0
     joyNum: 0
   - serializedVersion: 3
     m_Name: AXIS_5
@@ -1460,4 +1444,52 @@ InputManager:
     invert: 0
     type: 2
     axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: UpDown
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: AXIS_4
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: AXIS_4
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 3
     joyNum: 0

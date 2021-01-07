@@ -66,8 +66,12 @@ public class Surviver : MonoBehaviourPun
         }
 
         // Walking
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        //float x = Input.GetAxis("Horizontal");
+        //float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("TouchPadHorizontialLeft");
+        float z = -Input.GetAxis("TouchPadVerticalLeft");
+        //Debug.Log("xmove: " + x + ", zmove:" + z);
+        //Debug.Log("x: " + transform.position.x + ", z:" + transform.position.z);
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
 
@@ -86,7 +90,7 @@ public class Surviver : MonoBehaviourPun
         controller.Move(velocity * Time.deltaTime);
 
         // Footsteps's sounds
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetButtonDown("TouchPadHorizontialLeft") || Input.GetButtonDown("TouchPadVerticalLeft") || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
 			GameObject.FindGameObjectWithTag("Chaser").GetComponent<Chase>().noticeSound(1, transform.position);
         }
