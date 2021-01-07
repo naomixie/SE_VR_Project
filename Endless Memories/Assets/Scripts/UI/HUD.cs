@@ -33,7 +33,6 @@ public class HUD : MonoBehaviour
                 CloseAll();
             }
         }
-
     }
 
     public void SetPlayer(GameObject fpsPlayer)
