@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class knife : MonoBehaviour
 {
-    public int colorID = 0; // 0~4
+    public int colorID; // 0~4
     public Light knifeLight;
     public Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
+        if(colorID < 0 || 5 < colorID)
+        {
+            colorID = Random.Range(1, 6); //exclusive white 0
+        }
         switch(colorID)
         {
             case 0: //white
@@ -28,7 +32,7 @@ public class knife : MonoBehaviour
                 knifeLight.color = new Color(1.0f, 0.0f, 0.0f);
                 break;
             case 5: //yellow
-                knifeLight.color = new Color(0.0f, 1.0f, 1.0f);
+                knifeLight.color = new Color(1.0f, 1.0f, 0.0f);
                 break;
         }
     }

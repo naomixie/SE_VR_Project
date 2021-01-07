@@ -9,6 +9,7 @@ using Photon.Pun;
 
 public class Chase : MonoBehaviourPun
 {
+    public static int chaserCount = 6;
     public int colorID; //0~4
     private bool _isDead = false;
 
@@ -160,6 +161,14 @@ public class Chase : MonoBehaviourPun
         if(this.colorID == colorID)
         {
             _isDead = true;
+            --chaserCount;
+            if(chaserCount == 1)
+            {
+                foreach(GameObject door in GameObject.FindGameObjectsWithTag("door"))
+                {
+                    Destroy(door);
+                }
+            }
             return true;
         }
         return false;
