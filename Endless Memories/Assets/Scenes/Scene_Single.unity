@@ -6764,7 +6764,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.1, z: 0.1}
+  m_Size: {x: 0.6, y: 0.15, z: 0.15}
   m_Center: {x: -0.01, y: 0, z: 0}
 --- !u!114 &487298304
 MonoBehaviour:
@@ -11062,7 +11062,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: 487298300}
+  constraintsManager: {fileID: 728389237}
   elasticsManager: {fileID: 0}
   onManipulationStarted:
     m_PersistentCalls:
@@ -11131,7 +11131,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.1, z: 0.1}
+  m_Size: {x: 0.6, y: 0.15, z: 0.15}
   m_Center: {x: -0.01, y: 0, z: 0}
 --- !u!114 &728389241
 MonoBehaviour:
@@ -13573,7 +13573,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: 487298300}
+  constraintsManager: {fileID: 863741317}
   elasticsManager: {fileID: 0}
   onManipulationStarted:
     m_PersistentCalls:
@@ -13642,7 +13642,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.1, z: 0.1}
+  m_Size: {x: 0.6, y: 0.15, z: 0.15}
   m_Center: {x: -0.01, y: 0, z: 0}
 --- !u!114 &863741321
 MonoBehaviour:
@@ -15686,7 +15686,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: 487298300}
+  constraintsManager: {fileID: 972328276}
   elasticsManager: {fileID: 0}
   onManipulationStarted:
     m_PersistentCalls:
@@ -15755,7 +15755,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.1, z: 0.1}
+  m_Size: {x: 0.6, y: 0.15, z: 0.15}
   m_Center: {x: -0.01, y: 0, z: 0}
 --- !u!114 &972328280
 MonoBehaviour:
@@ -16696,7 +16696,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: 487298300}
+  constraintsManager: {fileID: 1023302963}
   elasticsManager: {fileID: 0}
   onManipulationStarted:
     m_PersistentCalls:
@@ -16765,7 +16765,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.1, z: 0.1}
+  m_Size: {x: 0.6, y: 0.15, z: 0.15}
   m_Center: {x: -0.01, y: 0, z: 0}
 --- !u!114 &1023302967
 MonoBehaviour:
@@ -22296,7 +22296,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.1, z: 0.1}
+  m_Size: {x: 0.6, y: 0.15, z: 0.15}
   m_Center: {x: -0.01, y: 0, z: 0}
 --- !u!114 &1241877578
 MonoBehaviour:
@@ -26242,7 +26242,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: 487298300}
+  constraintsManager: {fileID: 1477526607}
   elasticsManager: {fileID: 0}
   onManipulationStarted:
     m_PersistentCalls:
@@ -26311,7 +26311,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.1, z: 0.1}
+  m_Size: {x: 0.6, y: 0.15, z: 0.15}
   m_Center: {x: -0.01, y: 0, z: 0}
 --- !u!114 &1477526611
 MonoBehaviour:
@@ -28117,7 +28117,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: 487298300}
+  constraintsManager: {fileID: 1595544262}
   elasticsManager: {fileID: 0}
   onManipulationStarted:
     m_PersistentCalls:
@@ -28186,7 +28186,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.1, z: 0.1}
+  m_Size: {x: 0.6, y: 0.15, z: 0.15}
   m_Center: {x: -0.01, y: 0, z: 0}
 --- !u!114 &1595544266
 MonoBehaviour:
@@ -31647,7 +31647,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: 487298300}
+  constraintsManager: {fileID: 1835456582}
   elasticsManager: {fileID: 0}
   onManipulationStarted:
     m_PersistentCalls:
@@ -31716,7 +31716,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.1, z: 0.1}
+  m_Size: {x: 0.6, y: 0.15, z: 0.15}
   m_Center: {x: -0.01, y: 0, z: 0}
 --- !u!114 &1835456586
 MonoBehaviour:
