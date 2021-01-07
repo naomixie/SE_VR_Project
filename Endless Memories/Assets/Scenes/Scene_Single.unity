@@ -33793,7 +33793,7 @@ PrefabInstance:
     - target: {fileID: 1187261168174179568, guid: 2f3f2bda18f90e24daaf865384de920a,
         type: 3}
       propertyPath: m_Name
-      value: MagentaPaperCrane
+      value: PaperCrane
       objectReference: {fileID: 0}
     - target: {fileID: 1187261168174179568, guid: 2f3f2bda18f90e24daaf865384de920a,
         type: 3}
@@ -34343,7 +34343,7 @@ PrefabInstance:
     - target: {fileID: 2849761642428986895, guid: dfa4c72bd0e866f45ab55a44b1971ca6,
         type: 3}
       propertyPath: m_Name
-      value: BluePaperCrane
+      value: PaperCrane
       objectReference: {fileID: 0}
     - target: {fileID: 2849761642428986895, guid: dfa4c72bd0e866f45ab55a44b1971ca6,
         type: 3}
@@ -35068,6 +35068,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: FPSCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5710499081661016410, guid: 5944285b0f27d614ea6f3d1e88b44d95,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5710499081661016410, guid: 5944285b0f27d614ea6f3d1e88b44d95,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5710499081661016421, guid: 5944285b0f27d614ea6f3d1e88b44d95,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -35333,7 +35343,7 @@ PrefabInstance:
     - target: {fileID: 3841385338675556028, guid: 6a801a66afb998543a64555b6d8435a0,
         type: 3}
       propertyPath: m_Name
-      value: RedPaperCrane
+      value: PaperCrane
       objectReference: {fileID: 0}
     - target: {fileID: 3841385338675556028, guid: 6a801a66afb998543a64555b6d8435a0,
         type: 3}
@@ -35701,7 +35711,7 @@ PrefabInstance:
     - target: {fileID: 5545585754737390559, guid: a58497369fd07824b83be9e3bb2f69b6,
         type: 3}
       propertyPath: m_Name
-      value: WhitePaperCrane
+      value: PaperCrane
       objectReference: {fileID: 0}
     - target: {fileID: 5545585754737390559, guid: a58497369fd07824b83be9e3bb2f69b6,
         type: 3}
@@ -36190,7 +36200,7 @@ PrefabInstance:
     - target: {fileID: 8523296298762699944, guid: 14c296b4f25b150498793ea67326f496,
         type: 3}
       propertyPath: m_Name
-      value: GreenPaperCrane
+      value: PaperCrane
       objectReference: {fileID: 0}
     - target: {fileID: 8523296298762699944, guid: 14c296b4f25b150498793ea67326f496,
         type: 3}
@@ -36318,7 +36328,7 @@ PrefabInstance:
     - target: {fileID: 9040247091027636308, guid: 2d5400a80ad226c48bb001acf321dd1f,
         type: 3}
       propertyPath: m_Name
-      value: YellowPaperCrane
+      value: PaperCrane
       objectReference: {fileID: 0}
     - target: {fileID: 9040247091027636308, guid: 2d5400a80ad226c48bb001acf321dd1f,
         type: 3}
