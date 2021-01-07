@@ -9,6 +9,7 @@ using Photon.Pun;
 
 public class Chase : MonoBehaviourPun
 {
+    public static int chaserCount = 6;
     public int colorID; //0~4
     private bool _isDead = false;
 
@@ -69,11 +70,6 @@ public class Chase : MonoBehaviourPun
 						restedFrame = 0;
                         
 						agent.SetDestination(target.transform.position);
-                        if(!Surviver.instance.chasingBGM.isPlaying)
-                        {
-                            Surviver.instance.chasingBGM.Play();
-                            Surviver.instance.noticedBGM.Stop();
-                        }
 					}
 				}
 			}
@@ -89,8 +85,6 @@ public class Chase : MonoBehaviourPun
 			//Debug.Log("destToTarget: " + Vector3.Distance(agent.destination, transform.position) + ", restFrame" + restedFrame);
 			if (agent.destination == null || Vector3.Distance(agent.destination, transform.position) < 1)
 			{
-                Surviver.instance.noticedBGM.Stop();
-                Surviver.instance.chasingBGM.Stop();
                 if (++restedFrame > 1000)
 				{
 					restedFrame = 0;
@@ -104,8 +98,6 @@ public class Chase : MonoBehaviourPun
 		if(!_isDead && Vector3.Distance(position, transform.position) < 10*soundLevel) {
 			restedFrame = 0;
 			move(position);
-            if(!Surviver.instance.noticedBGM.isPlaying)
-                Surviver.instance.noticedBGM.Play();
 		}
 	}
 	private void patrolRandomSpot()
@@ -160,6 +152,14 @@ public class Chase : MonoBehaviourPun
         if(this.colorID == colorID)
         {
             _isDead = true;
+            --chaserCount;
+            if(chaserCount == 1)
+            {
+                foreach(GameObject door in GameObject.FindGameObjectsWithTag("door"))
+                {
+                    Destroy(door);
+                }
+            }
             return true;
         }
         return false;

@@ -24,6 +24,7 @@ TagManager:
   - PVP Manager
   - PVP Canvas
   - Bullet
+  - door
   layers:
   - Default
   - TransparentFX
