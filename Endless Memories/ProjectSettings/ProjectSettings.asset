@@ -679,8 +679,7 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: 201310-SampleAssets
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: D:\Edward\GameDev\Unity\Projects\VR\SE_VR_Project\Endless
-    Memories\Assets\WSATestCertificate.pfx
+  metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
