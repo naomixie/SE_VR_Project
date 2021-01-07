@@ -46,7 +46,18 @@ public class knife : MonoBehaviour
                 if(collision.gameObject.GetComponent<Chase>().knifeStubWithColor(colorID)) //stub success
                 {
                     Destroy(this.gameObject); //temporary delete both of entities
-                    Destroy(collision.gameObject);
+                    Transform chaserTrans = collision.gameObject.GetComponent<Transform>();
+                    for (int i = 0; i < chaserTrans.childCount; ++i)
+                    {
+                        GameObject chaserChildObj = chaserTrans.GetChild(i).gameObject;
+                        if (chaserChildObj.name.Equals("model"))
+                        {
+                            Destroy(chaserChildObj);
+                        } else if (chaserChildObj.name.Equals("PaperCrane"))
+                        {
+                            chaserChildObj.SetActive(true);
+                        }
+                    }
                 }
             }
         }
