@@ -1,0 +1,34 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+//using System.Runtime.Hosting;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MainMenu : MonoBehaviour
+{
+    public void SinglePlayer()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void MultiPlayer()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public static void GameClear()
+    {
+        SceneManager.LoadScene(6);
+    }
+
+    public void QuitGame()
+    {
+        UnityEngine.Debug.Log("QUIT!");
+        Application.Quit();
+    }
+}
