@@ -29,13 +29,18 @@ public class Chase : MonoBehaviourPun
 
     public bool doKill = false;
 
+    public bool isSingle = true;
+
     void Awake()
     {
         instance = this;
     }
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("MainCamera");
+        if(isSingle == true)
+            target = GameObject.FindGameObjectWithTag("MainCamera");
+        else
+            target = GameObject.FindGameObjectWithTag("First Person Player");
         //获取寻路物体上的NavMeshAgent组件, 通过SetDestination方法(网格路径计算)实现自动寻路
         agent = GetComponent<NavMeshAgent>();
 

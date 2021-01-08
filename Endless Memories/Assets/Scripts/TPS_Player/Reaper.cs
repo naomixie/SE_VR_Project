@@ -10,6 +10,10 @@ public class Reaper : MonoBehaviourPun
 
     public PvpTpsManager pvpTpsManager;
 
+    public CharacterController controller;
+    public float speed = 12f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,54 +32,61 @@ public class Reaper : MonoBehaviourPun
 
     private void ProcessInput()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(1))
         {
             if(throwStage == 1 && dropStage == 0)
             {
                 DoThrow();
-                CancelThrow();
+                pvpTpsManager.Throw(0);
             }
 
             if(throwStage == 0 && dropStage == 1)
             {
                 DoDrop();
-                CancelDrop();
+                pvpTpsManager.Drop(0);
             }
+        }
+
+
+        float x = Input.GetAxis("Horizontal") + Input.GetAxis("TouchPadHorizontialLeft");
+        float z = Input.GetAxis("Vertical") -Input.GetAxis("TouchPadVerticalLeft");
+        Vector3 move = transform.right * x + transform.forward * z;
+        controller.Move(move * speed * Time.deltaTime);
+
+        if(Input.GetKeyDown("Space"))
+        {
+            controller.Move(transform.up * speed * Time.deltaTime);
+        }
+
+        if(Input.GetKeyDown("Shift"))
+        {
+            controller.Move(-transform.up * speed * Time.deltaTime);
         }
     }
 
     public void Drop()
     {
         if (throwStage == 1)
-            return;
+            pvpTpsManager.Throw(0);
 
-        pvpTpsManager.Drop(dropStage);
         if (dropStage == 0)
-        {
             dropStage = 1;
-        }
         else
-        {
-            DoDrop();
             dropStage = 0;
-        }
+        pvpTpsManager.Drop(dropStage);
     }
 
     public void Throw()
     {
         if (dropStage == 1)
-            return;
+            pvpTpsManager.Drop(0);
+
+        if (throwStage == 0)
+            throwStage = 1;
+        else
+            throwStage = 0;
 
         pvpTpsManager.Throw(throwStage);
-        if (throwStage == 0)
-        {
-            throwStage = 1;
-        }
-        else
-        {
-            DoThrow();
-            throwStage = 0;
-        }
     }
 
     public void PrepareDrop()
@@ -108,9 +119,6 @@ public class Reaper : MonoBehaviourPun
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out hit))
         {
-            Debug.Log(hit.point);
-            Debug.Log(hit.collider.name);
-
             pvpTpsManager.pvpTpsDataManager.noiceFlag = !pvpTpsManager.pvpTpsDataManager.noiceFlag;
             pvpTpsManager.pvpTpsDataManager.noticePosition = hit.point;
         }
@@ -123,9 +131,6 @@ public class Reaper : MonoBehaviourPun
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out hit))
         {
-            Debug.Log(hit.point);
-            Debug.Log(hit.collider.name);
-
             pvpTpsManager.pvpTpsDataManager.dropFlag = !pvpTpsManager.pvpTpsDataManager.dropFlag;
             pvpTpsManager.pvpTpsDataManager.dropPosition = hit.point;
         }

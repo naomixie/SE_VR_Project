@@ -14,6 +14,8 @@ public class PvpTpsUiManager : MonoBehaviour
     public GameObject tpsPlayer;
     public Canvas tpsCanvas;
 
+    public bool onHover = false;
+
     void Start()
     {
     }
@@ -43,4 +45,14 @@ public class PvpTpsUiManager : MonoBehaviour
             Drop.onClick.AddListener(reaper.Drop);
         }
     }
+
+    // public void OnPointerEnter (PointerEventData eventData)
+    // {
+    //     onHover = true;
+    // }
+
+    // public void OnPointerExit (PointerEventData eventData)
+    // {
+    //     onHover = false;
+    // }
 }

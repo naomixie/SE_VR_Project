@@ -47,6 +47,7 @@ public class knife : MonoBehaviour
                 {
                     Destroy(this.gameObject); //temporary delete both of entities
                     Transform chaserTrans = collision.gameObject.GetComponent<Transform>();
+                    Debug.Log("Hitting a chaser!");
                     for (int i = 0; i < chaserTrans.childCount; ++i)
                     {
                         GameObject chaserChildObj = chaserTrans.GetChild(i).gameObject;

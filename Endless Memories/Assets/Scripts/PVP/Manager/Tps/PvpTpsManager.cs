@@ -49,6 +49,13 @@ public class PvpTpsManager : MonoBehaviourPun
             photonView.TransferOwnership(tpsPlayer.GetPhotonView().Owner);
         }
 
+        if(photonView.Owner.Equals(tpsPlayer.GetPhotonView().Owner))
+        {
+            GameObject[] chasers = GameObject.FindGameObjectsWithTag("Chaser");
+            for(int i = 0; i < chasers.Length; i++)
+                chasers[i].GetComponent<Chase>().enabled = false;
+        }
+
         fpsPlayer = fps;
 
         pvpTpsUiManager.tpsPlayer = tpsPlayer;
@@ -64,23 +71,35 @@ public class PvpTpsManager : MonoBehaviourPun
     {
         var dropText = "";
 
-        if (dropStage == 0)
-            dropText = "CANCEL THROW";
+        if (dropStage == 1)
+        {
+            Debug.Log("CANCEL DROP");
+            dropText = "CANCEL DROP";
+        }
         else
-            dropText = "THROW";
+        {
+            Debug.Log("DROP");
+            dropText = "DROP";
+        }
 
-        pvpTpsUiManager.dropBtn.GetComponent<Text>().text = dropText;
+        pvpTpsUiManager.dropBtn.GetComponentInChildren<Text>().text = dropText;
     }
 
     public void Throw(int throwStage)
     {
         var throwText = "";
 
-        if (throwStage == 0)
+        if (throwStage == 1)
+        {
+            Debug.Log("CANCEL THROW");
             throwText = "CANCEL THROW";
+        }
         else
+        {
+            Debug.Log("THROW");
             throwText = "THROW";
+        }
 
-        pvpTpsUiManager.throwBtn.GetComponent<Text>().text = throwText;
+        pvpTpsUiManager.throwBtn.GetComponentInChildren<Text>().text = throwText;
     }
 }

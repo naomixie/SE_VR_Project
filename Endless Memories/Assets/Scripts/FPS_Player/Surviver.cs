@@ -40,6 +40,8 @@ public class Surviver : MonoBehaviourPun
     public GameObject knifeObject;
     public int knifeColorId;
 
+    public bool isSingle = true;
+
     private void Awake()
     {
         instance = this;
@@ -77,22 +79,22 @@ public class Surviver : MonoBehaviourPun
         // Walking
         //float x = Input.GetAxis("Horizontal");
         //float z = Input.GetAxis("Vertical");
-        float x = Input.GetAxis("TouchPadHorizontialLeft");
-        float z = -Input.GetAxis("TouchPadVerticalLeft");
+        float x = Input.GetAxis("Horizontal") + Input.GetAxis("TouchPadHorizontialLeft");
+        float z = Input.GetAxis("Vertical") -Input.GetAxis("TouchPadVerticalLeft");
         //Debug.Log("xmove: " + x + ", zmove:" + z);
         //Debug.Log("x: " + transform.position.x + ", z:" + transform.position.z);
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
 
         // Jump
-        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Space)) && isGrounded)
-        {
-            // TODO: Wrapper
-            // pvpManager.test -= 1;
+        // if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Space)) && isGrounded)
+        // {
+        //     // TODO: Wrapper
+        //     // pvpManager.test -= 1;
 
-            // Wrapper end
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
+        //     // Wrapper end
+        //     velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        // }
 
         // Gravity
         velocity.y += gravity * Time.deltaTime;

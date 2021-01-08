@@ -9,7 +9,7 @@ public class PvpInitializer : MonoBehaviourPun
     [SerializeField] private GameObject fpsPrefab = null;
     [SerializeField] private GameObject tpsPrefab = null;
     [SerializeField] private CinemachineVirtualCamera fpsCamera = null;
-    [SerializeField] private CinemachineFreeLook tpsCamera = null;
+    [SerializeField] private CinemachineVirtualCamera tpsCamera = null;
 
     [SerializeField] private int playerMode;
     private bool synced = false;
@@ -41,7 +41,7 @@ public class PvpInitializer : MonoBehaviourPun
         else
         {
             tpsPlayer = PhotonNetwork.Instantiate(tpsPrefab.name, new Vector3(tpsSpawnPoint.position.x, tpsSpawnPoint.position.y, tpsSpawnPoint.position.z), Quaternion.identity);
-            tpsCamera = tpsPlayer.GetComponentInChildren<CinemachineFreeLook>();
+            tpsCamera = tpsPlayer.GetComponentInChildren<CinemachineVirtualCamera>();
         }
     }
 
@@ -64,7 +64,7 @@ public class PvpInitializer : MonoBehaviourPun
                     fpsCamera.enabled = true;
 
                     // Tps
-                    tpsCamera = tps.GetComponentInChildren<CinemachineFreeLook>();
+                    tpsCamera = tps.GetComponentInChildren<CinemachineVirtualCamera>();
                     
                     if(tpsCamera != null)
                         tpsCamera.gameObject.SetActive(false);
@@ -72,6 +72,7 @@ public class PvpInitializer : MonoBehaviourPun
                     fpsManager.Init(tps, fpsPlayer);
 
                     fpsCanvas.GetComponent<HUD>().SetPlayer(fpsPlayer);
+                    // fpsCanvas.GetComponent<Canvas>().worldCamera = fpsCamera.GetComponent<Camera>();
                     
                 }
                 else

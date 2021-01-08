@@ -25,7 +25,7 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
     float pvpTimeCountData = 30;
     float prepareTimeCountData = 10;
 
-    float pvpTimeCount;
+    public float pvpTimeCount;
     float prepareTimeCount;
 
     // Variables for managing scores and waves
@@ -40,6 +40,8 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
     public bool dropFlag = false;
     public Vector3 dropPosition;
 
+    public GameObject fpsPlayer;
+    public GameObject tpsPlayer;
 
     // Ghost
     public Chase chase;
@@ -56,6 +58,16 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
+        fpsPlayer = GameObject.FindGameObjectWithTag("First Person Player");
+
+        if(fpsPlayer != null)
+            if(photonView.Owner == null || !photonView.Owner.Equals(fpsPlayer.GetPhotonView().Owner))
+                photonView.TransferOwnership(fpsPlayer.GetPhotonView().Owner);
+
+        if(tpsPlayer == null)
+            tpsPlayer = GameObject.FindGameObjectWithTag("Third Person Player");
+
+
         Sync();
 
         Count();
@@ -126,6 +138,11 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
             PrepareWave();
         }
         DisplayTime(pvpTimeCount);
+
+        if(5 <= (pvpTimeCount % 30) && (pvpTimeCount % 30) <= 10)
+        {
+            pvpTpsManager.pvpTpsUiManager.throwBtn.interactable = true;
+        }
     }
 
     void CountPrepare()
@@ -147,6 +164,10 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
         prepareTimeCount = prepareTimeCountData;
         pvpTimeIsRunning = false;
         prepareTimeIsRunning = true;
+
+        pvpTpsManager.pvpTpsUiManager.dropBtn.interactable = true;
+
+
     }
 
     void StartWave()
@@ -155,6 +176,10 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
         prepareTimeIsRunning = false;
         pvpTimeIsRunning = true;
         waveCount++;
+
+        pvpTpsManager.pvpTpsUiManager.dropBtn.interactable = false;
+        tpsPlayer.GetComponent<Reaper>().CancelDrop();
+        pvpTpsManager.Drop(0);
     }
 
     // Updating texts
@@ -196,14 +221,33 @@ public class PvpManager : MonoBehaviourPunCallbacks, IPunObservable
     // Teleporting ghost
     public void DropGhost(Vector3 dropPosition)
     {
+        Debug.Log("Dropping ghost.");
         chase.teleport(dropPosition);
+        pvpTpsManager.pvpTpsUiManager.dropBtn.interactable = false;
+        tpsPlayer.GetComponent<Reaper>().CancelDrop();
+        pvpTpsManager.Drop(0);
     }
 
     // Making sounds
     public void NoticeSound(Vector3 noticePosition)
     {
+        Debug.Log("Making noise.");
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Chaser");
         for(int i = 0; i < objs.Length; i++)
             objs[i].GetComponent<Chase>().noticeSound(100, noticePosition);
+        
+        pvpTpsManager.pvpTpsUiManager.throwBtn.interactable = false;
+        tpsPlayer.GetComponent<Reaper>().CancelThrow();
+        pvpTpsManager.Throw(0);
+    }
+
+    public bool InPrepareMode()
+    {
+        return prepareTimeIsRunning;
+    }
+
+    public bool InPvpMode()
+    {
+        return pvpTimeIsRunning;
     }
 }

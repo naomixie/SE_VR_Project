@@ -10,6 +10,7 @@ public class HUD : MonoBehaviour
     public GameObject player;
     public InventoryUI scriptInventoryUI;
 
+    public bool isSingle = true;
 
     bool isOpen;
 
@@ -23,7 +24,7 @@ public class HUD : MonoBehaviour
     {
             Debug.Log("PSSSSSSSSSSSSS");
         //if (Input.GetButtonDown("Inventory"))
-        if (Input.GetButtonDown("LeftGripButtonPress"))
+        if (Input.GetButtonDown("LeftGripButtonPress") || Input.GetButtonDown("Inventory"))
             {
             Debug.Log("Pressed Left Grip Button");
             // NoPanels are active

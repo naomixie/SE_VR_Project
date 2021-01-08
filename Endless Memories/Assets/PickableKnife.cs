@@ -12,6 +12,8 @@ public class PickableKnife : MonoBehaviour
 
     public int knifeShootPower = 10;
 
+    public Vector3 dir = new Vector3(0,0,-1);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +48,7 @@ public class PickableKnife : MonoBehaviour
         gameObject.transform.position = knifeModel.position;
         gameObject.transform.rotation = knifeModel.rotation;
 
-        fwd = transform.TransformDirection(Vector3.forward);//Vector3 表示三维向量，vector3.forward的值永远等于（0，0，1）。
+        fwd = fpsPlayer.transform.TransformDirection(dir);//Vector3 表示三维向量，vector3.forward的值永远等于（0，0，1）。
 
         gameObject.GetComponent<Rigidbody>().AddForce(fwd * knifeShootPower);
     }
