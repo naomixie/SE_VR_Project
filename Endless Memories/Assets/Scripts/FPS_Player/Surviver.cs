@@ -15,6 +15,7 @@ public class Surviver : MonoBehaviourPun
     public float speed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
+    public float turnSpeed = 1.0f;
 
     // PVP
     private int solo = 1;
@@ -74,6 +75,14 @@ public class Surviver : MonoBehaviourPun
         //Debug.Log("x: " + transform.position.x + ", z:" + transform.position.z);
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
+
+        float rx = Input.GetAxis("TouchPadHorizontialRight");
+        Debug.Log("rx: " + rx);
+        Debug.Log("x: " + transform.rotation.x );
+
+        controller.transform.Rotate(0, Input.GetAxis("TouchPadHorizontialRight") * turnSpeed * Time.deltaTime, 0);
+
+
 
         // Jump
         if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Space)) && isGrounded)
