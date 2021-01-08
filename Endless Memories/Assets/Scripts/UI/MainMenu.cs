@@ -9,12 +9,12 @@ public class MainMenu : MonoBehaviour
 {
     public void SinglePlayer()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(1);
     }
 
     public void MultiPlayer()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene(2);
     }
 
     public void GameOver()
