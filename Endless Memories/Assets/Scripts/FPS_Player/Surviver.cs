@@ -77,8 +77,8 @@ public class Surviver : MonoBehaviourPun
         controller.Move(move * speed * Time.deltaTime);
 
         float rx = Input.GetAxis("TouchPadHorizontialRight");
-        Debug.Log("rx: " + rx);
-        Debug.Log("x: " + transform.rotation.x );
+        //Debug.Log("rx: " + rx);
+        //Debug.Log("x: " + transform.rotation.x );
 
         controller.transform.Rotate(0, Input.GetAxis("TouchPadHorizontialRight") * turnSpeed * Time.deltaTime, 0);
 

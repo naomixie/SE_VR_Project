@@ -7,12 +7,13 @@ public class knife : MonoBehaviour
     public int colorID; // 0~4
     public Light knifeLight;
     public Rigidbody rb;
+    public static int nextColorID = Random.Range(1, 6);
     // Start is called before the first frame update
     void Start()
     {
         if(colorID < 0 || 5 < colorID)
         {
-            colorID = Random.Range(1, 6); //exclusive white 0
+            colorID = (++nextColorID % 5) + 1; //exclusive white 0
         }
         switch(colorID)
         {
