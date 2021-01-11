@@ -1,10 +1,9 @@
-﻿using Photon.Pun;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class Surviver : MonoBehaviourPun
+public class Surviver : MonoBehaviour
 {
     public static Surviver instance;
 
@@ -19,8 +18,6 @@ public class Surviver : MonoBehaviourPun
 
     // PVP
     private int solo = 1;
-
-    private PvpManager pvpManager;
 
     // Movement, Ground check, Gravity
     Vector3 velocity;
@@ -42,16 +39,12 @@ public class Surviver : MonoBehaviourPun
     {
         raycast = GetComponent<Raycast>();
         inspection = GetComponentInChildren<Inspection>();
-        if(PlayerPrefs.GetInt("pvp") == 1)
-        {
-            pvpManager = GameObject.FindGameObjectWithTag("PvpManager").GetComponent<PvpManager>();
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (solo == 1 || photonView.IsMine)
+        if (solo == 1)
         {
             ProcessInput();
         }
@@ -156,29 +149,6 @@ public class Surviver : MonoBehaviourPun
                 Debug.Log("Pressed u, item in hand is " + item.gameObject.name);
                 item.Use();
             }   
-        }
-    }
-
-    public void DisableFromOther()
-    {
-        if(!photonView.IsMine)
-        {
-            raycast.enabled = false;
-            inspection.enabled = false;
-
-            MonoBehaviour[] comps = gameObject.GetComponents<MonoBehaviour>();
-            foreach(MonoBehaviour c in comps)
-            {
-                c.enabled = false;
-            }
-
-            MonoBehaviour[] childComps = gameObject.GetComponentsInChildren<MonoBehaviour>();
-            foreach(MonoBehaviour c in childComps)
-            {
-                c.enabled = false;
-            }
-
-            gameObject.GetComponent<PhotonTransformView>().enabled = true;
         }
     }
 

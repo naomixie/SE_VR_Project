@@ -5,9 +5,8 @@ using UnityEngine;
 //寻路要引入的命名空间
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
-using Photon.Pun;
 
-public class Chase : MonoBehaviourPun
+public class Chase : MonoBehaviour
 {
     public static int chaserCount = 6;
     public int colorID; //0~4
@@ -77,7 +76,7 @@ public class Chase : MonoBehaviourPun
 			if (Vector3.Distance(target.transform.position, transform.position) < 0.3 && doKill)
 			{
 				MouseLook mouseLook = GameObject.Find("First Person Player/FPS Camera").GetComponent<MouseLook>();
-				mouseLook.enabled = false;
+				//mouseLook.enabled = false;
 				mouseLook.UnlockMouse();
 				SceneManager.LoadScene("Scene_Gameover");
 			}
@@ -153,7 +152,8 @@ public class Chase : MonoBehaviourPun
         {
             _isDead = true;
             --chaserCount;
-            if(chaserCount == 1)
+            agent.isStopped = true;
+            if (chaserCount == 1)
             {
                 foreach(GameObject door in GameObject.FindGameObjectsWithTag("door"))
                 {

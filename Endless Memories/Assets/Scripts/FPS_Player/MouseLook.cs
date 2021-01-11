@@ -1,9 +1,8 @@
-﻿using Photon.Pun;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseLook : MonoBehaviourPun
+public class MouseLook : MonoBehaviour
 {
 
     public float mouseSensitivity = 100f;
@@ -24,7 +23,7 @@ public class MouseLook : MonoBehaviourPun
     void Update()
     {
 
-        if(solo == 1 || photonView.IsMine)
+        if(solo == 1)
         {
             ProcessInput();
         }
